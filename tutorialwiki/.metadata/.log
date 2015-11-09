@@ -1,0 +1,55 @@
+!SESSION 2015-11-09 17:05:54.155 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_40
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_PT
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product -data C:\Users\Lycantropus\Desktop\feup-AIAD\tutorialwiki -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2015-11-09 17:06:00.772
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2015-11-09 17:06:15.251
+!MESSAGE received no response from STUN server stunserver.org/69.172.201.208:3478 at local address /192.168.1.67:0 (StunServiceImpl.java:420)
+
+!ENTRY de.fu_berlin.inf.dpp 4 0 2015-11-09 17:06:24.219
+!MESSAGE Internal Error: (ThreadUtils.java:40)
+!STACK 0
+java.lang.RuntimeException: java.lang.InterruptedException
+	at org.jivesoftware.smack.PacketCollector.nextResult(PacketCollector.java:138)
+	at org.jivesoftware.smackx.ServiceDiscoveryManager.discoverInfo(ServiceDiscoveryManager.java:530)
+	at org.jivesoftware.smackx.ServiceDiscoveryManager.discoverInfo(ServiceDiscoveryManager.java:489)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.performServiceDiscovery(DiscoveryManager.java:448)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.queryFeatureSupport(DiscoveryManager.java:380)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.access$3(DiscoveryManager.java:347)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager$2.run(DiscoveryManager.java:326)
+	at de.fu_berlin.inf.dpp.util.ThreadUtils$1.run(ThreadUtils.java:38)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.InterruptedException
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.util.concurrent.ArrayBlockingQueue.poll(Unknown Source)
+	at org.jivesoftware.smack.PacketCollector.nextResult(PacketCollector.java:135)
+	... 10 more
+
+!ENTRY de.fu_berlin.inf.dpp 4 0 2015-11-09 17:06:24.229
+!MESSAGE Original caller: (ThreadUtils.java:41)
+!STACK 0
+StackTrace:
+	at de.fu_berlin.inf.dpp.util.ThreadUtils.wrapSafe(ThreadUtils.java:32)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.queryFeatureSupport(DiscoveryManager.java:323)
+	at de.fu_berlin.inf.dpp.ui.model.roster.RosterContentProvider.querySarosSupport(RosterContentProvider.java:177)
+	at de.fu_berlin.inf.dpp.ui.model.roster.RosterContentProvider.access$2(RosterContentProvider.java:159)
+	at de.fu_berlin.inf.dpp.ui.model.roster.RosterContentProvider$2.presenceChanged(RosterContentProvider.java:59)
+	at org.jivesoftware.smack.Roster.fireRosterPresenceEvent(Roster.java:726)
+	at org.jivesoftware.smack.Roster.access$3(Roster.java:724)
+	at org.jivesoftware.smack.Roster$PresencePacketListener.processPacket(Roster.java:789)
+	at org.jivesoftware.smack.Connection$ListenerWrapper.notifyListener(Connection.java:858)
+	at org.jivesoftware.smack.PacketReader$ListenerNotification.run(PacketReader.java:456)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)

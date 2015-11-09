@@ -25,7 +25,7 @@ public class GoalAgentBDI {
 	@Plan(trigger=@Trigger(goals=AGoal.class))
 	protected void basicPlan() {
 		System.out.println("Executing basic plan.");
-		throw new PlanFailureException();
+		//throw new PlanFailureException();
 	}
 	
 	@Plan(trigger=@Trigger(goals=AGoal.class))

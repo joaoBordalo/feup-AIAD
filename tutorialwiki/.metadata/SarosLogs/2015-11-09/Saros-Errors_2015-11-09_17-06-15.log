@@ -1,0 +1,37 @@
+WARN  2015-11-09 17:06:15,251 (StunServiceImpl.java:420) received no response from STUN server stunserver.org/69.172.201.208:3478 at local address /192.168.1.67:0
+ERROR 2015-11-09 17:06:24,219 (ThreadUtils.java:40) Internal Error:
+java.lang.RuntimeException: java.lang.InterruptedException
+	at org.jivesoftware.smack.PacketCollector.nextResult(PacketCollector.java:138)
+	at org.jivesoftware.smackx.ServiceDiscoveryManager.discoverInfo(ServiceDiscoveryManager.java:530)
+	at org.jivesoftware.smackx.ServiceDiscoveryManager.discoverInfo(ServiceDiscoveryManager.java:489)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.performServiceDiscovery(DiscoveryManager.java:448)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.queryFeatureSupport(DiscoveryManager.java:380)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.access$3(DiscoveryManager.java:347)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager$2.run(DiscoveryManager.java:326)
+	at de.fu_berlin.inf.dpp.util.ThreadUtils$1.run(ThreadUtils.java:38)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.InterruptedException
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.util.concurrent.ArrayBlockingQueue.poll(Unknown Source)
+	at org.jivesoftware.smack.PacketCollector.nextResult(PacketCollector.java:135)
+	... 10 more
+ERROR 2015-11-09 17:06:24,229 (ThreadUtils.java:41) Original caller:
+StackTrace:
+	at de.fu_berlin.inf.dpp.util.ThreadUtils.wrapSafe(ThreadUtils.java:32)
+	at de.fu_berlin.inf.dpp.net.xmpp.discovery.DiscoveryManager.queryFeatureSupport(DiscoveryManager.java:323)
+	at de.fu_berlin.inf.dpp.ui.model.roster.RosterContentProvider.querySarosSupport(RosterContentProvider.java:177)
+	at de.fu_berlin.inf.dpp.ui.model.roster.RosterContentProvider.access$2(RosterContentProvider.java:159)
+	at de.fu_berlin.inf.dpp.ui.model.roster.RosterContentProvider$2.presenceChanged(RosterContentProvider.java:59)
+	at org.jivesoftware.smack.Roster.fireRosterPresenceEvent(Roster.java:726)
+	at org.jivesoftware.smack.Roster.access$3(Roster.java:724)
+	at org.jivesoftware.smack.Roster$PresencePacketListener.processPacket(Roster.java:789)
+	at org.jivesoftware.smack.Connection$ListenerWrapper.notifyListener(Connection.java:858)
+	at org.jivesoftware.smack.PacketReader$ListenerNotification.run(PacketReader.java:456)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)

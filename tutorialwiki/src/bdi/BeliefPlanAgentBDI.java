@@ -58,13 +58,13 @@ public class BeliefPlanAgentBDI {
 		this.values = new ArrayList<Integer>();
 	}
 	
-	@Plan(trigger=@Trigger(factchangeds="value"))
+	@Plan(trigger=@Trigger(factaddeds="value"))
 	public void newValuePlan(ChangeEvent event) {
 		int v = (int) event.getValue();
 		System.out.println("New value: " + v);
 	}
  
-	@Plan(trigger=@Trigger(factchangeds="evenValue"))
+	@Plan(trigger=@Trigger(factaddeds="evenValue"))
 	public void checkParityPlan() {
 		System.out.println("Parity changed!");
 	}
