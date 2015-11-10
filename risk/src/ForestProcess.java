@@ -25,12 +25,12 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
         Random r = new Random();
 
         // Add 15 items to grid
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < 42; i++) {
             Map properties = new HashMap();
             properties.put("position", new Vector2Int(r.nextInt(spaceWidth), r.nextInt(spaceHeight)));
             properties.put("type", r.nextInt(3));
 
-            space.createSpaceObject("terrain", properties, null);
+            space.createSpaceObject("Territory", properties, null);
         }
 
     }

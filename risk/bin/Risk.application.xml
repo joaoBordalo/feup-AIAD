@@ -17,17 +17,18 @@
         <import>jadex.extension.envsupport.observer.perspective.*</import>
         <import>jadex.extension.envsupport.evaluation.*</import>
         <import>jadex.extension.envsupport.observer.gui.plugin.*</import>
+        <import>game.*</import>
 
 
     </imports>
 
     <extensiontypes>
-        <env:envspacetype name="2dspace" class="Grid2D" width="50" height="50">
+        <env:envspacetype name="2dspace" class="Grid2D" width="15" height="8">
             <env:objecttypes>
 
-                <env:objecttype name="terrain">
+                <env:objecttype name="Territory">
                     <env:property name="position" class="IVector2"/>
-                    <env:property name="type" class="String"/>
+                    <env:property name="index" class="int"/>
                     <env:property name="army" class="Army"/>
                     <env:property name="column" class="int"/>
                     <env:property name="row" class="int"/>
@@ -37,11 +38,11 @@
 
 
             <env:processtypes>
-                <env:processtype name="create_forest" class="ForestProcess"/>
+               <!-- <env:processtype name="create_forest" class="ForestProcess"/> -->
             </env:processtypes>
 
             <env:avatarmappings>
-                <env:avatarmapping componenttype="Wanderer" objecttype="wanderer"/>
+                 <!-- <env:avatarmapping componenttype="Wanderer" objecttype="wanderer"/> -->
             </env:avatarmappings>
 
 
@@ -56,7 +57,7 @@
                         <env:texturedrectangle layer="2" imagepath="images/wanderer.png"/>
                     </env:drawable>
 
-                    <env:drawable objecttype="terrain" height="1.0" width="1.0">
+                    <env:drawable objecttype="Territory" height="1.0" width="1.0">
                         <env:texturedrectangle layer="1" imagepath="images/terrain_2.png">
                             <env:drawcondition>$object.type.equals(0)</env:drawcondition>
                         </env:texturedrectangle>
@@ -72,7 +73,7 @@
                     </env:drawable>
 
                     <env:prelayers>
-                        <env:tiledlayer width="0.25" height="0.25" imagepath="images/terrain_1.png" />
+                        <env:tiledlayer width="0.25" height="0.25" imagepath="images/sea_water.png" />
                     </env:prelayers>
 
                     <env:postlayers>
@@ -99,7 +100,7 @@
                 <env:envspace name="2dspace" type="2dspace">
 
                     <env:processes>
-                        <env:process type="create_forest"/>
+                       	<!-- <env:process type="create_forest"/> -->
                     </env:processes>
 
                     <env:observers>
