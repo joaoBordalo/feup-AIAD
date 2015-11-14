@@ -1,3 +1,4 @@
+package game;
 import jadex.bridge.service.types.clock.IClockService;
 import jadex.commons.SimplePropertyObject;
 import jadex.extension.envsupport.environment.IEnvironmentSpace;
@@ -5,13 +6,14 @@ import jadex.extension.envsupport.environment.ISpaceProcess;
 import jadex.extension.envsupport.environment.space2d.Space2D;
 import jadex.extension.envsupport.math.Vector2Int;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * Created by Leonel Araújo on 22/11/2014.
- */
+import game.*;
+
+
 public class ForestProcess extends SimplePropertyObject implements ISpaceProcess {
 
     @Override
@@ -22,15 +24,23 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
         int spaceHeight = space.getAreaSize().getXAsInteger();
         int spaceWidth = space.getAreaSize().getYAsInteger();
 
-        Random r = new Random();
+        int actualIndex=0;
+        
+        //Random r = new Random();
 
-        // Add 15 items to grid
-        for(int i = 0; i < 42; i++) {
-            Map properties = new HashMap();
-            properties.put("position", new Vector2Int(r.nextInt(spaceWidth), r.nextInt(spaceHeight)));
-            properties.put("type", r.nextInt(3));
-
-            space.createSpaceObject("Territory", properties, null);
+        
+        for(int j = 0 ; j < 7; j++)
+        {
+	        for(int i = 0; i < 7; i++) 
+	        {
+	            Map properties = new HashMap();
+	            properties.put("position", new Vector2Int(i, j));
+	            properties.put("type", actualIndex);
+	            //properties.put("army", new Army(new Player(actualIndex, "name", new Color(actualIndex)),0));
+	
+	            space.createSpaceObject("Territory", properties, null);
+	            actualIndex++;
+	        }
         }
 
     }

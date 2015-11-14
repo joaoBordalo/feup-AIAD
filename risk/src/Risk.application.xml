@@ -23,7 +23,7 @@
     </imports>
 
     <extensiontypes>
-        <env:envspacetype name="2dspace" class="Grid2D" width="15" height="8">
+        <env:envspacetype name="2dspace" class="Grid2D" width="7" height="7">
             <env:objecttypes>
 
                 <env:objecttype name="Territory">
@@ -38,7 +38,7 @@
 
 
             <env:processtypes>
-               <!-- <env:processtype name="create_forest" class="ForestProcess"/> -->
+               <env:processtype name="start" class="ForestProcess"/>
             </env:processtypes>
 
             <env:avatarmappings>
@@ -100,7 +100,7 @@
                 <env:envspace name="2dspace" type="2dspace">
 
                     <env:processes>
-                       	<!-- <env:process type="create_forest"/> -->
+                       	<env:process type="start"/>
                     </env:processes>
 
                     <env:observers>
