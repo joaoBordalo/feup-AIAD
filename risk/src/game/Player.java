@@ -17,6 +17,8 @@ public class Player {
 	
 	private HashMap<Integer, Territory> territories;
 	
+	public Player () {};
+	
 	public Player( int index, String name, Color color ) 
 	{
 		this.index = index;

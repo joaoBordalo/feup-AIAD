@@ -24,14 +24,20 @@
 
     <extensiontypes>
         <env:envspacetype name="2dspace" class="ContinuousSpace2D" width="7" height="7">
-             <env:objecttypes>
+             <env:property name="border">Space2D.BORDER_RELAXED</env:property>
+			 
+			 
+			 
+			 
+			 <env:objecttypes>
 
                 <env:objecttype name="Territory">
-                    <env:property name="position" class="IVector2"/>
-                    <env:property name="index" class="int"/>
-                    <env:property name="army" class="Army"/>
-                    <env:property name="column" class="int"/>
-                    <env:property name="row" class="int"/>
+                    <env:property name="position" class="IVector2" dynamic="true"> new Vector2Int(0,0)</env:property>
+					
+                    <env:property name="index" class="int">0</env:property>
+                    <env:property name="army" class="Army"> new Army(new Player(),0)</env:property>
+                    <!-- <env:property name="column" class="int"/>
+                    <env:property name="row" class="int"/> -->
                 </env:objecttype>
 
             </env:objecttypes>

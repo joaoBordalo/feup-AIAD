@@ -3,6 +3,7 @@ import jadex.bridge.service.types.clock.IClockService;
 import jadex.commons.SimplePropertyObject;
 import jadex.extension.envsupport.environment.IEnvironmentSpace;
 import jadex.extension.envsupport.environment.ISpaceProcess;
+import jadex.extension.envsupport.environment.ISpaceProcess;
 import jadex.extension.envsupport.environment.space2d.Space2D;
 import jadex.extension.envsupport.math.Vector2Int;
 
@@ -36,7 +37,7 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
 	            Map properties = new HashMap();
 	            properties.put("position", new Vector2Int(i, j));
 	            properties.put("type", actualIndex);
-	            //properties.put("army", new Army(new Player(actualIndex, "name", new Color(actualIndex)),0));
+	            //properties.put("army", new Army(new Player(actualIndex, "name", new Color(actualIndex)),0).getArmySize());
 	
 	            space.createSpaceObject("Territory", properties, null);
 	            actualIndex++;
