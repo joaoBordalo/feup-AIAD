@@ -23,8 +23,8 @@
     </imports>
 
     <extensiontypes>
-        <env:envspacetype name="2dspace" class="Grid2D" width="7" height="7">
-            <env:objecttypes>
+        <env:envspacetype name="2dspace" class="ContinuousSapace2D" width="7" height="7">
+             <env:objecttypes>
 
                 <env:objecttype name="Territory">
                     <env:property name="position" class="IVector2"/>
@@ -53,9 +53,9 @@
 
             <env:perspectives>
                 <env:perspective name="icons" class="Perspective2D" objectplacement="center">
-                    <env:drawable objecttype="wanderer" height="1.0" width="1.0">
+                    <!--<env:drawable objecttype="wanderer" height="1.0" width="1.0">
                         <env:texturedrectangle layer="2" imagepath="images/wanderer.png"/>
-                    </env:drawable>
+                    </env:drawable> -->
 
                     <env:drawable objecttype="Territory" height="1.0" width="1.0">
                         <env:texturedrectangle layer="1" imagepath="images/terrain_2.png">
@@ -76,9 +76,9 @@
                         <env:tiledlayer width="0.25" height="0.25" imagepath="images/sea_water.png" />
                     </env:prelayers>
 
-                    <env:postlayers>
+                    <--!<env:postlayers>
                         <env:gridlayer width="1.0" height="1.0" color="black" />
-                    </env:postlayers>
+                    </env:postlayers>-->
                 </env:perspective>
             </env:perspectives>
 
@@ -90,9 +90,9 @@
         </env:envspacetype>
     </extensiontypes>
 
-    <componenttypes>
+   <--! <componenttypes>
         <componenttype name="Wanderer" filename="agents\WandererBDI.class"/>
-    </componenttypes>
+    </componenttypes> -->
 
     <configurations>
         <configuration name="Default">
