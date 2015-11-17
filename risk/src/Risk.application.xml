@@ -24,7 +24,12 @@
 
     <extensiontypes>
         <env:envspacetype name="2dspace" class="ContinuousSpace2D" width="7" height="7">
-             <env:objecttypes>
+             <env:property name="border">Space2D.BORDER_RELAXED</env:property>
+			 
+			 
+			 
+			 
+			 <env:objecttypes>
 
                 <env:objecttype name="Territory">
                     <env:property name="position" class="IVector2"/>

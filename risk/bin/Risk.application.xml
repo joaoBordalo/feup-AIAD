@@ -23,7 +23,7 @@
     </imports>
 
     <extensiontypes>
-        <env:envspacetype name="2dspace" class="ContinuousSapace2D" width="7" height="7">
+        <env:envspacetype name="2dspace" class="ContinuousSpace2D" width="7" height="7">
              <env:objecttypes>
 
                 <env:objecttype name="Territory">
@@ -76,7 +76,7 @@
                         <env:tiledlayer width="0.25" height="0.25" imagepath="images/sea_water.png" />
                     </env:prelayers>
 
-                    <--!<env:postlayers>
+                    <!-- <env:postlayers>
                         <env:gridlayer width="1.0" height="1.0" color="black" />
                     </env:postlayers>-->
                 </env:perspective>
@@ -90,7 +90,7 @@
         </env:envspacetype>
     </extensiontypes>
 
-   <--! <componenttypes>
+   <!-- <componenttypes>
         <componenttype name="Wanderer" filename="agents\WandererBDI.class"/>
     </componenttypes> -->
 
