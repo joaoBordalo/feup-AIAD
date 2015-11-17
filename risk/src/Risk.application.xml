@@ -23,8 +23,8 @@
     </imports>
 
     <extensiontypes>
-        <env:envspacetype name="2dspace" class="Grid2D" width="7" height="7">
-            <env:objecttypes>
+        <env:envspacetype name="2dspace" class="ContinuousSapace2D" width="7" height="7">
+            <!-- <env:objecttypes>
 
                 <env:objecttype name="Territory">
                     <env:property name="position" class="IVector2"/>
@@ -34,7 +34,7 @@
                     <env:property name="row" class="int"/>
                 </env:objecttype>
 
-            </env:objecttypes>
+            </env:objecttypes> -->
 
 
             <env:processtypes>
