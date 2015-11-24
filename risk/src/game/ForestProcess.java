@@ -35,7 +35,7 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
         int spaceHeight = space.getAreaSize().getXAsInteger();
         int spaceWidth = space.getAreaSize().getYAsInteger();
 
-        int actualIndex=0;
+        int territoryIndex=0;
         
         //Random r = new Random();
 
@@ -52,13 +52,13 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        Vector<IVector2> NABoardCoords = new Vector<IVector2>();
        Vector<IVector2> NASizes = new Vector<IVector2>();
        
-       Vector<String> SAnames = new Vector<String>();
+       Vector<String> SANames = new Vector<String>();
        Vector<IVector2> SABoardCoords = new Vector<IVector2>();
        Vector<IVector2> SASizes = new Vector<IVector2>();
        
-       Vector<String> ERNames = new Vector<String>();
-       Vector<IVector2> ERBoardCoords = new Vector<IVector2>();
-       Vector<IVector2> ERSizes = new Vector<IVector2>();
+       Vector<String> EUNames = new Vector<String>();
+       Vector<IVector2> EUBoardCoords = new Vector<IVector2>();
+       Vector<IVector2> EUSizes = new Vector<IVector2>();
        
        Vector<String> AFNames = new Vector<String>();
        Vector<IVector2> AFBoardCoords = new Vector<IVector2>();
@@ -74,6 +74,9 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        Vector<IVector2> AUSizes = new Vector<IVector2>();
        
        
+       
+       
+       //DEFS NORTH AMERICA
        NANames.addElement("ALASKA");
        NABoardCoords.addElement(new Vector2Double(3.5, 3.0));
        NASizes.addElement(new Vector2Double(2,2));
@@ -103,7 +106,7 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        NASizes.addElement(new Vector2Double(2,2));
        
        NANames.addElement("QUEBEC");
-       NABoardCoords.addElement(new Vector2Double(14.75, 5));
+       NABoardCoords.addElement(new Vector2Double(14.75, 5.25));
        NASizes.addElement(new Vector2Double(2,2));
        
        NANames.addElement("WESTERNUNITEDSTATES");
@@ -112,79 +115,206 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        
        
        
+       //DEFS SOUTH AMERCIA
+       SANames.addElement("ARGENTINA");
+       SABoardCoords.addElement(new Vector2Double(14,23.75));
+       SASizes.addElement(new Vector2Double(2,2));
        
-       SAnames.addElement("ARGENTINA");
-       SAnames.addElement("BRAZIL");
-       SAnames.addElement("PERU");
-       SAnames.addElement("VENEZUELA");
+       SANames.addElement("BRAZIL");
+       SABoardCoords.addElement(new Vector2Double(16,19));
+       SASizes.addElement(new Vector2Double(2,2));
        
-       ERNames.addElement("GREATBRITAIN");
-       ERNames.addElement("ICELAND");
-       ERNames.addElement("NORTHERNEUROPE");
-       ERNames.addElement("SCANDINAVIA");
-       ERNames.addElement("SOUTHERNEUROPE");
-       ERNames.addElement("UKRAINE");
-       ERNames.addElement("WESTERNEUROPE");
+       SANames.addElement("PERU");
+       SABoardCoords.addElement(new Vector2Double(13.4,20.5));
+       SASizes.addElement(new Vector2Double(1.5,1.5));
+       
+       SANames.addElement("VENEZUELA");
+       SABoardCoords.addElement(new Vector2Double(12.5,15.5));
+       SASizes.addElement(new Vector2Double(2,2));
+       
+       
+       
+       //DEFS EUROPE
+       EUNames.addElement("GREATBRITAIN");
+       EUBoardCoords.addElement(new Vector2Double(26,5.25));
+       EUSizes.addElement(new Vector2Double(1,1));
+             
+       EUNames.addElement("ICELAND");
+       EUBoardCoords.addElement(new Vector2Double(24.25,3));
+       EUSizes.addElement(new Vector2Double(0.75,0.75));
+
+       EUNames.addElement("NORTHERNEUROPE");
+       EUBoardCoords.addElement(new Vector2Double(29,6));
+       EUSizes.addElement(new Vector2Double(1,1));
+
+       EUNames.addElement("SCANDINAVIA");
+       EUBoardCoords.addElement(new Vector2Double(29.25,3.5));
+       EUSizes.addElement(new Vector2Double(1,1));
+
+       EUNames.addElement("SOUTHERNEUROPE");
+       EUBoardCoords.addElement(new Vector2Double(31,7.5));
+       EUSizes.addElement(new Vector2Double(1,1));
+
+       EUNames.addElement("UKRAINE");
+       EUBoardCoords.addElement(new Vector2Double(33,5));
+       EUSizes.addElement(new Vector2Double(2,2));
+
+       EUNames.addElement("WESTERNEUROPE");
+       EUBoardCoords.addElement(new Vector2Double(27,7.5));
+       EUSizes.addElement(new Vector2Double(1,1));
+
+       
+       //DEFS AFRICA
        
        AFNames.addElement("CONGO");
+       AFBoardCoords.addElement(new Vector2Double(31,17));
+       AFSizes.addElement(new Vector2Double(2,2));
+       
        AFNames.addElement("EASTAFRICA");
+       AFBoardCoords.addElement(new Vector2Double(34.75,15.25));
+       AFSizes.addElement(new Vector2Double(2,2));
+       
        AFNames.addElement("EGYPT");
+       AFBoardCoords.addElement(new Vector2Double(31,11));
+       AFSizes.addElement(new Vector2Double(1.75,1.75));
+       
        AFNames.addElement("MADAGASCAR");
+       AFBoardCoords.addElement(new Vector2Double(36,21));
+       AFSizes.addElement(new Vector2Double(1,1));
+       
        AFNames.addElement("NORTHAFRICA");
+       AFBoardCoords.addElement(new Vector2Double(26.5,13));
+       AFSizes.addElement(new Vector2Double(2,2));
+       
        AFNames.addElement("SOUTHAFRICA");
+       AFBoardCoords.addElement(new Vector2Double(31,21));
+       AFSizes.addElement(new Vector2Double(2,2));
        
+       //DEFS ASIA
        ASNames.addElement("AFGHANISTAN");
-       ASNames.addElement("CHINA");
-       ASNames.addElement("INDIA");
-       ASNames.addElement("IRKUTSK");
-       ASNames.addElement("JAPAN");
-       ASNames.addElement("KAMCHATKA");
-       ASNames.addElement("MIDDLEEAST");
-       ASNames.addElement("MONGOLIA");
-       ASNames.addElement("SLAM");
-       ASNames.addElement("SIBERIA");
-       ASNames.addElement("URAL");
-       ASNames.addElement("YAKUTSK");
+       ASBoardCoords.addElement(new Vector2Double(38.8,7));
+       ASSizes.addElement(new Vector2Double(2,2));
        
+       ASNames.addElement("CHINA");
+       ASBoardCoords.addElement(new Vector2Double(46.6,9.8));
+       ASSizes.addElement(new Vector2Double(1.5,1.5));
+       
+       ASNames.addElement("INDIA");
+       ASBoardCoords.addElement(new Vector2Double(42,11.8));
+       ASSizes.addElement(new Vector2Double(1.5,1.5));
+       
+       ASNames.addElement("IRKUTSK");
+       ASBoardCoords.addElement(new Vector2Double(46.7,5.3));
+       ASSizes.addElement(new Vector2Double(2,2));
+       
+       ASNames.addElement("JAPAN");
+       ASBoardCoords.addElement(new Vector2Double(54,9));
+       ASSizes.addElement(new Vector2Double(1,1));
+       
+       ASNames.addElement("KAMCHATKA");
+       ASBoardCoords.addElement(new Vector2Double(53,3.1));
+       ASSizes.addElement(new Vector2Double(1,1));
+       
+       ASNames.addElement("MIDDLEEAST");
+       ASBoardCoords.addElement(new Vector2Double(35,9.5));
+       ASSizes.addElement(new Vector2Double(1,1));
+       
+       ASNames.addElement("MONGOLIA");
+       ASBoardCoords.addElement(new Vector2Double(46.8,9));
+       ASSizes.addElement(new Vector2Double(1,1));
+       
+       ASNames.addElement("SLAM");
+       ASBoardCoords.addElement(new Vector2Double(47.6,15));
+       ASSizes.addElement(new Vector2Double(1,1));
+       
+       ASNames.addElement("SIBERIA");
+       ASBoardCoords.addElement(new Vector2Double(42,3.6));
+       ASSizes.addElement(new Vector2Double(1,1));
+       
+       ASNames.addElement("URAL");
+       ASBoardCoords.addElement(new Vector2Double(38.6,4));
+       ASSizes.addElement(new Vector2Double(1.5,1.5));
+       
+       ASNames.addElement("YAKUTSK");
+       ASBoardCoords.addElement(new Vector2Double(46.5,3));
+       ASSizes.addElement(new Vector2Double(1,1));
+       
+       //DEFS AUSTRALIA
        AUNames.addElement("EASTERNAUSTRALIA");
+       AUBoardCoords.addElement(new Vector2Double(55.5,22.5));
+       AUSizes.addElement(new Vector2Double(2,2));
+       
        AUNames.addElement("INDONESIA");
+       AUBoardCoords.addElement(new Vector2Double(49.8,17));
+       AUSizes.addElement(new Vector2Double(1,1));
+       
        AUNames.addElement("NEWGUINEA");
+       AUBoardCoords.addElement(new Vector2Double(55.5,18));
+       AUSizes.addElement(new Vector2Double(1,1));
+       
        AUNames.addElement("WESTERNAUSTRALIA");
+       AUBoardCoords.addElement(new Vector2Double(50.8,22.5));
+       AUSizes.addElement(new Vector2Double(2,2));
+       
        
        Vector<Territory> gameBoard= new Vector<Territory>();
        
        for(int i=0; i<nTerritories.get("NorthAmerica"); i++)
        {
-    	   gameBoard.add(new Territory(actualIndex, NANames.get(i), "NorthAmerica", NASizes.get(i), NABoardCoords.get(i)));
+    	   gameBoard.add(new Territory(territoryIndex, NANames.get(i), "NorthAmerica", NASizes.get(i), NABoardCoords.get(i)));
     	   
-    	   actualIndex++;
+    	   territoryIndex++;
        }
+       
+       territoryIndex=0;
+       
        
        for(int i=0; i<nTerritories.get("SouthAmerica"); i++)
        {
        
+    	   gameBoard.add(new Territory(territoryIndex, SANames.get(i), "SouthAmerica", SASizes.get(i), SABoardCoords.get(i)));
+    	   
+    	   territoryIndex++;
        }
+       
+       territoryIndex=0;
        
        for(int i=0; i<nTerritories.get("Europe"); i++)
        {
-       
+    	   gameBoard.add(new Territory(territoryIndex, EUNames.get(i), "Europe", EUSizes.get(i), EUBoardCoords.get(i)));
+    	   
+    	   territoryIndex++;
        }
        
-       for(int i=0; i<nTerritories.get("Asia"); i++)
-       {
-       
-       }
+       territoryIndex=0;
        
        for(int i=0; i<nTerritories.get("Africa"); i++)
        {
-       
+    	   gameBoard.add(new Territory(territoryIndex, AFNames.get(i), "Africa", AFSizes.get(i), AFBoardCoords.get(i)));
+    	   
+    	   territoryIndex++;
        }
+       
+       territoryIndex=0;
+       
+       for(int i=0; i<nTerritories.get("Asia"); i++)
+       {
+    	   gameBoard.add(new Territory(territoryIndex, ASNames.get(i), "Africa", ASSizes.get(i), ASBoardCoords.get(i)));
+    	   
+    	   territoryIndex++;
+    	   
+       }
+       
+       territoryIndex=0;
        
        for(int i=0; i<nTerritories.get("Australia"); i++)
        {
-       
+    	   gameBoard.add(new Territory(territoryIndex, AUNames.get(i), "Australia", AUSizes.get(i), AUBoardCoords.get(i)));
+    	   
+    	   territoryIndex++;
        }
        
+       territoryIndex=0;
        for(int i = 0; i<gameBoard.size(); i++)
        {
        Map properties = new HashMap();
@@ -192,6 +322,7 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        properties.put("type", gameBoard.get(i).getShapeType());
        properties.put("size", gameBoard.get(i).getSize());
        properties.put("army", gameBoard.get(i).getArmy());
+       properties.put("index", gameBoard.get(i).getIndex());
        
        space.createSpaceObject("Territory", properties, null);
        }
@@ -212,11 +343,11 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
 	        {
 	            Map properties = new HashMap();
 	            properties.put("position", new Vector2Int(i, j));
-	            properties.put("type", actualIndex);
-	            //properties.put("army", new Army(new Player(actualIndex, "name", new Color(actualIndex)),0).getArmySize());
+	            properties.put("type", territoryIndex);
+	            //properties.put("army", new Army(new Player(territoryIndex, "name", new Color(territoryIndex)),0).getArmySize());
 	
 	            space.createSpaceObject("Territory", properties, null);
-	            actualIndex++;
+	            territoryIndex++;
 	        }
         }*/
 

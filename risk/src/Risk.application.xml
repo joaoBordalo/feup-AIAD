@@ -34,7 +34,7 @@
                 <env:objecttype name="Territory">
                     <env:property name="position" class="IVector2" event="false" dynamic="true"> new Vector2Int(0,0)</env:property>
 					
-                    <env:property name="index" class="int">0</env:property>
+                    <env:property name="index" class="int"></env:property>
                     <env:property name="army" class="Army" dynamic="true"></env:property>
                     <env:property name="size" class="IVector2" dynamic="false"></env:property>
                     
@@ -67,10 +67,10 @@
 
                     <env:drawable objecttype="Territory" height="1.0" width="1.0">
                         
-                        <env:regularpolygon layer="1" size="size">
+                        <env:ellipse layer="1" size="size">
 
                             <env:drawcondition>$object.type.equals(0)</env:drawcondition>
-                        </env:regularpolygon>
+                        </env:ellipse>
 
                        <!-- <env:texturedrectangle layer="1" imagepath="images/terrain_3.png">
                             <env:drawcondition>$object.type.equals(1)</env:drawcondition>
@@ -84,13 +84,13 @@
 
                     <env:prelayers>
                      	
-                        <env:colorlayer color="blue" />
+                        <env:colorlayer color="#82CAFA" />
                         <env:tiledlayer width="1" height="1" imagepath="images/riskmap.png" />
                     </env:prelayers>
 
                      <env:postlayers>
                         
-                       
+                       <env:gridlayer width="1.0" height="1.0" color="black" />
                     </env:postlayers>
                 </env:perspective>
             </env:perspectives>
