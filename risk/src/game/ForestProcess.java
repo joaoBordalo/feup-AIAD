@@ -212,7 +212,7 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        ASSizes.addElement(new Vector2Double(1,1));
        
        ASNames.addElement("KAMCHATKA");
-       ASBoardCoords.addElement(new Vector2Double(53,3.1));
+       ASBoardCoords.addElement(new Vector2Double(52,3.2));
        ASSizes.addElement(new Vector2Double(1,1));
        
        ASNames.addElement("MIDDLEEAST");
@@ -220,15 +220,15 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        ASSizes.addElement(new Vector2Double(1,1));
        
        ASNames.addElement("MONGOLIA");
-       ASBoardCoords.addElement(new Vector2Double(46.8,9));
+       ASBoardCoords.addElement(new Vector2Double(46.8,7.25));
        ASSizes.addElement(new Vector2Double(1,1));
        
        ASNames.addElement("SLAM");
-       ASBoardCoords.addElement(new Vector2Double(47.6,15));
+       ASBoardCoords.addElement(new Vector2Double(47.4,13.2));
        ASSizes.addElement(new Vector2Double(1,1));
        
        ASNames.addElement("SIBERIA");
-       ASBoardCoords.addElement(new Vector2Double(42,3.6));
+       ASBoardCoords.addElement(new Vector2Double(41.9,3.4));
        ASSizes.addElement(new Vector2Double(1,1));
        
        ASNames.addElement("URAL");
