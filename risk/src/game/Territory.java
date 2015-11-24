@@ -1,27 +1,73 @@
 package game;
 
+import jadex.extension.envsupport.math.IVector2;
+
 public class Territory {
 
 	private int index;
 	
+	int shapeType;
+	
+	String territoryName, continentName;
+	
+	public int getShapeType() {
+		return shapeType;
+	}
+
+	public void setShapeType(int shapeType) {
+		this.shapeType = shapeType;
+	}
+
+
 	private Army army;
 	
-	private final int row,column;
+	private IVector2 size;
 	
-	public Territory(int index, int row, int column) 
+	private IVector2 boardCoord;
+	
+	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord) 
 	{
 		this.index = index;
-		this.row = row;
-		this.column = column;
+		this.territoryName=territoryName;
+		this.continentName=continentName;
+		this.size= size;
+		this.boardCoord= boardCoord;
+		this.army= new Army(null, 0);
 	}
 	
-	public boolean isAdjacent(Territory territory) {
-		int rowDiff = Math.abs( getRow() - territory.getRow() );
-		int colDiff = Math.abs( getColumn() - territory.getColumn() );
-	
-		// se o territorio for o mesmo ou mais longe do que 1 quadrado, é falso
-		return (rowDiff + colDiff == 1);
+	public String getTerritoryName() {
+		return territoryName;
 	}
+
+	public void setTerritoryName(String territoryName) {
+		this.territoryName = territoryName;
+	}
+
+	public String getContinentName() {
+		return continentName;
+	}
+
+	public void setContinentName(String continentName) {
+		this.continentName = continentName;
+	}
+
+	public IVector2 getBoardCoord() {
+		return boardCoord;
+	}
+
+	public void setBoardCoord(IVector2 boardCoord) {
+		this.boardCoord = boardCoord;
+	}
+
+	public IVector2 getSize() {
+		return size;
+	}
+
+	public void setSize(IVector2 size) {
+		this.size = size;
+	}
+
+	
 
 	public int getIndex() {
 		return index;
@@ -43,13 +89,6 @@ public class Territory {
 		this.army = army;;
 	}
 
-	public int getRow() {
-		return row;
-	}
-
-	public int getColumn() {
-		return column;
-	}
 	
 	public Player getOwner() {
 		if(army == null) {
