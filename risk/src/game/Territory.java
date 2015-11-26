@@ -8,7 +8,7 @@ public class Territory {
 	
 	int shapeType;
 	
-	String territoryName, continentName;
+	public String territoryName, continentName;
 	
 	public int getShapeType() {
 		return shapeType;

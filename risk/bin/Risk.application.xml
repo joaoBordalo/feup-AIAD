@@ -32,6 +32,7 @@
 			 <env:objecttypes>
 
                 <env:objecttype name="Territory">
+                	<env:property name="territoryname" class="String"></env:property>
                     <env:property name="position" class="IVector2" event="false" dynamic="true"> new Vector2Int(0,0)</env:property>
 					
                     <env:property name="index" class="int"></env:property>
@@ -116,9 +117,41 @@
                        	<env:process type="start"/>
                     </env:processes>
 
+
+                    
+                    <env:dataproviders>
+                    	<env:dataprovider name="boardinfo">
+                    		<env:source name="$territoriesnames" objecttype="Territory" aggregate="true">
+             
+                    		</env:source>
+                    		
+                    		<!--<env:data name="time">$tick</env:data>-->
+           					<env:data name="territoryname">$territoriesnames.territoryname</env:data>
+                    	
+                    	</env:dataprovider>
+                    </env:dataproviders>
+                    
+                    
+                    <env:dataconsumers>
+                    	<env:dataconsumer name="t_name_file" class="CSVFileDataConsumer">
+                    	<env:property name="dataprovider">"boardinfo"</env:property>
+							<env:property name="title">"Territories Name"</env:property>
+							<env:property name="filename">"terrnamefile.csv"</env:property>
+                    	</env:dataconsumer>
+                   </env:dataconsumers>
+                   
+                   
                     <env:observers>
-                        <env:observer name="RISK" dataview="view_all" perspective="icons"/>
+                     
+                        
+                        <env:observer name="RISK" dataview="view_all" perspective="icons">
+							<!--<env:plugin name="evaluation" class="EvaluationPlugin">
+								<env:property name="component_0">((CSVFileDataConsumer)$space.getDataConsumer("t_name_chart")).consumeData(1,1)</env:property>
+							</env:plugin>-->
+						</env:observer>
                     </env:observers>
+                   
+                   
                 </env:envspace>
             </extensions>
 

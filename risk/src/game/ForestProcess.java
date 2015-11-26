@@ -323,6 +323,7 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        properties.put("size", gameBoard.get(i).getSize());
        properties.put("army", gameBoard.get(i).getArmy());
        properties.put("index", gameBoard.get(i).getIndex());
+       properties.put("territoryname", gameBoard.get(i).getTerritoryName());
        
        space.createSpaceObject("Territory", properties, null);
        }
