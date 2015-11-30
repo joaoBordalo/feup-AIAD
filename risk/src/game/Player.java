@@ -15,7 +15,7 @@ public class Player {
 	
 	private Color color;
 	
-	private HashMap<Integer, Territory> territories;
+	private HashMap<String, Territory> territories;
 	
 	public Player () {};
 	
@@ -24,7 +24,7 @@ public class Player {
 		this.index = index;
 		this.name = name;
 		this.color = color;
-		territories = new HashMap<Integer, Territory>();
+		territories = new HashMap<String, Territory>();
 		alive = true;
 
 	}
@@ -34,7 +34,7 @@ public class Player {
 		alive = false;
 	}
 	
-	public HashMap<Integer, Territory> getTerritories() 
+	public HashMap<String, Territory> getTerritories() 
 	{
 		return territories;
 	}
@@ -44,7 +44,7 @@ public class Player {
 	public int getTotalArmies() 
 	{
 		int totalArmies = 0;
-		Iterator<Integer> iterator = getTerritories().keySet().iterator();
+		Iterator<String> iterator = getTerritories().keySet().iterator();
 		while(iterator.hasNext()) 
 		{
 			totalArmies += territories.get(iterator.next()).getArmy().getArmySize();
@@ -92,7 +92,7 @@ public class Player {
 		this.color = color;
 	}
 
-	public void setTerritories(HashMap<Integer, Territory> territories) 
+	public void setTerritories(HashMap<String, Territory> territories) 
 	{
 		this.territories = territories;
 	}
@@ -100,7 +100,7 @@ public class Player {
 	//adiciona um territorio ao jogador
 	public void addTerritory(Territory territory) 
 	{
-		territories.put(new Integer(territory.getIndex()), territory);
+		territories.put(territory.getTerritoryName(), territory);
 	}
 	
 	//remove o territorio do controlo do jogador

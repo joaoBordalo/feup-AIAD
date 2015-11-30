@@ -25,7 +25,7 @@ import javax.print.attribute.standard.MediaSize.NA;
 import game.*;
 
 
-public class ForestProcess extends SimplePropertyObject implements ISpaceProcess {
+public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 
     @Override
     public void start(IClockService arg0, IEnvironmentSpace arg1) {
@@ -324,6 +324,7 @@ public class ForestProcess extends SimplePropertyObject implements ISpaceProcess
        properties.put("army", gameBoard.get(i).getArmy());
        properties.put("index", gameBoard.get(i).getIndex());
        properties.put("territoryname", gameBoard.get(i).getTerritoryName());
+       properties.put("continentname", gameBoard.get(i).getContinentName());
        
        space.createSpaceObject("Territory", properties, null);
        }

@@ -33,6 +33,7 @@
 
                 <env:objecttype name="Territory">
                 	<env:property name="territoryname" class="String"></env:property>
+                	<env:property name="continentname" class="String"></env:property>
                     <env:property name="position" class="IVector2" event="false" dynamic="true"> new Vector2Int(0,0)</env:property>
 					
                     <env:property name="index" class="int"></env:property>
@@ -45,7 +46,7 @@
 
 
             <env:processtypes>
-               <env:processtype name="start" class="ForestProcess"/>
+               <env:processtype name="start" class="RiskProcess"/>
             </env:processtypes>
 
             <env:avatarmappings>
@@ -104,9 +105,9 @@
         </env:envspacetype>
     </extensiontypes>
 
-   <!-- <componenttypes>
-        <componenttype name="Wanderer" filename="agents\WandererBDI.class"/>
-    </componenttypes> -->
+   <componenttypes>
+        <componenttype name="Playerbdi" filename="agents\PlayerBDI.class"/>
+    </componenttypes>
 
     <configurations>
         <configuration name="Default">
@@ -132,13 +133,13 @@
                     </env:dataproviders>
                     
                     
-                    <env:dataconsumers>
+                   <!-- <env:dataconsumers>
                     	<env:dataconsumer name="t_name_file" class="CSVFileDataConsumer">
                     	<env:property name="dataprovider">"boardinfo"</env:property>
 							<env:property name="title">"Territories Name"</env:property>
 							<env:property name="filename">"terrnamefile.csv"</env:property>
                     	</env:dataconsumer>
-                   </env:dataconsumers>
+                   </env:dataconsumers>-->
                    
                    
                     <env:observers>
@@ -157,7 +158,7 @@
 
             <components>
                
-               <!-- <component type="Wanderer"/> -->
+               <component type="Playerbdi"/>
             </components>
 
         </configuration>
