@@ -261,7 +261,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        for(int i=0; i<nTerritories.get("NorthAmerica"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, NANames.get(i), "NorthAmerica", NASizes.get(i), NABoardCoords.get(i)));
+    	   gameBoard.add(new Territory(territoryIndex, NANames.get(i), "NorthAmerica", NASizes.get(i), NABoardCoords.get(i), null));
     	   
     	   territoryIndex++;
        }
@@ -272,7 +272,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        for(int i=0; i<nTerritories.get("SouthAmerica"); i++)
        {
        
-    	   gameBoard.add(new Territory(territoryIndex, SANames.get(i), "SouthAmerica", SASizes.get(i), SABoardCoords.get(i)));
+    	   gameBoard.add(new Territory(territoryIndex, SANames.get(i), "SouthAmerica", SASizes.get(i), SABoardCoords.get(i), null));
     	   
     	   territoryIndex++;
        }
@@ -281,7 +281,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        for(int i=0; i<nTerritories.get("Europe"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, EUNames.get(i), "Europe", EUSizes.get(i), EUBoardCoords.get(i)));
+    	   gameBoard.add(new Territory(territoryIndex, EUNames.get(i), "Europe", EUSizes.get(i), EUBoardCoords.get(i), null));
     	   
     	   territoryIndex++;
        }
@@ -290,7 +290,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        for(int i=0; i<nTerritories.get("Africa"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, AFNames.get(i), "Africa", AFSizes.get(i), AFBoardCoords.get(i)));
+    	   gameBoard.add(new Territory(territoryIndex, AFNames.get(i), "Africa", AFSizes.get(i), AFBoardCoords.get(i), null));
     	   
     	   territoryIndex++;
        }
@@ -299,7 +299,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        for(int i=0; i<nTerritories.get("Asia"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, ASNames.get(i), "Africa", ASSizes.get(i), ASBoardCoords.get(i)));
+    	   gameBoard.add(new Territory(territoryIndex, ASNames.get(i), "Africa", ASSizes.get(i), ASBoardCoords.get(i), null));
     	   
     	   territoryIndex++;
     	   
@@ -309,7 +309,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        for(int i=0; i<nTerritories.get("Australia"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, AUNames.get(i), "Australia", AUSizes.get(i), AUBoardCoords.get(i)));
+    	   gameBoard.add(new Territory(territoryIndex, AUNames.get(i), "Australia", AUSizes.get(i), AUBoardCoords.get(i), null));
     	   
     	   territoryIndex++;
        }

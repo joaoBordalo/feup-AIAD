@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Vector;
+
 import jadex.extension.envsupport.math.IVector2;
 
 public class Territory {
@@ -18,6 +20,15 @@ public class Territory {
 		this.shapeType = shapeType;
 	}
 
+	private Vector<Territory> adjacentTerr;
+	
+	public Vector<Territory> getAdjacentTerr() {
+		return adjacentTerr;
+	}
+
+	public void setAdjacentTerr(Vector<Territory> adjacentTerr) {
+		this.adjacentTerr = adjacentTerr;
+	}
 
 	private Army army;
 	
@@ -25,7 +36,7 @@ public class Territory {
 	
 	private IVector2 boardCoord;
 	
-	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord) 
+	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord, Vector<Territory> adjacentTerritories) 
 	{
 		this.index = index;
 		this.territoryName=territoryName;
@@ -33,6 +44,7 @@ public class Territory {
 		this.size= size;
 		this.boardCoord= boardCoord;
 		this.army= new Army(null, 0);
+		this.adjacentTerr=adjacentTerritories;
 	}
 	
 	public String getTerritoryName() {
