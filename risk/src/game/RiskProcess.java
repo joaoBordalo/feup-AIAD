@@ -92,20 +92,20 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(0, 5));
        countryAdjsTemp.add(new Adj(4, 6));
        NAAdjs.add(0, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
       
        countryAdjsTemp.add(new Adj(0, 0));
        countryAdjsTemp.add(new Adj(0, 5));
        countryAdjsTemp.add(new Adj(0, 8));
        NAAdjs.add(1, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(0, 2));
        countryAdjsTemp.add(new Adj(0, 3));
        countryAdjsTemp.add(new Adj(0, 8));
        countryAdjsTemp.add(new Adj(1, 3));
        NAAdjs.add(2, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
 
        
        countryAdjsTemp.add( new Adj(0, 2));
@@ -113,21 +113,21 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add( new Adj(0, 7));
        countryAdjsTemp.add( new Adj(0, 8));
        NAAdjs.add(3, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add( new Adj(0, 7));
        countryAdjsTemp.add( new Adj(0, 6));
        countryAdjsTemp.add( new Adj(0, 5));
        countryAdjsTemp.add( new Adj(2, 1));
        NAAdjs.add(4, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add( new Adj(0, 0));
        countryAdjsTemp.add( new Adj(0, 1));
        countryAdjsTemp.add(new Adj(0, 6));
        countryAdjsTemp.add(new Adj(0, 4));
        NAAdjs.add(5, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(0, 5));
        countryAdjsTemp.add(new Adj(0, 1));
@@ -136,20 +136,20 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(0, 7));
        countryAdjsTemp.add(new Adj(0, 4));
        NAAdjs.add(6, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(0, 3));
        countryAdjsTemp.add(new Adj(0, 6));
        countryAdjsTemp.add(new Adj(0, 4));
        NAAdjs.add(7, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(0, 1));
        countryAdjsTemp.add(new Adj(0, 2));
        countryAdjsTemp.add(new Adj(0, 3));
        countryAdjsTemp.add(new Adj(0, 6));
        NAAdjs.add(8, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        adjTemp.add(NAAdjs);
        //System.out.println("size: " + adjTemp.size());
@@ -168,26 +168,26 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(1, 1));
        countryAdjsTemp.add(new Adj(1, 2));
        SAAdjs.add(0, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
 
        countryAdjsTemp.add(new Adj(1, 0));
        countryAdjsTemp.add(new Adj(1, 2));
        countryAdjsTemp.add(new Adj(1, 3));
        countryAdjsTemp.add(new Adj(3, 4));
        SAAdjs.add(1, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(1, 0));
        countryAdjsTemp.add(new Adj(1, 1));
        countryAdjsTemp.add(new Adj(1, 3));
        SAAdjs.add(2, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(1, 1));
        countryAdjsTemp.add(new Adj(1, 2));
        countryAdjsTemp.add(new Adj(0, 2));
        SAAdjs.add(3, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        adjTemp.add(SAAdjs);
        
@@ -205,13 +205,13 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(2, 3));
        countryAdjsTemp.add(new Adj(2, 6));
        EUAdjs.add(0, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(2, 0));
        countryAdjsTemp.add(new Adj(2, 3));
        countryAdjsTemp.add(new Adj(0, 4));
        EUAdjs.add(1, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(2, 6));
        countryAdjsTemp.add(new Adj(2, 3));
@@ -219,14 +219,14 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(2, 4));
        countryAdjsTemp.add(new Adj(2, 5));
        EUAdjs.add(2, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(2, 0));
        countryAdjsTemp.add(new Adj(2, 1));
        countryAdjsTemp.add(new Adj(2, 2));
        countryAdjsTemp.add(new Adj(2, 5));
        EUAdjs.add(3, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(2, 6));
        countryAdjsTemp.add(new Adj(2, 2));
@@ -235,7 +235,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(3, 4));
        countryAdjsTemp.add(new Adj(4, 6));
        EUAdjs.add(4, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(2, 3));
        countryAdjsTemp.add(new Adj(2, 2));
@@ -244,14 +244,14 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(4, 0));
        countryAdjsTemp.add(new Adj(4, 6));
        EUAdjs.add(5, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(2, 0));
        countryAdjsTemp.add(new Adj(2, 2));
        countryAdjsTemp.add(new Adj(2, 4));
        countryAdjsTemp.add(new Adj(3, 4));
        EUAdjs.add(6, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        adjTemp.add(EUAdjs);
        
@@ -265,7 +265,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(3, 4));
        countryAdjsTemp.add(new Adj(3, 5));
        AFAdjs.add(0, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(3, 2));
        countryAdjsTemp.add(new Adj(3, 4));
@@ -274,19 +274,19 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(3, 5));
        countryAdjsTemp.add(new Adj(4, 6));
        AFAdjs.add(1, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(3, 1));
        countryAdjsTemp.add(new Adj(3, 4));
        countryAdjsTemp.add(new Adj(2, 4));
        countryAdjsTemp.add(new Adj(4, 6));
        AFAdjs.add(2, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(3, 5));
        countryAdjsTemp.add(new Adj(3, 1));
        AFAdjs.add(3, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(3, 0));
        countryAdjsTemp.add(new Adj(3, 2));
@@ -295,13 +295,13 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(2, 6));
        countryAdjsTemp.add(new Adj(2, 4));
        AFAdjs.add(4, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(3, 0));
        countryAdjsTemp.add(new Adj(3, 1));
        countryAdjsTemp.add(new Adj(3, 3));
        AFAdjs.add(5, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        adjTemp.add(AFAdjs);
        
@@ -317,7 +317,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(4, 2));
        countryAdjsTemp.add(new Adj(2, 5));
        ASAdjs.add(0, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 0));
        countryAdjsTemp.add(new Adj(4, 2));
@@ -325,35 +325,35 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(4, 7));
        countryAdjsTemp.add(new Adj(4, 9));
        countryAdjsTemp.add(new Adj(4, 10));
-       AFAdjs.add(1, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(1, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 6));
        countryAdjsTemp.add(new Adj(4, 0));
        countryAdjsTemp.add(new Adj(4, 1));
        countryAdjsTemp.add(new Adj(4, 8));
-       AFAdjs.add(2, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(2, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 7));
        countryAdjsTemp.add(new Adj(4, 9));
        countryAdjsTemp.add(new Adj(4, 11));
        countryAdjsTemp.add(new Adj(4, 5));
-       AFAdjs.add(3, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(3, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 5));
        countryAdjsTemp.add(new Adj(4, 7));
-       AFAdjs.add(4, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(4, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(0, 0));
        countryAdjsTemp.add(new Adj(4, 11));
        countryAdjsTemp.add(new Adj(4, 3));
        countryAdjsTemp.add(new Adj(4, 7));
        countryAdjsTemp.add(new Adj(4, 4));
-       AFAdjs.add(5, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(5, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 2));
        countryAdjsTemp.add(new Adj(4, 0));
@@ -361,43 +361,43 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(3, 1));
        countryAdjsTemp.add(new Adj(2, 5));
        countryAdjsTemp.add(new Adj(2, 4));
-       AFAdjs.add(6, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(6, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 1));
        countryAdjsTemp.add(new Adj(4, 3));
        countryAdjsTemp.add(new Adj(4, 4));
        countryAdjsTemp.add(new Adj(4, 5));
        countryAdjsTemp.add(new Adj(4, 9));
-       AFAdjs.add(7, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(7, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 2));
        countryAdjsTemp.add(new Adj(4, 1));
        countryAdjsTemp.add(new Adj(5, 1));
-       AFAdjs.add(8, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(8, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 10));
        countryAdjsTemp.add(new Adj(4, 11));
        countryAdjsTemp.add(new Adj(4, 3));
        countryAdjsTemp.add(new Adj(4, 7));
        countryAdjsTemp.add(new Adj(4, 1));
-       AFAdjs.add(9, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(9, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 0));
        countryAdjsTemp.add(new Adj(4, 1));
        countryAdjsTemp.add(new Adj(4, 9));
        countryAdjsTemp.add(new Adj(2, 5));
-       AFAdjs.add(10, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(10, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 9));
        countryAdjsTemp.add(new Adj(4, 3));
        countryAdjsTemp.add(new Adj(4, 5));
-       AFAdjs.add(11, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       ASAdjs.add(11, countryAdjsTemp);
+       countryAdjsTemp = new Vector<Adj>();
        
        adjTemp.add(ASAdjs);
        
@@ -410,29 +410,35 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(5, 2));
        countryAdjsTemp.add(new Adj(5, 3));
        AUAdjs.add(0, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp = new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(4, 8));
        countryAdjsTemp.add(new Adj(5, 2));
        countryAdjsTemp.add(new Adj(5, 3));
        AUAdjs.add(1, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp= new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(5, 0));
        countryAdjsTemp.add(new Adj(5, 1));
        countryAdjsTemp.add(new Adj(5, 3));
        AUAdjs.add(2, countryAdjsTemp);
-       countryAdjsTemp.clear();
+       countryAdjsTemp= new Vector<Adj>();
        
        countryAdjsTemp.add(new Adj(5, 0));
        countryAdjsTemp.add(new Adj(5, 1));
        countryAdjsTemp.add(new Adj(5, 2));
        AUAdjs.add(3, countryAdjsTemp);
        
+countryAdjsTemp= new Vector<Adj>();
        
-       countryAdjsTemp.clear();
-       
+		
+
        adjTemp.add(AUAdjs);
+       
+      for(int i =0; i< AUAdjs.size(); i++)
+      {
+    	  System.out.println("size auadjs" + AUAdjs.size() + " " + AUAdjs.get(i));
+      }
        System.out.println("auadjscenas+foiahsgf+ao" + AUAdjs.size() + " " + AUAdjs.get(0));
        System.out.println("adjtemp no fim: " + adjTemp.size());
        
@@ -635,7 +641,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
        continentIndex++;
-       auxTempinsertion.clear();
+       auxTempinsertion = new Vector<Territory>();
        
        
        for(int i=0; i<nTerritories.get("SouthAmerica"); i++)
@@ -648,7 +654,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
        continentIndex++;
-       auxTempinsertion.clear();
+       auxTempinsertion = new Vector<Territory>();
        
        for(int i=0; i<nTerritories.get("Europe"); i++)
        {
@@ -659,7 +665,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
        continentIndex++;
-       auxTempinsertion.clear();
+       auxTempinsertion = new Vector<Territory>();
 
        
        for(int i=0; i<nTerritories.get("Africa"); i++)
@@ -671,7 +677,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
        continentIndex++;
-       auxTempinsertion.clear();
+       auxTempinsertion = new Vector<Territory>();
 
        
        for(int i=0; i<nTerritories.get("Asia"); i++)
@@ -684,7 +690,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
        continentIndex++;
-       auxTempinsertion.clear();
+       auxTempinsertion = new Vector<Territory>();
 
        
        for(int i=0; i<nTerritories.get("Australia"); i++)
@@ -696,28 +702,29 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
        continentIndex++;
-       auxTempinsertion.clear();
+       auxTempinsertion = new Vector<Territory>();
 
        
        //enfiar as adjacencias nos territorios
        
        for(int i = 0; i< tempTerrs.size(); i++ )
        {
-    	   System.out.println("continent:" + i);
+    	   
            
     	   for(int j =0; j< adjTemp.get(i).size(); j++)
     	   {
-    		   System.out.println("num terr: " + adjTemp.get(i).size()); 
-    		   System.out.println(j);
+    		   
+    		   System.out.println("j->:" + j);
     		   Vector<Adj> adjindex = new Vector<Adj>(); 
     				 adjindex = adjTemp.get(i).get(j);
     		   
-    				 System.out.println(adjTemp.get(i).get(j));
+    				
     		   Vector<Territory> adjsToInsert = new Vector<Territory>();
-    		   
+    		   //System.out.println("size adjindex "+adjindex.size());
     		   for(int k =0 ; k<adjindex.size(); k++)
     		   {
-    			   
+    			   //System.out.println("tempterr: " +tempTerrs.get(k));
+    			   //System.out.println("k: " +k);
     			   adjsToInsert.add(tempTerrs.get(adjindex.get(k).getContIndex())
     					   					 .get(adjindex.get(k).getCountryIndex()));
     		   }
@@ -752,29 +759,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        space.createSpaceObject("Territory", properties, null);
        }
        
-       
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        /*for(int j = 0 ; j < 7; j++)
-        {
-	        for(int i = 0; i < 7; i++) 
-	        {
-	            Map properties = new HashMap();
-	            properties.put("position", new Vector2Int(i, j));
-	            properties.put("type", territoryIndex);
-	            //properties.put("army", new Army(new Player(territoryIndex, "name", new Color(territoryIndex)),0).getArmySize());
-	
-	            space.createSpaceObject("Territory", properties, null);
-	            territoryIndex++;
-	        }
-        }*/
+
 
     }
 
