@@ -12,31 +12,15 @@ public class Territory {
 	
 	public String territoryName, continentName;
 	
-	public int getShapeType() {
-		return shapeType;
-	}
-
-	public void setShapeType(int shapeType) {
-		this.shapeType = shapeType;
-	}
-
 	private Vector<Territory> adjacentTerr;
 	
-	public Vector<Territory> getAdjacentTerr() {
-		return adjacentTerr;
-	}
-
-	public void setAdjacentTerr(Vector<Territory> adjacentTerr) {
-		this.adjacentTerr = adjacentTerr;
-	}
-
 	private Army army;
 	
 	private IVector2 size;
 	
 	private IVector2 boardCoord;
 	
-	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord, Vector<Territory> adjacentTerritories) 
+	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord) 
 	{
 		this.index = index;
 		this.territoryName=territoryName;
@@ -44,7 +28,27 @@ public class Territory {
 		this.size= size;
 		this.boardCoord= boardCoord;
 		this.army= new Army(null, 0);
-		this.adjacentTerr=adjacentTerritories;
+		this.adjacentTerr=null;
+	}
+	
+	public Territory(){}
+	
+	
+	public int getShapeType() {
+		return shapeType;
+	}
+
+	public void setShapeType(int shapeType) {
+		this.shapeType = shapeType;
+	}
+	
+	
+	public Vector<Territory> getAdjacentTerr() {
+		return adjacentTerr;
+	}
+
+	public void setAdjacentTerr(Vector<Territory> adjacentTerr) {
+		this.adjacentTerr = adjacentTerr;
 	}
 	
 	public String getTerritoryName() {

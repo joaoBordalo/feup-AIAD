@@ -27,6 +27,37 @@ import game.*;
 
 public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 
+	
+	public class Adj {
+		Integer contIndex;
+		Integer countryIndex;
+		
+		public Adj(Integer contI, Integer countI)
+		{
+			contIndex=contI;
+			countryIndex= countI;
+		}
+
+		public Integer getContIndex() {
+			return contIndex;
+		}
+
+		public void setContIndex(Integer contIndex) {
+			this.contIndex = contIndex;
+		}
+
+		public Integer getCountryIndex() {
+			return countryIndex;
+		}
+
+		public void setCountryIndex(Integer countryIndex) {
+			this.countryIndex = countryIndex;
+		}
+		
+		
+	};
+	
+	
     @Override
     public void start(IClockService arg0, IEnvironmentSpace arg1) {
 
@@ -36,10 +67,12 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
         int spaceWidth = space.getAreaSize().getYAsInteger();
 
         int territoryIndex=0;
+        int continentIndex=0;
         
         //Random r = new Random();
 
         HashMap<String, Integer> nTerritories = new HashMap<String, Integer>(6);
+        Vector<Vector<Vector<Adj>>> adjTemp= new Vector<Vector<Vector<Adj>>>();
         
         nTerritories.put("NorthAmerica",9 );
         nTerritories.put("SouthAmerica",4 );
@@ -51,29 +84,357 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        Vector<String> NANames = new Vector<String>();
        Vector<IVector2> NABoardCoords = new Vector<IVector2>();
        Vector<IVector2> NASizes = new Vector<IVector2>();
+       Vector<Vector<Adj>> NAAdjs = new Vector<Vector<Adj>>();
+       
+       Vector<Adj> countryAdjsTemp = new Vector<Adj>();
+       
+       countryAdjsTemp.add(new Adj(0, 1));
+       countryAdjsTemp.add(new Adj(0, 5));
+       countryAdjsTemp.add(new Adj(4, 6));
+       NAAdjs.add(0, countryAdjsTemp);
+       countryAdjsTemp.clear();
+      
+       countryAdjsTemp.add(new Adj(0, 0));
+       countryAdjsTemp.add(new Adj(0, 5));
+       countryAdjsTemp.add(new Adj(0, 8));
+       NAAdjs.add(1, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(0, 2));
+       countryAdjsTemp.add(new Adj(0, 3));
+       countryAdjsTemp.add(new Adj(0, 8));
+       countryAdjsTemp.add(new Adj(1, 3));
+       NAAdjs.add(2, countryAdjsTemp);
+       countryAdjsTemp.clear();
+
+       
+       countryAdjsTemp.add( new Adj(0, 2));
+       countryAdjsTemp.add( new Adj(0, 6));
+       countryAdjsTemp.add( new Adj(0, 7));
+       countryAdjsTemp.add( new Adj(0, 8));
+       NAAdjs.add(3, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add( new Adj(0, 7));
+       countryAdjsTemp.add( new Adj(0, 6));
+       countryAdjsTemp.add( new Adj(0, 5));
+       countryAdjsTemp.add( new Adj(2, 1));
+       NAAdjs.add(4, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add( new Adj(0, 0));
+       countryAdjsTemp.add( new Adj(0, 1));
+       countryAdjsTemp.add(new Adj(0, 6));
+       countryAdjsTemp.add(new Adj(0, 4));
+       NAAdjs.add(5, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(0, 5));
+       countryAdjsTemp.add(new Adj(0, 1));
+       countryAdjsTemp.add(new Adj(0, 8));
+       countryAdjsTemp.add(new Adj(0, 3));
+       countryAdjsTemp.add(new Adj(0, 7));
+       countryAdjsTemp.add(new Adj(0, 4));
+       NAAdjs.add(6, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(0, 3));
+       countryAdjsTemp.add(new Adj(0, 6));
+       countryAdjsTemp.add(new Adj(0, 4));
+       NAAdjs.add(7, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(0, 1));
+       countryAdjsTemp.add(new Adj(0, 2));
+       countryAdjsTemp.add(new Adj(0, 3));
+       countryAdjsTemp.add(new Adj(0, 6));
+       NAAdjs.add(8, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       adjTemp.add(NAAdjs);
+       //System.out.println("size: " + adjTemp.size());
+       //System.out.println("size at i: " + adjTemp.get(0).size());
+       
+      
+       
+       
+       
        
        Vector<String> SANames = new Vector<String>();
        Vector<IVector2> SABoardCoords = new Vector<IVector2>();
        Vector<IVector2> SASizes = new Vector<IVector2>();
+       Vector<Vector<Adj>> SAAdjs = new Vector<Vector<Adj>>();
+       
+       countryAdjsTemp.add(new Adj(1, 1));
+       countryAdjsTemp.add(new Adj(1, 2));
+       SAAdjs.add(0, countryAdjsTemp);
+       countryAdjsTemp.clear();
+
+       countryAdjsTemp.add(new Adj(1, 0));
+       countryAdjsTemp.add(new Adj(1, 2));
+       countryAdjsTemp.add(new Adj(1, 3));
+       countryAdjsTemp.add(new Adj(3, 4));
+       SAAdjs.add(1, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(1, 0));
+       countryAdjsTemp.add(new Adj(1, 1));
+       countryAdjsTemp.add(new Adj(1, 3));
+       SAAdjs.add(2, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(1, 1));
+       countryAdjsTemp.add(new Adj(1, 2));
+       countryAdjsTemp.add(new Adj(0, 2));
+       SAAdjs.add(3, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       adjTemp.add(SAAdjs);
+       
+       //System.out.println("size: " + adjTemp.size());
+       //System.out.println("size at i: " + adjTemp.get(1).size());
+       
        
        Vector<String> EUNames = new Vector<String>();
        Vector<IVector2> EUBoardCoords = new Vector<IVector2>();
        Vector<IVector2> EUSizes = new Vector<IVector2>();
+       Vector<Vector<Adj>> EUAdjs = new Vector<Vector<Adj>>();
+       
+       countryAdjsTemp.add(new Adj(2, 1));
+       countryAdjsTemp.add(new Adj(2, 2));
+       countryAdjsTemp.add(new Adj(2, 3));
+       countryAdjsTemp.add(new Adj(2, 6));
+       EUAdjs.add(0, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(2, 0));
+       countryAdjsTemp.add(new Adj(2, 3));
+       countryAdjsTemp.add(new Adj(0, 4));
+       EUAdjs.add(1, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(2, 6));
+       countryAdjsTemp.add(new Adj(2, 3));
+       countryAdjsTemp.add(new Adj(2, 0));
+       countryAdjsTemp.add(new Adj(2, 4));
+       countryAdjsTemp.add(new Adj(2, 5));
+       EUAdjs.add(2, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(2, 0));
+       countryAdjsTemp.add(new Adj(2, 1));
+       countryAdjsTemp.add(new Adj(2, 2));
+       countryAdjsTemp.add(new Adj(2, 5));
+       EUAdjs.add(3, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(2, 6));
+       countryAdjsTemp.add(new Adj(2, 2));
+       countryAdjsTemp.add(new Adj(2, 5));
+       countryAdjsTemp.add(new Adj(3, 2));
+       countryAdjsTemp.add(new Adj(3, 4));
+       countryAdjsTemp.add(new Adj(4, 6));
+       EUAdjs.add(4, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(2, 3));
+       countryAdjsTemp.add(new Adj(2, 2));
+       countryAdjsTemp.add(new Adj(2, 4));
+       countryAdjsTemp.add(new Adj(4, 10));
+       countryAdjsTemp.add(new Adj(4, 0));
+       countryAdjsTemp.add(new Adj(4, 6));
+       EUAdjs.add(5, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(2, 0));
+       countryAdjsTemp.add(new Adj(2, 2));
+       countryAdjsTemp.add(new Adj(2, 4));
+       countryAdjsTemp.add(new Adj(3, 4));
+       EUAdjs.add(6, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       adjTemp.add(EUAdjs);
+       
        
        Vector<String> AFNames = new Vector<String>();
        Vector<IVector2> AFBoardCoords = new Vector<IVector2>();
        Vector<IVector2> AFSizes = new Vector<IVector2>();
+       Vector<Vector<Adj>> AFAdjs = new Vector<Vector<Adj>>();
+       
+       countryAdjsTemp.add(new Adj(3, 1));
+       countryAdjsTemp.add(new Adj(3, 4));
+       countryAdjsTemp.add(new Adj(3, 5));
+       AFAdjs.add(0, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(3, 2));
+       countryAdjsTemp.add(new Adj(3, 4));
+       countryAdjsTemp.add(new Adj(3, 0));
+       countryAdjsTemp.add(new Adj(3, 3));
+       countryAdjsTemp.add(new Adj(3, 5));
+       countryAdjsTemp.add(new Adj(4, 6));
+       AFAdjs.add(1, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(3, 1));
+       countryAdjsTemp.add(new Adj(3, 4));
+       countryAdjsTemp.add(new Adj(2, 4));
+       countryAdjsTemp.add(new Adj(4, 6));
+       AFAdjs.add(2, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(3, 5));
+       countryAdjsTemp.add(new Adj(3, 1));
+       AFAdjs.add(3, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(3, 0));
+       countryAdjsTemp.add(new Adj(3, 2));
+       countryAdjsTemp.add(new Adj(3, 2));
+       countryAdjsTemp.add(new Adj(1, 1));
+       countryAdjsTemp.add(new Adj(2, 6));
+       countryAdjsTemp.add(new Adj(2, 4));
+       AFAdjs.add(4, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(3, 0));
+       countryAdjsTemp.add(new Adj(3, 1));
+       countryAdjsTemp.add(new Adj(3, 3));
+       AFAdjs.add(5, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       adjTemp.add(AFAdjs);
+       
        
        Vector<String> ASNames = new Vector<String>();
        Vector<IVector2> ASBoardCoords = new Vector<IVector2>();
        Vector<IVector2> ASSizes = new Vector<IVector2>();
+       Vector<Vector<Adj>> ASAdjs = new Vector<Vector<Adj>>();
+       
+       countryAdjsTemp.add(new Adj(4, 6));
+       countryAdjsTemp.add(new Adj(4, 10));
+       countryAdjsTemp.add(new Adj(4, 1));
+       countryAdjsTemp.add(new Adj(4, 2));
+       countryAdjsTemp.add(new Adj(2, 5));
+       ASAdjs.add(0, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 0));
+       countryAdjsTemp.add(new Adj(4, 2));
+       countryAdjsTemp.add(new Adj(4, 8));
+       countryAdjsTemp.add(new Adj(4, 7));
+       countryAdjsTemp.add(new Adj(4, 9));
+       countryAdjsTemp.add(new Adj(4, 10));
+       AFAdjs.add(1, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 6));
+       countryAdjsTemp.add(new Adj(4, 0));
+       countryAdjsTemp.add(new Adj(4, 1));
+       countryAdjsTemp.add(new Adj(4, 8));
+       AFAdjs.add(2, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 7));
+       countryAdjsTemp.add(new Adj(4, 9));
+       countryAdjsTemp.add(new Adj(4, 11));
+       countryAdjsTemp.add(new Adj(4, 5));
+       AFAdjs.add(3, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 5));
+       countryAdjsTemp.add(new Adj(4, 7));
+       AFAdjs.add(4, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(0, 0));
+       countryAdjsTemp.add(new Adj(4, 11));
+       countryAdjsTemp.add(new Adj(4, 3));
+       countryAdjsTemp.add(new Adj(4, 7));
+       countryAdjsTemp.add(new Adj(4, 4));
+       AFAdjs.add(5, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 2));
+       countryAdjsTemp.add(new Adj(4, 0));
+       countryAdjsTemp.add(new Adj(3, 2));
+       countryAdjsTemp.add(new Adj(3, 1));
+       countryAdjsTemp.add(new Adj(2, 5));
+       countryAdjsTemp.add(new Adj(2, 4));
+       AFAdjs.add(6, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 1));
+       countryAdjsTemp.add(new Adj(4, 3));
+       countryAdjsTemp.add(new Adj(4, 4));
+       countryAdjsTemp.add(new Adj(4, 5));
+       countryAdjsTemp.add(new Adj(4, 9));
+       AFAdjs.add(7, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 2));
+       countryAdjsTemp.add(new Adj(4, 1));
+       countryAdjsTemp.add(new Adj(5, 1));
+       AFAdjs.add(8, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 10));
+       countryAdjsTemp.add(new Adj(4, 11));
+       countryAdjsTemp.add(new Adj(4, 3));
+       countryAdjsTemp.add(new Adj(4, 7));
+       countryAdjsTemp.add(new Adj(4, 1));
+       AFAdjs.add(9, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 0));
+       countryAdjsTemp.add(new Adj(4, 1));
+       countryAdjsTemp.add(new Adj(4, 9));
+       countryAdjsTemp.add(new Adj(2, 5));
+       AFAdjs.add(10, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 9));
+       countryAdjsTemp.add(new Adj(4, 3));
+       countryAdjsTemp.add(new Adj(4, 5));
+       AFAdjs.add(11, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       adjTemp.add(ASAdjs);
        
        
        Vector<String> AUNames = new Vector<String>();
        Vector<IVector2> AUBoardCoords = new Vector<IVector2>();
        Vector<IVector2> AUSizes = new Vector<IVector2>();
+       Vector<Vector<Adj>> AUAdjs = new Vector<Vector<Adj>>();
+       
+       countryAdjsTemp.add(new Adj(5, 2));
+       countryAdjsTemp.add(new Adj(5, 3));
+       AUAdjs.add(0, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(4, 8));
+       countryAdjsTemp.add(new Adj(5, 2));
+       countryAdjsTemp.add(new Adj(5, 3));
+       AUAdjs.add(1, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(5, 0));
+       countryAdjsTemp.add(new Adj(5, 1));
+       countryAdjsTemp.add(new Adj(5, 3));
+       AUAdjs.add(2, countryAdjsTemp);
+       countryAdjsTemp.clear();
+       
+       countryAdjsTemp.add(new Adj(5, 0));
+       countryAdjsTemp.add(new Adj(5, 1));
+       countryAdjsTemp.add(new Adj(5, 2));
+       AUAdjs.add(3, countryAdjsTemp);
        
        
+       countryAdjsTemp.clear();
+       
+       adjTemp.add(AUAdjs);
+       System.out.println("auadjscenas+foiahsgf+ao" + AUAdjs.size() + " " + AUAdjs.get(0));
+       System.out.println("adjtemp no fim: " + adjTemp.size());
        
        
        //DEFS NORTH AMERICA
@@ -257,64 +618,126 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        AUSizes.addElement(new Vector2Double(2,2));
        
        
+       
+       Vector<Vector<Territory>> tempTerrs = new Vector<Vector<Territory>>();
        Vector<Territory> gameBoard= new Vector<Territory>();
        
+       Vector<Territory> auxTempinsertion = new Vector<Territory>();
+       //TODO ver melhor esta cena de sacarelements -> sacar o vetor de territorios primeiro e injetar para dentro do tempterrs depois
        for(int i=0; i<nTerritories.get("NorthAmerica"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, NANames.get(i), "NorthAmerica", NASizes.get(i), NABoardCoords.get(i), null));
+    	   auxTempinsertion.add(new Territory(territoryIndex, NANames.get(i), "NorthAmerica", NASizes.get(i), NABoardCoords.get(i)));
     	   
     	   territoryIndex++;
+    	   
+    	   
        }
-       
+       tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
+       continentIndex++;
+       auxTempinsertion.clear();
        
        
        for(int i=0; i<nTerritories.get("SouthAmerica"); i++)
        {
        
-    	   gameBoard.add(new Territory(territoryIndex, SANames.get(i), "SouthAmerica", SASizes.get(i), SABoardCoords.get(i), null));
+    	   auxTempinsertion.add(new Territory(territoryIndex, SANames.get(i), "SouthAmerica", SASizes.get(i), SABoardCoords.get(i)));
     	   
     	   territoryIndex++;
        }
-       
+       tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
+       continentIndex++;
+       auxTempinsertion.clear();
        
        for(int i=0; i<nTerritories.get("Europe"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, EUNames.get(i), "Europe", EUSizes.get(i), EUBoardCoords.get(i), null));
+    	   auxTempinsertion.add(new Territory(territoryIndex, EUNames.get(i), "Europe", EUSizes.get(i), EUBoardCoords.get(i)));
     	   
     	   territoryIndex++;
        }
-       
+       tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
+       continentIndex++;
+       auxTempinsertion.clear();
+
        
        for(int i=0; i<nTerritories.get("Africa"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, AFNames.get(i), "Africa", AFSizes.get(i), AFBoardCoords.get(i), null));
+    	   auxTempinsertion.add(new Territory(territoryIndex, AFNames.get(i), "Africa", AFSizes.get(i), AFBoardCoords.get(i)));
     	   
     	   territoryIndex++;
        }
-       
+       tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
+       continentIndex++;
+       auxTempinsertion.clear();
+
        
        for(int i=0; i<nTerritories.get("Asia"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, ASNames.get(i), "Africa", ASSizes.get(i), ASBoardCoords.get(i), null));
+    	   auxTempinsertion.add(new Territory(territoryIndex, ASNames.get(i), "Asia", ASSizes.get(i), ASBoardCoords.get(i)));
     	   
     	   territoryIndex++;
     	   
        }
-       
+       tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
+       continentIndex++;
+       auxTempinsertion.clear();
+
        
        for(int i=0; i<nTerritories.get("Australia"); i++)
        {
-    	   gameBoard.add(new Territory(territoryIndex, AUNames.get(i), "Australia", AUSizes.get(i), AUBoardCoords.get(i), null));
+    	   auxTempinsertion.add(new Territory(territoryIndex, AUNames.get(i), "Australia", AUSizes.get(i), AUBoardCoords.get(i)));
     	   
     	   territoryIndex++;
        }
-       
+       tempTerrs.add(continentIndex, auxTempinsertion);
        territoryIndex=0;
+       continentIndex++;
+       auxTempinsertion.clear();
+
+       
+       //enfiar as adjacencias nos territorios
+       
+       for(int i = 0; i< tempTerrs.size(); i++ )
+       {
+    	   System.out.println("continent:" + i);
+           
+    	   for(int j =0; j< adjTemp.get(i).size(); j++)
+    	   {
+    		   System.out.println("num terr: " + adjTemp.get(i).size()); 
+    		   System.out.println(j);
+    		   Vector<Adj> adjindex = new Vector<Adj>(); 
+    				 adjindex = adjTemp.get(i).get(j);
+    		   
+    				 System.out.println(adjTemp.get(i).get(j));
+    		   Vector<Territory> adjsToInsert = new Vector<Territory>();
+    		   
+    		   for(int k =0 ; k<adjindex.size(); k++)
+    		   {
+    			   
+    			   adjsToInsert.add(tempTerrs.get(adjindex.get(k).getContIndex())
+    					   					 .get(adjindex.get(k).getCountryIndex()));
+    		   }
+    		   
+    		   Territory toAddAdjacent = new Territory();
+    		   toAddAdjacent = tempTerrs.get(i).get(j);
+    		   
+    		   toAddAdjacent.setAdjacentTerr(adjsToInsert);
+    		   //tempTerrs.get(i).get(j).
+    		   
+    		   gameBoard.add(toAddAdjacent);
+    		   System.out.println(gameBoard.size());
+    		   
+    		   //gameBoard.add(tempTerrs.get(i).get(j).setAdjacentTerr(tempTerrs.get(adjTemp.get(i).get)));
+    	   }
+       }
+       
+       
+       
+       
        for(int i = 0; i<gameBoard.size(); i++)
        {
        Map properties = new HashMap();
@@ -362,7 +785,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 
     @Override
     public void execute(IClockService iClockService, IEnvironmentSpace iEnvironmentSpace) {
-
+    	//System.out.println("tou a dar turno");
     }
 
 

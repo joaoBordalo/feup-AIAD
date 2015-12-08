@@ -65,7 +65,7 @@ public class PlayerBDI extends Player{
 
         myself.setProperty("position", new Vector2Int(r.nextInt(spaceWidth), r.nextInt(spaceHeight)));*/
     	System.out.println("tou vivo");
-    	System.out.println("meus territorios: "+ myTerritories);
+    	System.out.println("meus territorios: "+ myTerritories.length);
 
     }
 
