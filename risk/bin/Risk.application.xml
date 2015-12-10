@@ -31,7 +31,7 @@
     <extensiontypes>
         <env:envspacetype name="2dspace" class="ContinuousSpace2D" width="60" height="30">
              <env:property name="border">Space2D.BORDER_RELAXED</env:property>
-             <env:property name="numberofplayers" class="Integer">numberofplayers</env:property>
+             <env:property name="numberofplayers" class="Integer">$args.numberofplayers</env:property>
 			 
 			 
 			 

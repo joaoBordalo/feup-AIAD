@@ -74,6 +74,8 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
         
         this.players= new Vector<Player>();
         
+        this.playersNumber = (int) space.getProperty("numberofplayers");
+        		
         players.addElement(new Player(0, "zero", Color.cyan));
         players.addElement(new Player(1, "um", Color.gray));
         
@@ -790,7 +792,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        }
        
        System.out.println("ndejogadores: "  + space.getProperties());
-       System.out.println("ndejogadores: "  + space.getProperty("numberofplayers"));
+       System.out.println("ndejogadores: "  + playersNumber);
 
     }
 

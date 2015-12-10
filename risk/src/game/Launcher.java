@@ -49,10 +49,10 @@ public class Launcher {
 	      String classPath = "Risk.application.xml";
 	      
 	      Map<String, Object> gameArgs = new HashMap<String, Object>();
-	      gameArgs.put("numberofplayers", 2);
+	      gameArgs.put("numberofplayers", new Integer(2));
 	      CreationInfo infoArgs = new CreationInfo(gameArgs);
 	      IComponentIdentifier hw = cms.createComponent("riskgame", classPath, infoArgs).getFirstResult(sus);
-	   
+
 	      
 	    
 	  }
