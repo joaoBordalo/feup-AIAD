@@ -74,6 +74,12 @@
                             <env:drawcondition>$object.type.equals(0)</env:drawcondition>
                         </env:ellipse>
 
+			<!-- e provavel que tenha que por o army size como prpriedade do territorio, em vez de ter uma classe army -->
+						<env:text layer="2" color="black" text="tamanho do zrmy">
+						
+						
+						</env:text>
+						
                        <!-- <env:texturedrectangle layer="1" imagepath="images/terrain_3.png">
                             <env:drawcondition>$object.type.equals(1)</env:drawcondition>
                         </env:texturedrectangle>
@@ -92,7 +98,7 @@
 
                      <env:postlayers>
                         
-                       <env:gridlayer width="1.0" height="1.0" color="black" />
+                       <!-- <env:gridlayer width="1.0" height="1.0" color="black" /> -->
                     </env:postlayers>
                 </env:perspective>
             </env:perspectives>

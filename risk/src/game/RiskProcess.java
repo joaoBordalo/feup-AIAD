@@ -7,6 +7,7 @@ import jadex.extension.envsupport.environment.space2d.Space2D;
 import jadex.extension.envsupport.math.IVector2;
 import jadex.extension.envsupport.math.Vector2Double;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -416,18 +417,18 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp.add(new Adj(5, 2));
        AUAdjs.add(3, countryAdjsTemp);
        
-countryAdjsTemp= new Vector<Adj>();
+       countryAdjsTemp= new Vector<Adj>();
        
 		
 
        adjTemp.add(AUAdjs);
        
-      for(int i =0; i< AUAdjs.size(); i++)
+     /* for(int i =0; i< AUAdjs.size(); i++)
       {
     	  System.out.println("size auadjs" + AUAdjs.size() + " " + AUAdjs.get(i));
       }
        System.out.println("auadjscenas+foiahsgf+ao" + AUAdjs.size() + " " + AUAdjs.get(0));
-       System.out.println("adjtemp no fim: " + adjTemp.size());
+       System.out.println("adjtemp no fim: " + adjTemp.size());*/
        
        
        //DEFS NORTH AMERICA
@@ -616,7 +617,8 @@ countryAdjsTemp= new Vector<Adj>();
        Vector<Territory> gameBoard= new Vector<Territory>();
        
        Vector<Territory> auxTempinsertion = new Vector<Territory>();
-       //TODO ver melhor esta cena de sacarelements -> sacar o vetor de territorios primeiro e injetar para dentro do tempterrs depois
+       
+       
        for(int i=0; i<nTerritories.get("NorthAmerica"); i++)
        {
     	   auxTempinsertion.add(new Territory(territoryIndex, NANames.get(i), "NorthAmerica", NASizes.get(i), NABoardCoords.get(i)));
@@ -722,8 +724,12 @@ countryAdjsTemp= new Vector<Adj>();
     		   toAddAdjacent.setAdjacentTerr(adjsToInsert);
     		   //tempTerrs.get(i).get(j).
     		   
+    		   Player dummy = new Player( 1, "dummy", new Color(1));
+    		   Army dummyArmy= new Army(dummy, 1);
+    		   
+    		   toAddAdjacent.setArmy(dummyArmy);
     		   gameBoard.add(toAddAdjacent);
-    		   System.out.println(gameBoard.size());
+    		   System.out.println(dummyArmy.getArmySize());
     		   
     		   //gameBoard.add(tempTerrs.get(i).get(j).setAdjacentTerr(tempTerrs.get(adjTemp.get(i).get)));
     	   }

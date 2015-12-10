@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<p0:properties xmlns:p0="http://jadex.sourceforge.net/jadexconf" __ID="0" name="standalone_conf">
+<p0:properties xmlns:p0="http://jadex.sourceforge.net/jadexconf" __ID="0">
 	<p0:properties __ID="1" type="vis">
 		<p0:property __ID="2" name="jadex.tools.starter.StarterPlugin" type="Starter">true</p0:property>
 		<p0:property __ID="3" name="jadex.tools.chat.ChatPlugin" type="Chat">true</p0:property>
@@ -29,7 +29,7 @@
 ]]></p0:property>
 	</p0:properties>
 	<p0:properties __ID="14" type="Starter">
-		<p0:property __ID="15" type="leftsplit_location">0.6980392156862745</p0:property>
+		<p0:property __ID="15" type="leftsplit_location">0.6986301369863014</p0:property>
 		<p0:property __ID="16" type="mainsplit_location">0.29904306220095694</p0:property>
 	</p0:properties>
 	<p0:properties __ID="17" type="Chat">
@@ -44,7 +44,7 @@
 		<p0:property __ID="24" type="x">288</p0:property>
 		<p0:property __ID="25" type="y">125</p0:property>
 		<p0:property __ID="26" type="extendedState">0</p0:property>
-		<p0:property __ID="27" type="jccexit">shutdown</p0:property>
+		<p0:property __ID="27" type="jccexit">ask</p0:property>
 		<p0:property __ID="28" type="saveonexit">true</p0:property>
 	</p0:properties>
 </p0:properties>

@@ -98,11 +98,11 @@ public class Territory {
 	}
 
 	public void setArmy(Army army) {
-		if(this.army != null && army.getPlayer() != this.army.getPlayer()) {
+		/*if(this.army != null && army.getPlayer() != this.army.getPlayer()) {
 			this.army.getPlayer().removeTerritory(this);	
 		}
-		army.getPlayer().addTerritory(this);
-		this.army = army;;
+		army.getPlayer().addTerritory(this);*/
+		this.army = army;
 	}
 
 	
