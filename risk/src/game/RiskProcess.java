@@ -2,27 +2,14 @@ package game;
 import jadex.bridge.service.types.clock.IClockService;
 import jadex.commons.SimplePropertyObject;
 import jadex.extension.envsupport.environment.IEnvironmentSpace;
-import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.ISpaceProcess;
-import jadex.extension.envsupport.environment.ISpaceProcess;
-import jadex.extension.envsupport.environment.SpaceObject;
 import jadex.extension.envsupport.environment.space2d.Space2D;
-import jadex.extension.envsupport.evaluation.SpaceObjectSource;
 import jadex.extension.envsupport.math.IVector2;
 import jadex.extension.envsupport.math.Vector2Double;
-import jadex.extension.envsupport.math.Vector2Int;
-import jadex.extension.envsupport.observer.graphics.drawable3d.Object3d;
 
-import java.awt.Color;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Vector;
-
-import javax.print.attribute.standard.MediaSize.NA;
-
-import game.*;
 
 
 public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
@@ -714,7 +701,7 @@ countryAdjsTemp= new Vector<Adj>();
     	   for(int j =0; j< adjTemp.get(i).size(); j++)
     	   {
     		   
-    		   System.out.println("j->:" + j);
+    		   //System.out.println("j->:" + j);
     		   Vector<Adj> adjindex = new Vector<Adj>(); 
     				 adjindex = adjTemp.get(i).get(j);
     		   

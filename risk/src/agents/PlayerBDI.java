@@ -1,6 +1,7 @@
 package agents;
 
 
+import game.Army;
 import game.Player;
 import jadex.bdiv3.BDIAgent;
 import jadex.bdiv3.annotation.*;
@@ -10,6 +11,8 @@ import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.space2d.ContinuousSpace2D;
 import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.AgentBody;
+
+import java.awt.*;
 
 
 @Agent
@@ -24,7 +27,8 @@ public class PlayerBDI extends Player{
     protected ContinuousSpace2D space = (ContinuousSpace2D)agent.getParentAccess().getExtension("2dspace").get();
 
     ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
-    
+
+
     public ISpaceObject[] findMyTerritories (ISpaceObject[] allTerritories, Player player)
     {
     	ISpaceObject[] foundTerritories= new ISpaceObject[]{};
@@ -116,7 +120,22 @@ public class PlayerBDI extends Player{
  
 		@PlanPassed
 		public void passed() {
+
+			////como alterar um territorio
 			System.out.println("plan passed");
+			Player z = new Player(7,"ZE", new Color(4 ,6 ,8));  ///Como referenciar o Player ?
+			Army ze_army = new Army(z , 10);
+			System.out.println(allTerritories[0].getId() );
+			System.out.println(allTerritories[0].getType() );
+			System.out.println(allTerritories[0].getPropertyNames());
+			allTerritories[0].setProperty("army", ze_army) ;    ///Suponho que isto faz o set...
+			System.out.println(allTerritories[0].getProperty("army"));  /// mas como confirmar? territoryname
+			allTerritories[0].setProperty("territoryname", "ZeLandia") ;  //  defacto altera
+
+			Army test = (Army) allTerritories[0].getProperty("army");
+			System.out.println(test.getPlayer() );
+			System.out.println(test.getArmySize() );
+			///? e esta hein   :)
 		}
  
 		@PlanAborted
