@@ -10,6 +10,7 @@ import jadex.extension.envsupport.math.Vector2Double;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
 
 
@@ -82,7 +83,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
         int territoryIndex=0;
         int continentIndex=0;
         
-        //Random r = new Random();
+        Random r = new Random();
 
         HashMap<String, Integer> nTerritories = new HashMap<String, Integer>(6);
         Vector<Vector<Vector<Adj>>> adjTemp= new Vector<Vector<Vector<Adj>>>();
@@ -749,12 +750,9 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     		   toAddAdjacent.setAdjacentTerr(adjsToInsert);
     		   //tempTerrs.get(i).get(j).
     		   
-    		   Player dummy = players.get(0);
-    		   Army dummyArmy= new Army(dummy, 1);
     		   
-    		   toAddAdjacent.setArmy(dummyArmy);
     		   gameBoard.add(toAddAdjacent);
-    		   System.out.println(dummyArmy.getArmySize());
+    		  
     		   
     		   //gameBoard.add(tempTerrs.get(i).get(j).setAdjacentTerr(tempTerrs.get(adjTemp.get(i).get)));
     	   }
@@ -765,6 +763,15 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        for(int i = 0; i<gameBoard.size(); i++)
        {
+    	   
+    	   
+    	   Player dummy = players.get(r.nextInt(players.size()));
+    	   Army dummyArmy= new Army(dummy, 1);
+    	   
+    	   gameBoard.get(i).setArmy(dummyArmy);
+    	   
+    	   
+    	   
        Map properties = new HashMap();
        properties.put("position", gameBoard.get(i).getBoardCoord());
        properties.put("type", gameBoard.get(i).getShapeType());
