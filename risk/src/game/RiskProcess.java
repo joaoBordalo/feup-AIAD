@@ -71,11 +71,12 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     public void start(IClockService arg0, IEnvironmentSpace arg1) {
 
         Space2D space = (Space2D)arg1;
-
+        
         this.players= new Vector<Player>();
         
         players.addElement(new Player(0, "zero", Color.cyan));
         players.addElement(new Player(1, "um", Color.gray));
+        
         
         int spaceHeight = space.getAreaSize().getXAsInteger();
         int spaceWidth = space.getAreaSize().getYAsInteger();
@@ -788,7 +789,8 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        space.createSpaceObject("Territory", properties, null);
        }
        
-
+       System.out.println("ndejogadores: "  + space.getProperties());
+       System.out.println("ndejogadores: "  + space.getProperty("numberofplayers"));
 
     }
 

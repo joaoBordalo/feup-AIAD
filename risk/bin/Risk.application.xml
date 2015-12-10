@@ -21,10 +21,17 @@
 
 
     </imports>
+    
+    <arguments>
+  		<argument name="numberofplayers" class="Integer">2</argument>
+  		<!-- <argument name="obj" class="Customer">new Customer("Sparky")</argument> -->
+  		
+	</arguments>
 
     <extensiontypes>
         <env:envspacetype name="2dspace" class="ContinuousSpace2D" width="60" height="30">
              <env:property name="border">Space2D.BORDER_RELAXED</env:property>
+             <env:property name="numberofplayers" class="Integer">numberofplayers</env:property>
 			 
 			 
 			 
@@ -74,7 +81,7 @@
                         
                         <env:ellipse layer="1" size="size" color="ownerColor">
 
-                            <env:drawcondition>$object.type.equals(0)</env:drawcondition>
+                            
                         </env:ellipse>
 
 			<!-- passar o size como variavel: nao funciona bem, para ja fica explicito -->
