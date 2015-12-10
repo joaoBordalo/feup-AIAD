@@ -20,6 +20,8 @@ public class Territory {
 	
 	private IVector2 boardCoord;
 	
+	private Integer textSize;
+	
 	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord) 
 	{
 		this.index = index;
@@ -29,11 +31,22 @@ public class Territory {
 		this.boardCoord= boardCoord;
 		this.army= new Army(null, 0);
 		this.adjacentTerr=null;
+		this.textSize=2;
 	}
 	
+
+
 	public Territory(){}
 	
 	
+	public Integer getTextSize() {
+		return textSize;
+	}
+
+	public void setTextSize(Integer textSize) {
+		this.textSize = textSize;
+	}
+
 	public int getShapeType() {
 		return shapeType;
 	}

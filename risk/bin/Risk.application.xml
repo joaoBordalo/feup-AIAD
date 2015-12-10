@@ -38,7 +38,10 @@
 					
                     <env:property name="index" class="int"></env:property>
                     <env:property name="army" class="Army" dynamic="true"></env:property>
-                    <env:property name="size" class="IVector2" dynamic="false"></env:property>
+                    <env:property name="armySize" class="int" dynamic="true"></env:property>
+                    <!-- <env:property name="size" class="IVector2" dynamic="false"></env:property> -->
+                    <env:property name="textSize" class="Integer"></env:property>
+                    
                     
                 </env:objecttype>
 
@@ -74,8 +77,8 @@
                             <env:drawcondition>$object.type.equals(0)</env:drawcondition>
                         </env:ellipse>
 
-			<!-- e provavel que tenha que por o army size como prpriedade do territorio, em vez de ter uma classe army -->
-						<env:text layer="2" color="black" text="tamanho do zrmy">
+			<!-- passar o size como variavel: nao funciona bem, para ja fica explicito -->
+						<env:text layer="2" x="0.05" y="0.5" color="black" text="$armySize$" align="center" abssize="true" size="8">
 						
 						
 						</env:text>

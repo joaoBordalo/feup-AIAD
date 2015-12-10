@@ -745,9 +745,11 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        properties.put("type", gameBoard.get(i).getShapeType());
        properties.put("size", gameBoard.get(i).getSize());
        properties.put("army", gameBoard.get(i).getArmy());
+       properties.put("armySize", gameBoard.get(i).getArmy().getArmySize());
        properties.put("index", gameBoard.get(i).getIndex());
        properties.put("territoryname", gameBoard.get(i).getTerritoryName());
        properties.put("continentname", gameBoard.get(i).getContinentName());
+       properties.put("textSize", gameBoard.get(i).getTextSize());
        
        space.createSpaceObject("Territory", properties, null);
        }
