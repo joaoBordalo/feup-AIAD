@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.util.Vector;
 
 import jadex.extension.envsupport.math.IVector2;
@@ -22,6 +23,8 @@ public class Territory {
 	
 	private Integer textSize;
 	
+	private Color ownerColor;
+	
 	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord) 
 	{
 		this.index = index;
@@ -32,8 +35,21 @@ public class Territory {
 		this.army= new Army(null, 0);
 		this.adjacentTerr=null;
 		this.textSize=2;
+		//this.ownerColor= army.getPlayer().getColor();
 	}
 	
+
+
+	public Color getOwnerColor() {
+		return ownerColor;
+	}
+
+
+
+	public void setOwnerColor(Color ownerColor) {
+		this.ownerColor = ownerColor;
+	}
+
 
 
 	public Territory(){}
@@ -116,6 +132,7 @@ public class Territory {
 		}
 		army.getPlayer().addTerritory(this);*/
 		this.army = army;
+		this.ownerColor= army.getPlayer().getColor();
 	}
 
 	
@@ -126,5 +143,8 @@ public class Territory {
 			return army.getPlayer();
 		}
 	}
+	
+	
+	
 	
 }

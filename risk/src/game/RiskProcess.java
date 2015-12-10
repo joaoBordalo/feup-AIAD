@@ -45,12 +45,37 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		
 	};
 	
+	int playersNumber;
 	
-    @Override
+	Vector<Player> players;
+	
+	
+    public int getPlayersNumber() {
+		return playersNumber;
+	}
+
+	public void setPlayersNumber(int playersNumber) {
+		this.playersNumber = playersNumber;
+	}
+	
+	 public Vector<Player> getPlayers() {
+			return players;
+		}
+
+		public void setPlayers(Vector<Player> players) {
+			this.players = players;
+		}
+
+	@Override
     public void start(IClockService arg0, IEnvironmentSpace arg1) {
 
         Space2D space = (Space2D)arg1;
 
+        this.players= new Vector<Player>();
+        
+        players.addElement(new Player(0, "zero", Color.cyan));
+        players.addElement(new Player(1, "um", Color.gray));
+        
         int spaceHeight = space.getAreaSize().getXAsInteger();
         int spaceWidth = space.getAreaSize().getYAsInteger();
 
@@ -724,7 +749,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     		   toAddAdjacent.setAdjacentTerr(adjsToInsert);
     		   //tempTerrs.get(i).get(j).
     		   
-    		   Player dummy = new Player( 1, "dummy", new Color(1));
+    		   Player dummy = players.get(0);
     		   Army dummyArmy= new Army(dummy, 1);
     		   
     		   toAddAdjacent.setArmy(dummyArmy);
@@ -750,6 +775,8 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        properties.put("territoryname", gameBoard.get(i).getTerritoryName());
        properties.put("continentname", gameBoard.get(i).getContinentName());
        properties.put("textSize", gameBoard.get(i).getTextSize());
+       properties.put("ownerColor", gameBoard.get(i).getOwnerColor());
+       
        
        space.createSpaceObject("Territory", properties, null);
        }
@@ -758,7 +785,9 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 
     }
 
-    @Override
+   
+
+	@Override
     public void shutdown(IEnvironmentSpace iEnvironmentSpace) {
 
     }
