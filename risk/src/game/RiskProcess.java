@@ -755,6 +755,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        }
        
        System.out.println("player0: "  + players.get(0).getAvailableSoldierNumber());
+       System.out.println("player1: "  + players.get(1).getAvailableSoldierNumber());
        
        
        for(int i = 0; i<gameBoard.size(); i++)
