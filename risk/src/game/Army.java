@@ -19,8 +19,8 @@ public class Army {
 	
 	public boolean addArmy(int numberOfUnits) 
 	{
-		armySize += numberOfUnits;
-		if(armySize < 0) {
+		this.armySize += numberOfUnits;
+		if(this.armySize < 0) {
 			return false;
 		}else {
 			return true;

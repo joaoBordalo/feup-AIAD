@@ -13,6 +13,8 @@ import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.AgentBody;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Agent
@@ -25,9 +27,10 @@ public class PlayerBDI extends Player{
 
     @Belief
     protected ContinuousSpace2D space = (ContinuousSpace2D)agent.getParentAccess().getExtension("2dspace").get();
-
-    ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
-
+    
+    @Belief
+    protected ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
+    
 
     public ISpaceObject[] findMyTerritories (ISpaceObject[] allTerritories, Player player)
     {
@@ -128,13 +131,24 @@ public class PlayerBDI extends Player{
 			System.out.println(allTerritories[0].getId() );
 			System.out.println(allTerritories[0].getType() );
 			System.out.println(allTerritories[0].getPropertyNames());
+			
+			
+			
+			
+			
 			allTerritories[0].setProperty("army", ze_army) ;    ///Suponho que isto faz o set...
+			//allTerritories[0].setProperty("armySize", 11); descomenta isto e ve o que acontece, zezao
 			System.out.println(allTerritories[0].getProperty("army"));  /// mas como confirmar? territoryname
 			allTerritories[0].setProperty("territoryname", "ZeLandia") ;  //  defacto altera
 
+			
+			
 			Army test = (Army) allTerritories[0].getProperty("army");
 			System.out.println(test.getPlayer() );
 			System.out.println(test.getArmySize() );
+			
+
+			System.out.println(space.getSpaceObjectsByType("Territory"));
 			///? e esta hein   :)
 		}
  

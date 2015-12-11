@@ -44,7 +44,7 @@
                     <env:property name="position" class="IVector2" event="false" dynamic="true"> new Vector2Int(0,0)</env:property>
 					
                     <env:property name="index" class="int"></env:property>
-                    <env:property name="army" class="Army" dynamic="true"></env:property>
+                    <env:property name="army" class="Army" dynamic="true">new Army(null, 0)</env:property>
                     <env:property name="armySize" class="int" dynamic="true"></env:property>
                     <!-- <env:property name="size" class="IVector2" dynamic="false"></env:property> -->
                     <env:property name="textSize" class="Integer"></env:property>
