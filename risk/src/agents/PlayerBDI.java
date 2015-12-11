@@ -137,16 +137,16 @@ public class PlayerBDI extends Player{
 			
 			
 			
-			allTerritories[0].setProperty("army", ze_army) ;    ///Suponho que isto faz o set...
-			allTerritories[0].setProperty("armySize", 11); //descomenta isto e ve o que acontece, zezao
+			//allTerritories[0].setProperty("army", ze_army) ;    ///Suponho que isto faz o set...
+			//allTerritories[0].setProperty("armySize", 11); //descomenta isto e ve o que acontece, zezao
 			System.out.println(allTerritories[0].getProperty("army"));  /// mas como confirmar? territoryname
-			allTerritories[0].setProperty("territoryname", "ZeLandia") ;  //  defacto altera
+			//allTerritories[0].setProperty("territoryname", "ZeLandia") ;  //  defacto altera
 
 			
 			
-			Army test = (Army) allTerritories[0].getProperty("army");
-			System.out.println(test.getPlayer() );
-			System.out.println(test.getArmySize() );
+			//Army test = (Army) allTerritories[0].getProperty("army");
+			//System.out.println(test.getPlayer() );
+			//System.out.println(test.getArmySize() );
 			
            
 			System.out.println(space.getSpaceObjectsByType("Territory")[0].getProperty("armySize"));

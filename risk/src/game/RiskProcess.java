@@ -1,4 +1,10 @@
 package game;
+import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Vector;
+
 import jadex.bridge.service.types.clock.IClockService;
 import jadex.commons.SimplePropertyObject;
 import jadex.extension.envsupport.environment.IEnvironmentSpace;
@@ -7,12 +13,6 @@ import jadex.extension.envsupport.environment.ISpaceProcess;
 import jadex.extension.envsupport.environment.space2d.Space2D;
 import jadex.extension.envsupport.math.IVector2;
 import jadex.extension.envsupport.math.Vector2Double;
-
-import java.awt.Color;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Vector;
 
 
 public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
@@ -50,6 +50,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 	int playersNumber;
 	
 	Vector<Player> players;
+	Vector<Territory> gameBoard= new Vector<Territory>();
 	
 	
     public int getPlayersNumber() {
@@ -636,7 +637,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        
        Vector<Vector<Territory>> tempTerrs = new Vector<Vector<Territory>>();
-       Vector<Territory> gameBoard= new Vector<Territory>();
+       
        
        Vector<Territory> auxTempinsertion = new Vector<Territory>();
        
@@ -753,7 +754,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	   }
        }
        
-       
+       System.out.println("player0: "  + players.get(0).getAvailableSoldierNumber());
        
        
        for(int i = 0; i<gameBoard.size(); i++)
@@ -796,7 +797,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
        System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
        
-       Vector<Integer> remainingUnits= new Vector<Integer>(players.size());
+       
        
        int checkCounter=0;
        Boolean endAllocation= false;
@@ -807,20 +808,22 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	   {
     		   Player tempPlayer = players.get(i);
     		   
+    		   //System.out.println("player " + i+  ": "+ tempPlayer.getAvailableSoldierNumber());
 				if(tempPlayer.getAvailableSoldierNumber()==0)
 				{
 					
 					
-					tempPlayer.setAvailableSoldierNumber(0);
+					//tempPlayer.setAvailableSoldierNumber(0);
 					checkCounter++;
 				}
 				else
 				{
 					Territory randomFromPlayer = players.get(i).getTerritory(r.nextInt(players.get(i).getTerritories().size()));
-					tempPlayer.setAvailableSoldierNumber(tempPlayer.getAvailableSoldierNumber()-1);
+					
 					
 					Army newArmy = randomFromPlayer.getArmy();
 					newArmy.addArmy(1);
+					tempPlayer.setAvailableSoldierNumber(tempPlayer.getAvailableSoldierNumber()-1);
 					
 					gameBoard.set(randomFromPlayer.getGameBoardIndex(), randomFromPlayer);
 					
@@ -848,14 +851,37 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
        System.out.println("spaceobjects: " + space.getSpaceObjectsByType("Territory"));
        
-       ISpaceObject[] terrs= space.getSpaceObjectsByType("Territory");
        
-       terrs[0].setProperty("armySize", 20);
+       updateGUI(gameBoard, space);
+      
        
        
     }
 
    
+	public void updateGUI(Vector<Territory> updatedBoard, Space2D oldSpace)
+	{
+		ISpaceObject[] terrs= oldSpace.getSpaceObjectsByType("Territory");
+		
+		if(terrs.length != updatedBoard.size())
+		{
+			System.out.println("tamanho das estuturas errado");
+		}
+		
+		for(int i = 0 ; i< updatedBoard.size(); i++)
+		{
+				terrs[i].setProperty("position", updatedBoard.get(i).getBoardCoord());
+		       terrs[i].setProperty("type", updatedBoard.get(i).getShapeType());
+		       terrs[i].setProperty("size", updatedBoard.get(i).getSize());
+		       terrs[i].setProperty("army", updatedBoard.get(i).getArmy());
+		       terrs[i].setProperty("armySize", updatedBoard.get(i).getArmy().getArmySize());
+		       terrs[i].setProperty("index", updatedBoard.get(i).getIndex());
+		       terrs[i].setProperty("territoryname", updatedBoard.get(i).getTerritoryName());
+		       terrs[i].setProperty("continentname", updatedBoard.get(i).getContinentName());
+		       terrs[i].setProperty("textSize", updatedBoard.get(i).getTextSize());
+		       terrs[i].setProperty("ownerColor", updatedBoard.get(i).getOwnerColor());
+		}
+	}
 
 	@Override
     public void shutdown(IEnvironmentSpace iEnvironmentSpace) {
