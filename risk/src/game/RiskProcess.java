@@ -2,6 +2,7 @@ package game;
 import jadex.bridge.service.types.clock.IClockService;
 import jadex.commons.SimplePropertyObject;
 import jadex.extension.envsupport.environment.IEnvironmentSpace;
+import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.ISpaceProcess;
 import jadex.extension.envsupport.environment.space2d.Space2D;
 import jadex.extension.envsupport.math.IVector2;
@@ -76,8 +77,8 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
         
         this.playersNumber = (int) space.getProperty("numberofplayers");
         		
-        players.addElement(new Player(0, "zero", Color.cyan));
-        players.addElement(new Player(1, "um", Color.gray));
+        players.addElement(new Player(0, "zero", Color.cyan, playersNumber));
+        players.addElement(new Player(1, "um", Color.gray, playersNumber));
         
         
         int spaceHeight = space.getAreaSize().getXAsInteger();
@@ -760,9 +761,15 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	   
     	   
     	   Player dummy = players.get(r.nextInt(players.size()));
+    	   
     	   Army dummyArmy= new Army(dummy, 1);
     	   
     	   gameBoard.get(i).setArmy(dummyArmy);
+    	   dummy.setAvailableSoldierNumber(dummy.getAvailableSoldierNumber()-1);
+    	   Territory dummyTerr= gameBoard.get(i);
+    	   dummyTerr.setGameBoardIndex(i);
+    	   dummy.addTerritory(dummyTerr);
+    	   
     	   
     	   
     	   
@@ -785,7 +792,67 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        System.out.println("ndejogadores: "  + space.getProperties());
        System.out.println("ndejogadores: "  + playersNumber);
-
+       
+       System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
+       System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
+       
+       Vector<Integer> remainingUnits= new Vector<Integer>(players.size());
+       
+       int checkCounter=0;
+       Boolean endAllocation= false;
+       while(endAllocation==false)
+       {
+    	   
+    	   for (int i= 0; i<players.size(); i++) 
+    	   {
+    		   Player tempPlayer = players.get(i);
+    		   
+				if(tempPlayer.getAvailableSoldierNumber()==0)
+				{
+					
+					
+					tempPlayer.setAvailableSoldierNumber(0);
+					checkCounter++;
+				}
+				else
+				{
+					Territory randomFromPlayer = players.get(i).getTerritory(r.nextInt(players.get(i).getTerritories().size()));
+					tempPlayer.setAvailableSoldierNumber(tempPlayer.getAvailableSoldierNumber()-1);
+					
+					Army newArmy = randomFromPlayer.getArmy();
+					newArmy.addArmy(1);
+					
+					gameBoard.set(randomFromPlayer.getGameBoardIndex(), randomFromPlayer);
+					
+				}
+    		   
+    	   }
+    	   
+    	   
+    	   
+    	 if( checkCounter==players.size())
+    	 {
+    		 endAllocation=true;
+    	 }
+    	 else
+    	 {
+    		 checkCounter=0;
+    	 }
+    	   
+    	   
+       }
+       
+       
+       //TODO fazer a funçao de update da gui
+       System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
+       System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
+       System.out.println("spaceobjects: " + space.getSpaceObjectsByType("Territory"));
+       
+       ISpaceObject[] terrs= space.getSpaceObjectsByType("Territory");
+       
+       terrs[0].setProperty("armySize", 20);
+       
+       
     }
 
    

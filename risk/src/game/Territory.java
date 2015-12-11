@@ -26,6 +26,20 @@ public class Territory{
 	
 	private Color ownerColor;
 	
+	private int gameBoardIndex;
+	
+	public int getGameBoardIndex() {
+		return gameBoardIndex;
+	}
+
+
+
+	public void setGameBoardIndex(int gameBoardIndex) {
+		this.gameBoardIndex = gameBoardIndex;
+	}
+
+
+
 	public Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord) 
 	{
 		this.index = index;

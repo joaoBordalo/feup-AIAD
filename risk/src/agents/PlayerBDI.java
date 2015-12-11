@@ -127,7 +127,7 @@ public class PlayerBDI extends Player{
 
 			////como alterar um territorio
 			System.out.println("plan passed");
-			Player z = new Player(7,"ZE", new Color(4 ,6 ,8));  ///Como referenciar o Player ?
+			Player z = new Player(7,"ZE", new Color(4 ,6 ,8), 2);  ///Como referenciar o Player ?
 			Army ze_army = new Army(z , 10);
 			System.out.println(allTerritories[0].getId() );
 			System.out.println(allTerritories[0].getType() );

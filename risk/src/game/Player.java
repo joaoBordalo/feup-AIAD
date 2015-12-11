@@ -14,39 +14,55 @@ public class Player {
 	
 	private Color color;
 	
-	private HashMap<String, Territory> territories;
+	private Vector<Territory> territories;
+	
+	private int availableSoldierNumber;
 	
 	public Player () {};
 	
-	public Player( int index, String name, Color color ) 
+	public Player( int index, String name, Color color , int totalNumberOfPlayers) 
 	{
 		this.index = index;
 		this.name = name;
 		this.color = color;
-		territories = new HashMap<String, Territory>();
+		territories = new Vector <Territory>();
 		alive = true;
+		
+		switch (totalNumberOfPlayers) {
+		case 2:
+			availableSoldierNumber=40;
+			break;
+
+		default:
+			availableSoldierNumber=20;
+			break;
+		}
 
 	}
 	
+	public int getAvailableSoldierNumber() {
+		return availableSoldierNumber;
+	}
+
+	public void setAvailableSoldierNumber(int availableSoldierNumber) {
+		this.availableSoldierNumber = availableSoldierNumber;
+	}
+
 	public void surrender() 
 	{
 		alive = false;
 	}
 	
-	public HashMap<String, Territory> getTerritories() 
-	{
-		return territories;
-	}
+
 	
 	
 	//numero total de exercitos do jogador
 	public int getTotalArmies() 
 	{
 		int totalArmies = 0;
-		Iterator<String> iterator = getTerritories().keySet().iterator();
-		while(iterator.hasNext()) 
+		for(int i= 0; i<territories.size();i++)
 		{
-			totalArmies += territories.get(iterator.next()).getArmy().getArmySize();
+			totalArmies += territories.get(i).getArmy().getArmySize();
 		}
 		return totalArmies;
 	}
@@ -91,27 +107,23 @@ public class Player {
 		this.color = color;
 	}
 
-	public void setTerritories(HashMap<String, Territory> territories) 
-	{
+
+
+	public Vector<Territory> getTerritories() {
+		return territories;
+	}
+
+	public void setTerritories(Vector<Territory> territories) {
 		this.territories = territories;
 	}
 
 	//adiciona um territorio ao jogador
 	public void addTerritory(Territory territory) 
 	{
-		territories.put(territory.getTerritoryName(), territory);
+		territories.add(territory);
 	}
 	
-	//remove o territorio do controlo do jogador
-	public boolean removeTerritory(Territory territory) 
-	{
-		if(territories.containsKey(new Integer(territory.getIndex()))) 
-		{
-			territories.remove(new Integer(territory.getIndex()));
-			return true;
-		}
-		return false;
-	}
+
 	
 	public int getNumTerritories() 
 	{
@@ -127,8 +139,8 @@ public class Player {
 	public Territory getRandomTerritory() 
 	{
 		Random generator = new Random();
-		Object[] values = territories.values().toArray();
-		return (Territory) (values[generator.nextInt(values.length)]);
+		
+		return (Territory) (territories.get(generator.nextInt(territories.size())));
 	}
 
 
