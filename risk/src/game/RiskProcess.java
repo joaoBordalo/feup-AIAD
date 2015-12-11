@@ -766,9 +766,11 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	   
     	   Army dummyArmy= new Army(dummy, 1);
     	   
-    	   gameBoard.get(i).setArmy(dummyArmy);
-    	   dummy.setAvailableSoldierNumber(dummy.getAvailableSoldierNumber()-1);
+    	  
+    	   
     	   Territory dummyTerr= gameBoard.get(i);
+    	   dummyTerr.setArmy(dummyArmy);
+    	   dummy.setAvailableSoldierNumber(dummy.getAvailableSoldierNumber()-1);
     	   dummyTerr.setGameBoardIndex(i);
     	   dummy.addTerritory(dummyTerr);
     	   
@@ -847,7 +849,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        }
        
        
-       //TODO fazer a funçao de update da gui
+       
        System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
        System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
        System.out.println("spaceobjects: " + space.getSpaceObjectsByType("Territory"));
