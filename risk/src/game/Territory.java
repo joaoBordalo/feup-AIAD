@@ -3,9 +3,10 @@ package game;
 import java.awt.Color;
 import java.util.Vector;
 
+
 import jadex.extension.envsupport.math.IVector2;
 
-public class Territory {
+public class Territory{
 
 	private int index;
 	

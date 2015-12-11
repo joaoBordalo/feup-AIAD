@@ -169,8 +169,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        countryAdjsTemp = new Vector<Adj>();
        
        adjTemp.add(NAAdjs);
-       //System.out.println("size: " + adjTemp.size());
-       //System.out.println("size at i: " + adjTemp.get(0).size());
+     
        
       
        
@@ -208,8 +207,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        adjTemp.add(SAAdjs);
        
-       //System.out.println("size: " + adjTemp.size());
-       //System.out.println("size at i: " + adjTemp.get(1).size());
+      
        
        
        Vector<String> EUNames = new Vector<String>();
@@ -452,13 +450,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 
        adjTemp.add(AUAdjs);
        
-     /* for(int i =0; i< AUAdjs.size(); i++)
-      {
-    	  System.out.println("size auadjs" + AUAdjs.size() + " " + AUAdjs.get(i));
-      }
-       System.out.println("auadjscenas+foiahsgf+ao" + AUAdjs.size() + " " + AUAdjs.get(0));
-       System.out.println("adjtemp no fim: " + adjTemp.size());*/
-       
+    
        
        //DEFS NORTH AMERICA
        NANames.addElement("ALASKA");
@@ -732,17 +724,16 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	   for(int j =0; j< adjTemp.get(i).size(); j++)
     	   {
     		   
-    		   //System.out.println("j->:" + j);
+    		  
     		   Vector<Adj> adjindex = new Vector<Adj>(); 
     				 adjindex = adjTemp.get(i).get(j);
     		   
     				
     		   Vector<Territory> adjsToInsert = new Vector<Territory>();
-    		   //System.out.println("size adjindex "+adjindex.size());
+    		  
     		   for(int k =0 ; k<adjindex.size(); k++)
     		   {
-    			   //System.out.println("tempterr: " +tempTerrs.get(k));
-    			   //System.out.println("k: " +k);
+    			  
     			   adjsToInsert.add(tempTerrs.get(adjindex.get(k).getContIndex())
     					   					 .get(adjindex.get(k).getCountryIndex()));
     		   }
@@ -789,6 +780,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        
        space.createSpaceObject("Territory", properties, null);
+       
        }
        
        System.out.println("ndejogadores: "  + space.getProperties());

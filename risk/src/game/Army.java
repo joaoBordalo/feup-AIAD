@@ -1,5 +1,7 @@
 package game;
+import java.util.Iterator;
 import java.util.Random;
+
 
 
 public class Army {
@@ -12,6 +14,7 @@ public class Army {
 
 	public Army(Player player, int armySize) 
 	{
+		
 		this.player = player;
 		this.armySize = armySize;
 	}

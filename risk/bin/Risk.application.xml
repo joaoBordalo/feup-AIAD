@@ -18,6 +18,8 @@
         <import>jadex.extension.envsupport.evaluation.*</import>
         <import>jadex.extension.envsupport.observer.gui.plugin.*</import>
         <import>game.*</import>
+        <import>agents.*</import>
+        
 
 
     </imports>
