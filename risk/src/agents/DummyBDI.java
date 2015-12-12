@@ -89,7 +89,7 @@ public class DummyBDI {
 	@AgentBody
 	public void body()
 	{
-		for(int i =0; i<space.getSpaceObjectsByType("Territory").length; i++)
+		/*for(int i =0; i<space.getSpaceObjectsByType("Territory").length; i++)
 		{
 			
 		System.out.println("Time for a chat, buddy: "+ space.getSpaceObjectsByType("Territory")[i].getProperty("continentname"));
@@ -98,7 +98,7 @@ public class DummyBDI {
 		
 		
 		
-		}
+		}*/
 			
 		
 	  /*bdi.adoptPlan(new DummyPlan());
