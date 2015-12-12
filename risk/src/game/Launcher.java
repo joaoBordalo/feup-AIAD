@@ -57,6 +57,8 @@ public class Launcher {
 	      IComponentIdentifier hw = cms.createComponent("riskgame", classPath, infoArgs).getFirstResult(sus);
 	      
 	      //cms.createComponent(null, "agents/DummyBDI.class", null).get(sus);
+	      
+	      
 	      	
 	      
 	    
