@@ -852,8 +852,8 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        
        
-      // System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
-      // System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
+       System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
+       System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
       // System.out.println("spaceobjects: " + space.getSpaceObjectsByType("Territory"));
        
        
@@ -910,7 +910,11 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		       terrs[i].setProperty("ownerColor", updatedBoard.get(i).getOwnerColor());
 		}
 
+<<<<<<< HEAD
       /* for (int i = 0; i < 4; i++) {
+=======
+       /*for (int i = 0; i < 4; i++) {
+>>>>>>> origin/master
           if(players.get(0).getAlive() == true)
              players.get(0).setAlive(false);
           else
@@ -928,7 +932,9 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     @Override
     public void execute(IClockService iClockService, IEnvironmentSpace iEnvironmentSpace) {
 
-
+    	Space2D space = (Space2D) iEnvironmentSpace;
+    	
+    	
 
 
     }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Vector;
 
 
+import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.math.IVector2;
 
 public class Territory{
@@ -53,6 +54,27 @@ public class Territory{
 		//this.ownerColor= army.getPlayer().getColor();
 	}
 	
+ //// convert an ISpaceObject of type Territory into an actual Territory
+	public Territory(ISpaceObject s){
+		int index = (int) s.getProperty("index");
+		String territoryName = (String) s.getProperty("territoryname");
+		String continentName = (String) s.getProperty("continentname");
+		IVector2 size = (IVector2) s.getProperty("size");
+		IVector2 boardCoord = (IVector2) s.getProperty("position");
+		int shape = (int) s.getProperty("type");
+		int testsize = (int) s.getProperty("textSize");
+		Color owner = (Color) s.getProperty("ownerColor");
+
+		setOwnerColor(owner);
+		setIndex(index);
+		setTextSize(testsize);
+		setShapeType(shape);
+		setTerritoryName(territoryName);
+		setContinentName(continentName);
+		setSize(size);
+		setBoardCoord(boardCoord);
+
+	}
 
 
 	public Color getOwnerColor() {
