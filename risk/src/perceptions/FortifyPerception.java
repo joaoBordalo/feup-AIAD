@@ -15,12 +15,6 @@ public class FortifyPerception extends Perception {
 		this.teritoryTo=tTo;
 	}
 	
-	//---------Override---------
-	@Override
-	public Vector<String> allPlayersInvolvedinPerception(String player) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	//---------Getters and Setters---------
 	public Territory getTerritoryFrom() {

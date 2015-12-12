@@ -910,12 +910,12 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		       terrs[i].setProperty("ownerColor", updatedBoard.get(i).getOwnerColor());
 		}
 
-       for (int i = 0; i < 4; i++) {
+      /* for (int i = 0; i < 4; i++) {
           if(players.get(0).getAlive() == true)
              players.get(0).setAlive(false);
           else
              players.get(0).setAlive(true);
-       }
+       }*/
     }
 
 

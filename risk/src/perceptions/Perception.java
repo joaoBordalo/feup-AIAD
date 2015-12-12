@@ -8,8 +8,4 @@ public abstract class Perception {
 		
 	}
 	
-	/*
-	 * in each perception, get all players except the player itself (method param)
-	 */
-	public abstract Vector<String> allPlayersInvolvedinPerception(String player);
 }
