@@ -19,13 +19,6 @@ public class AttackPerception extends Perception {
 	}
 
 
-	//---------Override---------
-	@Override
-	public Vector<String> allPlayersInvolvedinPerception(String player) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	//---------Getters and Setters---------
 	public Territory getTerritoryFrom() {
 		return territoryFrom;
