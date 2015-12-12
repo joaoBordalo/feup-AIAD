@@ -928,7 +928,9 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     @Override
     public void execute(IClockService iClockService, IEnvironmentSpace iEnvironmentSpace) {
 
-
+    	Space2D space = (Space2D) iEnvironmentSpace;
+    	
+    	
 
 
     }

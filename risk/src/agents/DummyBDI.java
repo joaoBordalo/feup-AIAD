@@ -1,6 +1,8 @@
 package agents;
 
 
+import game.Territory;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +33,12 @@ import jadex.micro.annotation.AgentBody;
 import jadex.micro.annotation.AgentCreated;
 import jadex.micro.annotation.Description;
 import jadex.bdiv3.annotation.Trigger;
+import jadex.bridge.modelinfo.IExtensionInstance;
+import jadex.commons.future.DefaultResultListener;
+import jadex.commons.future.Future;
+import jadex.commons.future.IFuture;
+import jadex.extension.envsupport.environment.ISpaceObject;
+import jadex.extension.envsupport.environment.space2d.Space2D;
 
 
 
@@ -46,15 +54,32 @@ public class DummyBDI {
 	 
 	  @Belief
 	  protected String saudacaoi;
+	  
+	  @Belief
+	  protected Space2D space;
+	  
 
+
+	@Belief
+	  protected ISpaceObject vision;
 	@Belief
 	protected List<String> saudacoesAgente= new ArrayList<String>();
 	
 	@AgentCreated
 	public void init()
 	{
-		//saudacoesAgente = new Vector<String>();
 		
+		
+		IFuture<IExtensionInstance> fut = bdi.getParentAccess().getExtension("2dspace");
+		fut.addResultListener(new DefaultResultListener<IExtensionInstance>() {
+			public void resultAvailable(IExtensionInstance cs) {
+				space = (Space2D) cs;
+			
+			}
+		});
+		
+		//saudacoesAgente = new Vector<String>();
+		ISpaceObject[] vision= new ISpaceObject[]{};
 		saudacoesAgente.add("ola");
 		
 		saudacoesAgente.add("adeus");
@@ -64,6 +89,18 @@ public class DummyBDI {
 	@AgentBody
 	public void body()
 	{
+		for(int i =0; i<space.getSpaceObjectsByType("Territory").length; i++)
+		{
+			
+		System.out.println("Time for a chat, buddy: "+ space.getSpaceObjectsByType("Territory")[i].getProperty("continentname"));
+		ISpaceObject territo = space.getSpaceObjectsByType("Territory")[i];
+		territo.setProperty("armySize", 1);
+		
+		
+		
+		}
+			
+		
 	  /*bdi.adoptPlan(new DummyPlan());
 	  
 	  try
