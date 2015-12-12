@@ -109,7 +109,15 @@ public class PlayerBDI extends Player{
     //	System.out.println("meus territorios: "+ myTerritories.length);
     	//System.out.println("numero de territorios vazios: "+ freeTerritories );
     	//agent.adoptPlan(new Attack());
+    	
+    	
+        
+        if(a.getProperty("name")!= null)
+        {
         System.out.println("agente imprime nome de avatar  " + a.getProperty("name"));
+        }
+        
+        
 
 
     }

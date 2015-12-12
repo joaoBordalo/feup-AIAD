@@ -852,21 +852,29 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        
        
-       System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
-       System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
-       System.out.println("spaceobjects: " + space.getSpaceObjectsByType("Territory"));
+      // System.out.println("player 0 remaining army: " + players.get(0).getAvailableSoldierNumber());
+      // System.out.println("player 1 remaining army: " + players.get(1).getAvailableSoldierNumber());
+      // System.out.println("spaceobjects: " + space.getSpaceObjectsByType("Territory"));
        
        
        updateGUI(gameBoard, space);
 
 
-
+       for(int i=0; i<players.size(); i++)
+       {
        Map player_M = new HashMap();
-       player_M.put("name", "ze");
+       player_M.put("name", players.get(i).getName());
+       player_M.put("index", players.get(i).getIndex());
+       player_M.put("color", players.get(i).getColor().toString());
        space.createSpaceObject("Player", player_M, null);
+       
+       
+       }
+       
        System.out.println("numero de objectos player:  " + space.getSpaceObjectsByType("Player").length);
-      ISpaceObject[] z = space.getSpaceObjectsByType("Player");
-       System.out.println("nome  " + z[0].getProperty("name") );
+       ISpaceObject[] z = space.getSpaceObjectsByType("Player");
+        System.out.println("nome  " + z[0].getProperty("name") );
+        System.out.println("cor  " + z[1].getProperty("color") );
        IComponentDescription[] w =space.getComponents();
 
        System.out.println("numero de componentwes    " + w.length );
