@@ -50,9 +50,11 @@
                     <env:property name="armySize" class="int" dynamic="true"></env:property>
                     <!-- <env:property name="size" class="IVector2" dynamic="false"></env:property> -->
                     <env:property name="textSize" class="Integer"></env:property>
-                    
-                    
                 </env:objecttype>
+
+                 <env:objecttype name="Player">
+                     <env:property name="name" class="String"></env:property>
+                 </env:objecttype>
 
             </env:objecttypes>
 
@@ -62,7 +64,7 @@
             </env:processtypes>
 
             <env:avatarmappings>
-                 <!-- <env:avatarmapping componenttype="Wanderer" objecttype="wanderer"/> -->
+                  <env:avatarmapping componenttype="Playerbdi" objecttype="Player" createcomponent="true"/>
             </env:avatarmappings>
 
 

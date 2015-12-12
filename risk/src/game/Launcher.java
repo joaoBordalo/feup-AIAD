@@ -42,7 +42,10 @@ public class Launcher {
 	    IComponentManagementService cms = SServiceProvider.getService(pl.getServiceProvider(),
 	    IComponentManagementService.class, RequiredServiceInfo.SCOPE_PLATFORM).get(sus);
 	 
-	    
+
+
+
+
 	      /**
 	      * Interface for component identifiers.
 	      */

@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
 
+import jadex.bridge.IComponentIdentifier;
 import jadex.bridge.service.types.clock.IClockService;
+import jadex.bridge.service.types.cms.IComponentDescription;
 import jadex.commons.SimplePropertyObject;
 import jadex.extension.envsupport.environment.IEnvironmentSpace;
 import jadex.extension.envsupport.environment.ISpaceObject;
@@ -856,8 +858,23 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        
        updateGUI(gameBoard, space);
-      
-       
+
+
+
+       Map player_M = new HashMap();
+       player_M.put("name", "ze");
+       space.createSpaceObject("Player", player_M, null);
+       System.out.println("numero de objectos player:  " + space.getSpaceObjectsByType("Player").length);
+      ISpaceObject[] z = space.getSpaceObjectsByType("Player");
+       System.out.println("nome  " + z[0].getProperty("name") );
+       IComponentDescription[] w =space.getComponents();
+
+       System.out.println("numero de componentwes    " + w.length );
+
+
+
+
+
        
     }
 
@@ -884,7 +901,16 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		       terrs[i].setProperty("textSize", updatedBoard.get(i).getTextSize());
 		       terrs[i].setProperty("ownerColor", updatedBoard.get(i).getOwnerColor());
 		}
-	}
+
+       for (int i = 0; i < 4; i++) {
+          if(players.get(0).getAlive() == true)
+             players.get(0).setAlive(false);
+          else
+             players.get(0).setAlive(true);
+       }
+    }
+
+
 
 	@Override
     public void shutdown(IEnvironmentSpace iEnvironmentSpace) {
@@ -893,7 +919,10 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 
     @Override
     public void execute(IClockService iClockService, IEnvironmentSpace iEnvironmentSpace) {
-    	//System.out.println("tou a dar turno");
+
+
+
+
     }
 
 

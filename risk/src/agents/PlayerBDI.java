@@ -17,20 +17,34 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Agent
 public class PlayerBDI extends Player{
-	
-	 
-	
+
     @Agent
     protected BDIAgent agent;
 
+	@Belief
+	protected String name = this.getName();
+
+
+
     @Belief
     protected ContinuousSpace2D space = (ContinuousSpace2D)agent.getParentAccess().getExtension("2dspace").get();
-    
+
     @Belief
-    protected ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
+    protected ISpaceObject a = space.getAvatar(agent.getComponentDescription());
+
+//    @Belief
+ //   protected ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
+
+	//@Belief
+//	protected ISpaceObject[] myTerritories = findMyTerritories(allTerritories, this);
+
+//	@Belief
+//	public int freeTerritories = countFreeTerritories(allTerritories);
+
+	//@Belief
+	//public ISpaceObject[] myPossibleTargets = findPossibleTargets(allTerritories,myTerritories, this);
     
 
     public ISpaceObject[] findMyTerritories (ISpaceObject[] allTerritories, Player player)
@@ -54,8 +68,6 @@ public class PlayerBDI extends Player{
     		
     	return foundTerritories;
     }
-    
-    
 
     public int countFreeTerritories (ISpaceObject[] allTerritories){
 		ISpaceObject[] freeTerritories= new ISpaceObject[]{};
@@ -73,97 +85,38 @@ public class PlayerBDI extends Player{
 		    		
 		    	return nfound;
     }
-    
-    @Belief
-    protected ISpaceObject[] myTerritories = findMyTerritories(allTerritories, this);
 
-    
-    @Belief
-    public int freeTerritories = countFreeTerritories(allTerritories);
+	//public ISpaceObject[] findPossibleTargets(ISpaceObject[] allTerritories,ISpaceObject[] myTerritories, Player player){return ;}
 
-    @Plan(trigger= @Trigger (factchangeds="freeTerritories"))
+    /*
+    @Plan(trigger= @Trigger (factchangeds="name"))
     public void teste(ChangeEvent event)
     {
-    	int v = (int) event.getValue();
-		System.out.println("New value: " + v);
+    	String v = (String) event.getValue();
+		System.out.println("im alive: " + v);
+
     }
     
-    
+    */
     
     @AgentBody
     public void body(){
-    	
        /* ISpaceObject[] arvoresNoEspaco = space.getSpaceObjectsByType("Territory");
         Random r = new Random();
 		
         myself.setProperty("position", new Vector2Int(r.nextInt(spaceWidth), r.nextInt(spaceHeight)));*/
-    	System.out.println("tou vivo");
-    	System.out.println("meus territorios: "+ myTerritories.length);
-    	System.out.println("numero de territorios vazios: "+ freeTerritories );
-    	agent.adoptPlan(new Attack());
+    	//System.out.println("tou vivo");
+    //	System.out.println("meus territorios: "+ myTerritories.length);
+    	//System.out.println("numero de territorios vazios: "+ freeTerritories );
+    	//agent.adoptPlan(new Attack());
+        System.out.println("agente imprime nome de avatar  " + a.getProperty("name"));
+
 
     }
     
-    @Plan
-    public class Attack{
-		private long startingTime;
-		 
-		@PlanAPI
-		protected IPlan plan;
- 
-		@PlanContextCondition(beliefs="")
-		public boolean checkCondition() {
-			System.out.println("check condition");
-			return true;
-		}
- 
-		@PlanBody
-		public void body() {
-			System.out.println("body");
-		}
- 
-		@PlanPassed
-		public void passed() {
 
-			////como alterar um territorio
-			System.out.println("plan passed");
-			Player z = new Player(7,"ZE", new Color(4 ,6 ,8), 2);  ///Como referenciar o Player ?
-			Army ze_army = new Army(z , 10);
-			System.out.println(allTerritories[0].getId() );
-			System.out.println(allTerritories[0].getType() );
-			System.out.println(allTerritories[0].getPropertyNames());
-			
-			
-			
-			
-			
-			//allTerritories[0].setProperty("army", ze_army) ;    ///Suponho que isto faz o set...
-			//allTerritories[0].setProperty("armySize", 11); //descomenta isto e ve o que acontece, zezao
-			System.out.println(allTerritories[0].getProperty("army"));  /// mas como confirmar? territoryname
-			//allTerritories[0].setProperty("territoryname", "ZeLandia") ;  //  defacto altera
 
-			
-			
-			//Army test = (Army) allTerritories[0].getProperty("army");
-			//System.out.println(test.getPlayer() );
-			//System.out.println(test.getArmySize() );
-			
-           
-			System.out.println(space.getSpaceObjectsByType("Territory")[0].getProperty("armySize"));
-			///? e esta hein   :)
-		}
- 
-		@PlanAborted
-		public void aborted() {
-			System.out.println("plan aborted");
-		}
- 
-		@PlanFailed
-		public void failed(Exception e) {
-			System.out.println("plan failed");
-		}
-    }
-   
+
 
 }
 
