@@ -30,7 +30,7 @@ public class PlayerBDI extends Player{
 	protected String name = this.getName();
 
 
-
+/*
     @Belief
     protected ContinuousSpace2D space = (ContinuousSpace2D)agent.getParentAccess().getExtension("2dspace").get();
 
@@ -44,8 +44,9 @@ public class PlayerBDI extends Player{
 	protected Vector<Territory> myTerritories = findMyTerritories(allTerritories, this);
 
 	@Belief
-	public Vector<Territory> myPossibleTargets;// = findPossibleTargets(allTerritories,myTerritories, this);
+	public Vector<Territory> myPossibleTargets = findPossibleTargets(allTerritories,myTerritories, this);
 
+*/
 	//aux function
 	public Vector<Territory> SpaceObject2Territory (ISpaceObject[] allTerritories){
 		Vector<Territory> allTerr = new Vector<Territory>();
@@ -80,6 +81,14 @@ public class PlayerBDI extends Player{
 
 	public Vector<Territory> findPossibleTargets(Vector<Territory> allTerritories,Vector<Territory> myTerritories, Player player){
         Vector<Territory> targets = new Vector<Territory>();
+        for (int i = 0; i < myTerritories.size(); i++) {
+            Vector<Territory> temp = new Vector<Territory>();
+            temp = myTerritories.get(i).getAdjacentTerr();
+            for (int j = 0; j < temp.size(); j++) {
+                if( !targets.contains(temp.get(j)))
+                    targets.add(temp.get(j));
+            }
+        }
         return targets;}
 
     /*
@@ -97,20 +106,21 @@ public class PlayerBDI extends Player{
     public void body(){
 
 
-    //	System.out.println("tou vivo");
-	//	System.out.println("meus territorios: "+ myTerritories.length);
-    //	System.out.println("meus territorios: "+ myTerritories.length);
-
+    	//System.out.println("tou vivo");
+		//System.out.println("numero de territorios total : "+ allTerritories.size());
+    	//System.out.println("numero de territorios do player: "+ myTerritories.size());
+       // System.out.println("numero de targets do player: "+ myPossibleTargets.size());
     	//agent.adoptPlan(new Attack());
     	
     	
-        
+        /*
         if(agent.getProperty("name")!= null)
         {
         	a = space.getAvatar(agent.getComponentDescription());
         	
         System.out.println("agente imprime nome de avatar  " + agent.getProperty("name"));
         }
+        */
         
         
 
