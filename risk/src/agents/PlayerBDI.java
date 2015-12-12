@@ -3,12 +3,14 @@ package agents;
 
 import game.Army;
 import game.Player;
+import game.Territory;
 import jadex.bdiv3.BDIAgent;
 import jadex.bdiv3.annotation.*;
 import jadex.bdiv3.runtime.ChangeEvent;
 import jadex.bdiv3.runtime.IPlan;
 import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.space2d.ContinuousSpace2D;
+import jadex.extension.envsupport.math.IVector2;
 import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.AgentBody;
 import jadex.extension.envsupport.environment.*;
@@ -16,6 +18,7 @@ import jadex.extension.envsupport.environment.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 @Agent
 public class PlayerBDI extends Player{
@@ -34,8 +37,8 @@ public class PlayerBDI extends Player{
     @Belief
     protected ISpaceObject a = space.getAvatar(agent.getComponentDescription());
 
-//    @Belief
- //   protected ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
+    @Belief
+    protected ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
 
 	//@Belief
 //	protected ISpaceObject[] myTerritories = findMyTerritories(allTerritories, this);
@@ -46,6 +49,33 @@ public class PlayerBDI extends Player{
 	//@Belief
 	//public ISpaceObject[] myPossibleTargets = findPossibleTargets(allTerritories,myTerritories, this);
     
+	public Vector<Territory> SpaceObject2Territory (ISpaceObject[] allTerritories){
+		Vector<Territory> allTerr = new Vector<Territory>();
+		for (int i = 0; i < allTerritories.length; i++) {
+			//Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord)
+			Territory t = new Territory();
+			int index = (int) allTerritories[i].getProperty("index");
+			String territoryName = (String) allTerritories[i].getProperty("territoryname");
+			String continentName = (String) allTerritories[i].getProperty("continentname");
+			IVector2 size = (IVector2) allTerritories[i].getProperty("size");
+			IVector2 boardCoord = (IVector2) allTerritories[i].getProperty("position");
+			int shape = (int) allTerritories[i].getProperty("type");
+			int testsize = (int) allTerritories[i].getProperty("textSize");
+			Color owner = (Color) allTerritories[i].getProperty("ownerColor");
+
+			t.setOwnerColor(owner);
+			t.setIndex(index);
+			t.setTextSize(testsize);
+			t.setShapeType(shape);
+			t.setTerritoryName(territoryName);
+			t.setContinentName(continentName);
+			t.setSize(size);
+			t.setBoardCoord(boardCoord);
+
+		}
+
+		return allTerr;
+	}
 
     public ISpaceObject[] findMyTerritories (ISpaceObject[] allTerritories, Player player)
     {
