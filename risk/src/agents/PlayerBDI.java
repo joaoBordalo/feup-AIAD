@@ -112,9 +112,11 @@ public class PlayerBDI extends Player{
     	
     	
         
-        if(a.getProperty("name")!= null)
+        if(agent.getProperty("name")!= null)
         {
-        System.out.println("agente imprime nome de avatar  " + a.getProperty("name"));
+        	a = space.getAvatar(agent.getComponentDescription());
+        	
+        System.out.println("agente imprime nome de avatar  " + agent.getProperty("name"));
         }
         
         
