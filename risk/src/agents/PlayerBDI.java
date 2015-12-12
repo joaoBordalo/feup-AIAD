@@ -38,85 +38,49 @@ public class PlayerBDI extends Player{
     protected ISpaceObject a = space.getAvatar(agent.getComponentDescription());
 
     @Belief
-    protected ISpaceObject[] allTerritories = space.getSpaceObjectsByType("Territory");
+    protected Vector<Territory> allTerritories = SpaceObject2Territory (space.getSpaceObjectsByType("Territory") );
 
-	//@Belief
-//	protected ISpaceObject[] myTerritories = findMyTerritories(allTerritories, this);
+	@Belief
+	protected Vector<Territory> myTerritories = findMyTerritories(allTerritories, this);
 
-//	@Belief
-//	public int freeTerritories = countFreeTerritories(allTerritories);
+	@Belief
+	public Vector<Territory> myPossibleTargets;// = findPossibleTargets(allTerritories,myTerritories, this);
 
-	//@Belief
-	//public ISpaceObject[] myPossibleTargets = findPossibleTargets(allTerritories,myTerritories, this);
-    
+	//aux function
 	public Vector<Territory> SpaceObject2Territory (ISpaceObject[] allTerritories){
 		Vector<Territory> allTerr = new Vector<Territory>();
 		for (int i = 0; i < allTerritories.length; i++) {
 			//Territory(int index, String territoryName, String continentName, IVector2 size, IVector2 boardCoord)
-			Territory t = new Territory();
-			int index = (int) allTerritories[i].getProperty("index");
-			String territoryName = (String) allTerritories[i].getProperty("territoryname");
-			String continentName = (String) allTerritories[i].getProperty("continentname");
-			IVector2 size = (IVector2) allTerritories[i].getProperty("size");
-			IVector2 boardCoord = (IVector2) allTerritories[i].getProperty("position");
-			int shape = (int) allTerritories[i].getProperty("type");
-			int testsize = (int) allTerritories[i].getProperty("textSize");
-			Color owner = (Color) allTerritories[i].getProperty("ownerColor");
-
-			t.setOwnerColor(owner);
-			t.setIndex(index);
-			t.setTextSize(testsize);
-			t.setShapeType(shape);
-			t.setTerritoryName(territoryName);
-			t.setContinentName(continentName);
-			t.setSize(size);
-			t.setBoardCoord(boardCoord);
-
+			Territory t = new Territory(allTerritories[i]);
+			allTerr.add(t);
 		}
 
 		return allTerr;
 	}
 
-    public ISpaceObject[] findMyTerritories (ISpaceObject[] allTerritories, Player player)
+    public Vector<Territory> findMyTerritories (Vector<Territory> allTerritories, Player player)
     {
-    	ISpaceObject[] foundTerritories= new ISpaceObject[]{};
+		Vector<Territory> foundTerritories= new Vector<Territory>();
     	
     	int nfound=0;
     	
-    	for(int i = 0; i< allTerritories.length; i++)
+    	for(int i = 0; i< allTerritories.size(); i++)
     	{
-
-    		//System.out.println(i);
-
-
-    		Player owner = (Player) allTerritories[i].getProperty("Player");
+    		Player owner = (Player) allTerritories.get(i).getOwner();
     		if(owner!=null && owner.getName().equals(this.getName()))
     		{
-    			foundTerritories[nfound] = allTerritories[i];
+    			foundTerritories.add(allTerritories.get(i));
     		}
     	}
     		
     	return foundTerritories;
     }
 
-    public int countFreeTerritories (ISpaceObject[] allTerritories){
-		ISpaceObject[] freeTerritories= new ISpaceObject[]{};
-		    	
-		    	int nfound=0;
-		    	
-		    	for(int i = 0; i< allTerritories.length; i++)
-		    	{
-		    		Player owner = (Player) allTerritories[i].getProperty("Player");
-		    		if(owner==null )
-		    		{
-		    			nfound ++ ;
-		    		}
-		    	}
-		    		
-		    	return nfound;
-    }
 
-	//public ISpaceObject[] findPossibleTargets(ISpaceObject[] allTerritories,ISpaceObject[] myTerritories, Player player){return ;}
+
+	public Vector<Territory> findPossibleTargets(Vector<Territory> allTerritories,Vector<Territory> myTerritories, Player player){
+        Vector<Territory> targets = new Vector<Territory>();
+        return targets;}
 
     /*
     @Plan(trigger= @Trigger (factchangeds="name"))
@@ -131,13 +95,12 @@ public class PlayerBDI extends Player{
     
     @AgentBody
     public void body(){
-       /* ISpaceObject[] arvoresNoEspaco = space.getSpaceObjectsByType("Territory");
-        Random r = new Random();
-		
-        myself.setProperty("position", new Vector2Int(r.nextInt(spaceWidth), r.nextInt(spaceHeight)));*/
-    	//System.out.println("tou vivo");
+
+
+    //	System.out.println("tou vivo");
+	//	System.out.println("meus territorios: "+ myTerritories.length);
     //	System.out.println("meus territorios: "+ myTerritories.length);
-    	//System.out.println("numero de territorios vazios: "+ freeTerritories );
+
     	//agent.adoptPlan(new Attack());
     	
     	

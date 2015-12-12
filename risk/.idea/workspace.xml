@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="70380efa-da6c-4dc2-b0f8-3e8e7050a358" name="Default" comment="Added 2 plans to the agent:&#10; --  plan a is launched on belief update&#10; -- plan b is launched on context">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/agents/PlayerBDI.java" afterPath="$PROJECT_DIR$/src/agents/PlayerBDI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/Territory.java" afterPath="$PROJECT_DIR$/src/game/Territory.java" />
     </list>
     <ignored path="risk.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,26 +25,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayerBDI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlayerBDI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/agents/PlayerBDI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.185185">
-              <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.3063063">
+              <caret line="81" column="60" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
               <folding>
-                <element signature="e#1500#1511#0" expanded="true" />
+                <element signature="method#SpaceObject2Territory#0;class#PlayerBDI#0" expanded="false" />
+                <element signature="e#1459#1470#0" expanded="true" />
                 <element signature="method#findMyTerritories#0;class#PlayerBDI#0" expanded="false" />
-                <element signature="method#countFreeTerritories#0;class#PlayerBDI#0" expanded="false" />
-                <element signature="method#body#0;class#PlayerBDI#0" expanded="false" />
+                <element signature="e#1880#1891#0" expanded="true" />
+                <element signature="e#2407#2418#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Territory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Territory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Territory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51103365">
-              <caret line="56" column="72" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
+            <state vertical-scroll-proportion="-13.777778">
+              <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
               <folding>
                 <element signature="method#Territory#0;class#Territory#0" expanded="false" />
                 <element signature="e#2379#2380#0" expanded="true" />
@@ -170,8 +170,8 @@
         <option value="$PROJECT_DIR$/src/game/Launcher.java" />
         <option value="$PROJECT_DIR$/src/game/RiskProcess.java" />
         <option value="$PROJECT_DIR$/src/Risk.application.xml" />
-        <option value="$PROJECT_DIR$/src/agents/PlayerBDI.java" />
         <option value="$PROJECT_DIR$/src/game/Territory.java" />
+        <option value="$PROJECT_DIR$/src/agents/PlayerBDI.java" />
       </list>
     </option>
   </component>
@@ -824,7 +824,7 @@
       <updated>1449703931804</updated>
       <workItem from="1449703934747" duration="6655000" />
       <workItem from="1449864309273" duration="11130000" />
-      <workItem from="1449937041949" duration="1232000" />
+      <workItem from="1449937041949" duration="1829000" />
     </task>
     <task id="LOCAL-00001" summary="Added 2 plans to the agent:&#10; --  plan a is launched on belief update&#10; -- plan b is launched on context">
       <created>1449704935627</created>
@@ -836,7 +836,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19017000" />
+    <option name="totallyTimeSpent" value="19614000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -889,10 +889,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1500#1511#0" expanded="true" />
+            <element signature="method#SpaceObject2Territory#0;class#PlayerBDI#0" expanded="false" />
+            <element signature="e#1459#1470#0" expanded="true" />
             <element signature="method#findMyTerritories#0;class#PlayerBDI#0" expanded="false" />
-            <element signature="method#countFreeTerritories#0;class#PlayerBDI#0" expanded="false" />
-            <element signature="method#body#0;class#PlayerBDI#0" expanded="false" />
+            <element signature="e#1880#1891#0" expanded="true" />
+            <element signature="e#2407#2418#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -979,10 +980,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1500#1511#0" expanded="true" />
+            <element signature="method#SpaceObject2Territory#0;class#PlayerBDI#0" expanded="false" />
+            <element signature="e#1459#1470#0" expanded="true" />
             <element signature="method#findMyTerritories#0;class#PlayerBDI#0" expanded="false" />
-            <element signature="method#countFreeTerritories#0;class#PlayerBDI#0" expanded="false" />
-            <element signature="method#body#0;class#PlayerBDI#0" expanded="false" />
+            <element signature="e#1880#1891#0" expanded="true" />
+            <element signature="e#2407#2418#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1246,27 +1248,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/PlayerBDI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.185185">
-          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
-          <folding>
-            <element signature="e#1500#1511#0" expanded="true" />
-            <element signature="method#findMyTerritories#0;class#PlayerBDI#0" expanded="false" />
-            <element signature="method#countFreeTerritories#0;class#PlayerBDI#0" expanded="false" />
-            <element signature="method#body#0;class#PlayerBDI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Territory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51103365">
-          <caret line="56" column="72" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
+        <state vertical-scroll-proportion="-13.777778">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
           <folding>
             <element signature="method#Territory#0;class#Territory#0" expanded="false" />
             <element signature="e#2379#2380#0" expanded="true" />
             <element signature="e#2418#2419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agents/PlayerBDI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3063063">
+          <caret line="81" column="60" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
+          <folding>
+            <element signature="method#SpaceObject2Territory#0;class#PlayerBDI#0" expanded="false" />
+            <element signature="e#1459#1470#0" expanded="true" />
+            <element signature="method#findMyTerritories#0;class#PlayerBDI#0" expanded="false" />
+            <element signature="e#1880#1891#0" expanded="true" />
+            <element signature="e#2407#2418#0" expanded="true" />
           </folding>
         </state>
       </provider>
