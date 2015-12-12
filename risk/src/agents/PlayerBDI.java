@@ -8,12 +8,17 @@ import jadex.bdiv3.BDIAgent;
 import jadex.bdiv3.annotation.*;
 import jadex.bdiv3.runtime.ChangeEvent;
 import jadex.bdiv3.runtime.IPlan;
+import jadex.bridge.modelinfo.IExtensionInstance;
+import jadex.commons.future.DefaultResultListener;
+import jadex.commons.future.IFuture;
 import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.space2d.ContinuousSpace2D;
+import jadex.extension.envsupport.environment.space2d.Space2D;
 import jadex.extension.envsupport.math.IVector2;
 import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.AgentBody;
 import jadex.extension.envsupport.environment.*;
+import jadex.micro.annotation.AgentCreated;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -23,29 +28,51 @@ import java.util.Vector;
 @Agent
 public class PlayerBDI extends Player{
 
+
     @Agent
     protected BDIAgent agent;
+
+	@Belief
+	protected Space2D space ;
+	//= (ContinuousSpace2D)agent.getParentAccess().getExtension("2dspace").get();
+
+	@Belief
+	protected Vector<Territory> allTerritories ;
+	//= SpaceObject2Territory (space.getSpaceObjectsByType("Territory") );
+
+	@Belief
+	protected Vector<Territory> myTerritories;
+	//= findMyTerritories(allTerritories, this);
+
+	@Belief
+	public Vector<Territory> myPossibleTargets;
+	//= findPossibleTargets(allTerritories,myTerritories, this);
+
+	@AgentCreated
+	public void init()
+	{
+
+
+		IFuture<IExtensionInstance> fut = agent.getParentAccess().getExtension("2dspace");
+		fut.addResultListener(new DefaultResultListener<IExtensionInstance>() {
+			public void resultAvailable(IExtensionInstance cs) {
+				space = (Space2D) cs;
+				ISpaceObject[] i = space.getSpaceObjectsByType("Territory");
+				//allTerritories = SpaceObject2Territory(i);
+
+			}
+		});
+
+	}
 
 	@Belief
 	protected String name = this.getName();
 
 
+
 /*
     @Belief
-    protected ContinuousSpace2D space = (ContinuousSpace2D)agent.getParentAccess().getExtension("2dspace").get();
-
-    @Belief
     protected ISpaceObject a = space.getAvatar(agent.getComponentDescription());
-
-    @Belief
-    protected Vector<Territory> allTerritories = SpaceObject2Territory (space.getSpaceObjectsByType("Territory") );
-
-	@Belief
-	protected Vector<Territory> myTerritories = findMyTerritories(allTerritories, this);
-
-	@Belief
-	public Vector<Territory> myPossibleTargets = findPossibleTargets(allTerritories,myTerritories, this);
-
 */
 	//aux function
 	public Vector<Territory> SpaceObject2Territory (ISpaceObject[] allTerritories){
@@ -106,7 +133,7 @@ public class PlayerBDI extends Player{
     public void body(){
 
 
-    	//System.out.println("tou vivo");
+    	System.out.println("tou vivo");
 		//System.out.println("numero de territorios total : "+ allTerritories.size());
     	//System.out.println("numero de territorios do player: "+ myTerritories.size());
        // System.out.println("numero de targets do player: "+ myPossibleTargets.size());
