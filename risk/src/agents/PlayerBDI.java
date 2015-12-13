@@ -19,6 +19,7 @@ import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.AgentBody;
 import jadex.extension.envsupport.environment.*;
 import jadex.micro.annotation.AgentCreated;
+import perceptions.AttackPerception;
 import perceptions.Perception;
 import perceptions.ReinforceArmyPerception;
 
@@ -122,7 +123,35 @@ public class PlayerBDI extends Player{
 
 	public void initAttackPerceptions()
 	{
+		HashMap<String, Integer> myTerritories=new HashMap<String, Integer>();
+		ISpaceObject[]  allTerritories = myEnvironment.getSpaceObjectsByType("Territory");
 
+		int numberMyTerritories=0;
+
+		//get the Agent's territory and army size by its color identifier
+		for(int i = 0; i < allTerritories.length;i++)
+		{
+			if(allTerritories[i].getProperty("ownerColor")==player.getColor())
+			{
+				myTerritories.put((String)allTerritories[i].getProperty("territoryname"), (Integer)allTerritories[i].getProperty("armySize"));
+				numberMyTerritories++;
+			}
+		}
+
+
+		// for each territory
+		for (int i = 0; i < allTerritories.length; i++) {
+			if(myTerritories.containsKey(allTerritories[i].getProperty("territoryname"))); // se territorio é do jogador
+			{
+				Territory t = new Territory(allTerritories[i]);
+				Vector<Territory> v = new Vector<Territory>();
+				v = t.getAdjacentTerr(); // vai buscar adjacents
+				for (int j = 0; j < v.size(); j++) {
+					AttackPerception a = new AttackPerception(t, v.get(j), false);
+					perceptions.add(a);
+				}
+			}
+		}
 	}
 
 	public void initFortifyPerceptions()
