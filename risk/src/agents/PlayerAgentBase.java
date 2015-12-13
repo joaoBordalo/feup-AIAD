@@ -24,7 +24,6 @@ import game.Player;
  */
 public abstract class  PlayerAgentBase extends Player {
 
-	protected int currentRound=0;
 	
 	
 	
@@ -32,12 +31,10 @@ public abstract class  PlayerAgentBase extends Player {
 	//---------Constructor---------
 	public PlayerAgentBase()
 	{
-		currentRound=0;
 	}
 	
 	//---------Agent Perceptions Methods---------
 	public abstract void initPerceptions();
-	
 	
 	/*
 	 * Finds the Agent's Territory (by color)
@@ -47,7 +44,7 @@ public abstract class  PlayerAgentBase extends Player {
 	public abstract void initReinforceArmyPerceptions();
 	
 	
-	public abstract void initAttackPerceptions(); // NOT TESTED
+	public abstract void initAttackPerceptions(); 
 	
 	
 	public void initFortifyPerceptions()
@@ -55,32 +52,8 @@ public abstract class  PlayerAgentBase extends Player {
 		
 	}
 	
+	//---------Agent Actions Methods---------
 	
+	public abstract void createPossibleReinforcements(ReinforceArmyPerception perception);
 
-	
-	public void nextTurn()
-	{
-		currentRound++;
-	}
-	
-	//---------Getters and Setters---------
-	public int getCurrentRound()
-	{
-		return currentRound;
-	}
-	
-	public void setCurrentRound(int currentRound)
-	{
-		this.currentRound=currentRound;
-	}
-	
-/*	public Space2D getMyEnvironment() 
-	{
-		return myEnvironment;
-	}
-	
-	public void setMyEnvironment(Space2D myEnvironment) 
-	{
-		this.myEnvironment = myEnvironment;
-	}*/
 }

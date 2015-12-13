@@ -957,7 +957,6 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	{
     	System.out.println("meta "+ tempList.length);
     	System.out.println("meta "+ tempList[0]);
-    	//IComponentDescription asd;
     	System.out.println("componentes do space" + space.getAvatar(space.getComponents()[0]));
     	System.out.println("cprovider "+ space.getExternalAccess().getServiceProvider().getType());
     	
