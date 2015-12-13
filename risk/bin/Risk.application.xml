@@ -57,7 +57,7 @@
                  <env:objecttype name="Player">
                      <env:property name="name" class="String">new String()</env:property>
                      <env:property name="index" class="int"></env:property>
-                     <env:property name="color" class="String"></env:property>
+                     <!-- <env:property name="color" class="String">new String()</env:property> -->
                  </env:objecttype>
 
             </env:objecttypes>
@@ -69,14 +69,14 @@
 
             <env:avatarmappings>
                   <env:avatarmapping componenttype="Playerbdi" objecttype="Player" />
-                  <env:avatarmapping componenttype="Dummybdi" objecttype="Player" />
+                  <env:avatarmapping componenttype="ReactAge" objecttype="Player" />
             </env:avatarmappings>
 
 
 			<env:percepttypes>
 			<env:percepttype name="territory_appeared" objecttype="Territory">
 				<env:componenttypes>
-				<env:componenttype name="Dummybdi"/>
+				<env:componenttype name="ReactAge"/>
 				</env:componenttypes>
 			</env:percepttype>
 				
@@ -93,7 +93,7 @@
 					</env:property>
 				</env:perceptgenerator>
 				
-				<env:perceptprocessor componenttype="Dummybdi" class="DefaultBDIVisionProcessor" >
+				<env:perceptprocessor componenttype="ReactAge" class="DefaultBDIVisionProcessor" >
 					<env:property name="percepttypes">
 						new Object[]
 						{
@@ -164,7 +164,7 @@
 
    <componenttypes>
         <componenttype name="Playerbdi" filename="agents\PlayerBDI.class"/>
-        <componenttype name="Dummybdi" filename="agents\DummyBDI.class"/>
+        <componenttype name="ReactAge" filename="agents\PlayerReactiveAgent.class"/>
     </componenttypes>
 
     <configurations>
@@ -217,7 +217,7 @@
             <components>
                
                <component type="Playerbdi"/>
-               <component type="Dummybdi"/>
+               <component type="ReactAge"/>
             </components>
 
         </configuration>

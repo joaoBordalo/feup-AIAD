@@ -1,37 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <p0:properties xmlns:p0="http://jadex.sourceforge.net/jadexconf" __ID="0">
-	<p0:properties __ID="1" type="chat">
-		<p0:property __ID="2" type="nickname">user_df2</p0:property>
-	</p0:properties>
-	<p0:properties __ID="3" type="awa">
-		<p0:property __ID="4" type="fast">false</p0:property>
-		<p0:property __ID="5" type="autocreate">true</p0:property>
-		<p0:property __ID="6" type="autodelete">true</p0:property>
-	</p0:properties>
-	<p0:properties __ID="7" type="simulationservice">
-		<p0:property __ID="8" type="executing">true</p0:property>
-	</p0:properties>
-	<p0:properties __ID="9" type="securityservice">
-		<p0:property __ID="10" type="validityduration">327680</p0:property>
-		<p0:property __ID="11" type="usepass">true</p0:property>
-		<p0:property __ID="12" type="password">42fe6bb4-046</p0:property>
-		<p0:property __ID="13" type="selected_mechanism">0</p0:property>
-		<p0:property __ID="14" type="trustedlan">false</p0:property>
-		<p0:property __ID="15" type="storepath">./keystore</p0:property>
-		<p0:property __ID="16" type="storepass">keystore</p0:property>
-		<p0:property __ID="17" type="keypass">keystore</p0:property>
-		<p0:property __ID="18" type="selmech">0</p0:property>
-		<p0:properties __ID="19" type="DecentralizedAcquisitionMechanism">
-			<p0:property __ID="20" type="responses">1</p0:property>
+	<p0:properties __ID="1" type="StarterServicePanel">
+		<p0:properties __ID="2" type="mpanel">
+			<p0:property __ID="3" type="tree"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<p0:TreeProperties xmlns:p0="typeinfo:jadex.base.gui.filetree" __ID="0">
+	<expandedNodes>
+		<p0:NodePath__1 __ID="1" __len="0"></p0:NodePath__1>
+	</expandedNodes>
+	<rootPathEntries>
+		<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="2" __len="0"></p1:String__1>
+	</rootPathEntries>
+</p0:TreeProperties>
+]]></p0:property>
+			<p0:properties __ID="4" type="mic">
+				<p0:property __ID="5" type="Application">true</p0:property>
+				<p0:property __ID="6" type="Component">true</p0:property>
+				<p0:property __ID="7" type="Micro Agent">true</p0:property>
+				<p0:property __ID="8" type="BDIV3 Agent">true</p0:property>
+			</p0:properties>
 		</p0:properties>
-		<p0:properties __ID="21" type="TTPAcquisitionMechanism">
-			<p0:property __ID="22" type="verify">true</p0:property>
+		<p0:properties __ID="9" type="spanel">
+			<p0:property __ID="10" type="startsuspended">false</p0:property>
+			<p0:property __ID="11" type="autogenerate">false</p0:property>
+			<p0:property __ID="12" type="number">1</p0:property>
+			<p0:property __ID="13" type="name"></p0:property>
 		</p0:properties>
 	</p0:properties>
-	<p0:properties __ID="23" type="clockservice">
-		<p0:property __ID="24" type="type">system</p0:property>
-		<p0:property __ID="25" type="delta">100</p0:property>
-		<p0:property __ID="26" type="dilation">1.0</p0:property>
+	<p0:properties __ID="14" type="chat">
+		<p0:property __ID="15" type="nickname">user_df2</p0:property>
 	</p0:properties>
-	<p0:properties __ID="27" type="library_service"></p0:properties>
+	<p0:properties __ID="16" type="awa">
+		<p0:property __ID="17" type="fast">false</p0:property>
+		<p0:property __ID="18" type="autocreate">true</p0:property>
+		<p0:property __ID="19" type="autodelete">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="20" type="simulationservice">
+		<p0:property __ID="21" type="executing">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="22" type="securityservice">
+		<p0:property __ID="23" type="validityduration">327680</p0:property>
+		<p0:property __ID="24" type="usepass">true</p0:property>
+		<p0:property __ID="25" type="password">42fe6bb4-046</p0:property>
+		<p0:property __ID="26" type="selected_mechanism">0</p0:property>
+		<p0:property __ID="27" type="trustedlan">false</p0:property>
+		<p0:property __ID="28" type="storepath">./keystore</p0:property>
+		<p0:property __ID="29" type="storepass">keystore</p0:property>
+		<p0:property __ID="30" type="keypass">keystore</p0:property>
+		<p0:property __ID="31" type="selmech">0</p0:property>
+		<p0:properties __ID="32" type="DecentralizedAcquisitionMechanism">
+			<p0:property __ID="33" type="responses">1</p0:property>
+		</p0:properties>
+		<p0:properties __ID="34" type="TTPAcquisitionMechanism">
+			<p0:property __ID="35" type="verify">true</p0:property>
+		</p0:properties>
+	</p0:properties>
+	<p0:properties __ID="36" type="clockservice">
+		<p0:property __ID="37" type="type">system</p0:property>
+		<p0:property __ID="38" type="delta">100</p0:property>
+		<p0:property __ID="39" type="dilation">1.0</p0:property>
+	</p0:properties>
+	<p0:properties __ID="40" type="library_service"></p0:properties>
 </p0:properties>

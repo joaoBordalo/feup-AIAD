@@ -2,13 +2,16 @@ package agents;
 
 
 
+import game.Territory;
 import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.space2d.Space2D;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Vector;
 
+import perceptions.AttackPerception;
 import perceptions.Perception;
 import perceptions.ReinforceArmyPerception;
 import game.Player;
@@ -64,12 +67,12 @@ public abstract class  PlayerAgentBase extends Player {
 		{
 			if(allTerritories[i].getProperty("ownerColor")==player.getColor())
 			{
-				//System.out.println("conteudo map: " + (String)allTerritories[i].getProperty("territoryname") + " - " +(Integer)allTerritories[i].getProperty("armySize") );
+				System.out.println("conteudo map: " + (String)allTerritories[i].getProperty("territoryname") + " - " +(Integer)allTerritories[i].getProperty("armySize") );
 				myTerritories.put((String)allTerritories[i].getProperty("territoryname"), (Integer)allTerritories[i].getProperty("armySize"));
 				numberMyTerritories++;
 			}
 		}
-		System.out.println("number cinzento territorios: " + numberMyTerritories);
+		//System.out.println("number cinzento territorios: " + numberMyTerritories);
 		//Check if Agent Controls continents for bonus reinforcements
 		
 		//calculate number possible of reinforcements
@@ -82,9 +85,37 @@ public abstract class  PlayerAgentBase extends Player {
 		
 	}
 	
-	public void initAttackPerceptions()
+	public void initAttackPerceptions() // NOT TESTED
 	{
-		
+		HashMap<String, Integer> myTerritories=new HashMap<String, Integer>();
+		ISpaceObject[]  allTerritories = myEnvironment.getSpaceObjectsByType("Territory");
+
+		int numberMyTerritories=0;
+
+		//get the Agent's territory and army size by its color identifier
+		for(int i = 0; i < allTerritories.length;i++)
+		{
+			if(allTerritories[i].getProperty("ownerColor")==player.getColor())
+			{
+				myTerritories.put((String)allTerritories[i].getProperty("territoryname"), (Integer)allTerritories[i].getProperty("armySize"));
+				numberMyTerritories++;
+			}
+		}
+
+
+		// for each territory
+		for (int i = 0; i < allTerritories.length; i++) {
+			if(myTerritories.containsKey(allTerritories[i].getProperty("territoryname"))); // se territorio é do jogador
+			{
+				Territory t = new Territory(allTerritories[i]);
+				Vector<Territory> v = new Vector<Territory>();
+				v = t.getAdjacentTerr(); // vai buscar adjacents
+				for (int j = 0; j < v.size(); j++) {
+					AttackPerception a = new AttackPerception(t, v.get(j), false);
+					perceptions.add(a);
+				}
+			}
+		}
 	}
 	
 	public void initFortifyPerceptions()

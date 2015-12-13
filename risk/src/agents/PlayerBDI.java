@@ -19,8 +19,11 @@ import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.AgentBody;
 import jadex.extension.envsupport.environment.*;
 import jadex.micro.annotation.AgentCreated;
+import perceptions.Perception;
+import perceptions.ReinforceArmyPerception;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -32,10 +35,11 @@ public class PlayerBDI extends Player{
     @Agent
     protected BDIAgent agent;
 
-	@Belief
-	protected Space2D space ;
-	//= (ContinuousSpace2D)agent.getParentAccess().getExtension("2dspace").get();
+	protected ArrayList<Perception> perceptions= new ArrayList<Perception>();
+	private  Space2D myEnvironment;
+	protected Player player;
 
+/*
 	@Belief
 	protected Vector<Territory> allTerritories ;
 	//= SpaceObject2Territory (space.getSpaceObjectsByType("Territory") );
@@ -48,6 +52,7 @@ public class PlayerBDI extends Player{
 	public Vector<Territory> myPossibleTargets;
 	//= findPossibleTargets(allTerritories,myTerritories, this);
 
+*/
 	@AgentCreated
 	public void init()
 	{
@@ -56,8 +61,8 @@ public class PlayerBDI extends Player{
 		IFuture<IExtensionInstance> fut = agent.getParentAccess().getExtension("2dspace");
 		fut.addResultListener(new DefaultResultListener<IExtensionInstance>() {
 			public void resultAvailable(IExtensionInstance cs) {
-				space = (Space2D) cs;
-				ISpaceObject[] i = space.getSpaceObjectsByType("Territory");
+				myEnvironment = (Space2D) cs;
+				ISpaceObject[] i = myEnvironment.getSpaceObjectsByType("Territory");
 				//allTerritories = SpaceObject2Territory(i);
 
 			}
@@ -65,12 +70,71 @@ public class PlayerBDI extends Player{
 
 	}
 
-	@Belief
-	protected String name = this.getName();
+
+	//---------Agent Perceptions Methods---------
+	public void initPerceptions(Space2D myEnvironment )
+	{
+		player=new Player();
+		player.setColor(Color.gray);
+		this.myEnvironment=myEnvironment;
+		//System.out.println("numero cenas: = "+this.myEnvironment.getSpaceObjectsByType("Territory").length);
+		System.out.println("color " +player.getColor());
+		initReinforceArmyPerceptions();
+		//initAttackPerceptions();
+		//initFortifyPerceptions();
+	}
+
+	/*
+	 * Finds the Agent's Territory (by color)
+	 * Counts number of territories that belongs to the Agent
+	 * Calculate number of possible reinforcements
+	 */
+	public void initReinforceArmyPerceptions()
+	{
+		HashMap<String, Integer> myTerritories=new HashMap<String, Integer>();
+		ISpaceObject[]  allTerritories = myEnvironment.getSpaceObjectsByType("Territory");
+
+		int numberMyTerritories=0;
+
+		//get the Agent's territory and army size by its color identifier
+		for(int i = 0; i < allTerritories.length;i++)
+		{
+			//
+			if(allTerritories[i].getProperty("ownerColor")==player.getColor())
+			{
+				System.out.println("conteudo map: " + (String)allTerritories[i].getProperty("territoryname") + " - " +(Integer)allTerritories[i].getProperty("armySize") );
+				myTerritories.put((String)allTerritories[i].getProperty("territoryname"), (Integer)allTerritories[i].getProperty("armySize"));
+				numberMyTerritories++;
+			}
+		}
+		//System.out.println("number cinzento territorios: " + numberMyTerritories);
+		//Check if Agent Controls continents for bonus reinforcements
+
+		//calculate number possible of reinforcements
+
+		int nReinforces= 3;//default number
+		ReinforceArmyPerception reinforcePerception= new ReinforceArmyPerception(myTerritories, nReinforces);
+		//System.out.println(myTerritories.size());
+		perceptions.add(reinforcePerception);
+
+
+	}
+
+	public void initAttackPerceptions()
+	{
+
+	}
+
+	public void initFortifyPerceptions()
+	{
+
+	}
 
 
 
-/*
+
+
+	/*
     @Belief
     protected ISpaceObject a = space.getAvatar(agent.getComponentDescription());
 */
@@ -118,43 +182,24 @@ public class PlayerBDI extends Player{
         }
         return targets;}
 
-    /*
-    @Plan(trigger= @Trigger (factchangeds="name"))
-    public void teste(ChangeEvent event)
-    {
-    	String v = (String) event.getValue();
-		System.out.println("im alive: " + v);
-
-    }
-    
-    */
     
     @AgentBody
     public void body(){
 
-
     	System.out.println("tou vivo");
-		//System.out.println("numero de territorios total : "+ allTerritories.size());
-    	//System.out.println("numero de territorios do player: "+ myTerritories.size());
-       // System.out.println("numero de targets do player: "+ myPossibleTargets.size());
-    	//agent.adoptPlan(new Attack());
-    	
-    	
-        /*
-        if(agent.getProperty("name")!= null)
-        {
-        	a = space.getAvatar(agent.getComponentDescription());
-        	
-        System.out.println("agente imprime nome de avatar  " + agent.getProperty("name"));
-        }
-        */
-        
-        
-
-
     }
-    
 
+
+
+	public Space2D getMyEnvironment()
+	{
+		return myEnvironment;
+	}
+
+	public void setMyEnvironment(Space2D myEnvironment)
+	{
+		this.myEnvironment = myEnvironment;
+	}
 
 
 
