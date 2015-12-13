@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
 
+import javassist.expr.NewArray;
 import agents.PlayerAgentBase;
 import jadex.bdi.testcases.misc.GetExternalAccessPlan;
 import jadex.bridge.IComponentIdentifier;
@@ -946,20 +947,57 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     public void execute(IClockService iClockService, IEnvironmentSpace iEnvironmentSpace) {
 
     	Space2D space = (Space2D) iEnvironmentSpace;
+    	Vector<String> agentTypes= new Vector<String>();
     	
-    	IComponentIdentifier[] tempList= new IComponentIdentifier[]{};
-    	
-    	tempList= getAgentsByType("Playerbdi", space);
-    	
+    	agentTypes.add("Playerbdi");
+    	agentTypes.add("PlayerRea");
     	
     	
-    	if(tempList.length>0)
+    	int numberOfAgents =0;
+    	
+    	
+    	for (String agentype : agentTypes) {
+    		
+    		
+    		numberOfAgents+= getAgentsByType(agentype, space).length;
+			
+		}
+    	
+    	int typeifagentssize =0;
+    	
+    	IComponentIdentifier[] tempList= new IComponentIdentifier[numberOfAgents];
+    	for(int i=0; i<numberOfAgents; i++)
     	{
-    	System.out.println("meta "+ tempList.length);
-    	System.out.println("meta "+ tempList[0]);
+    		IComponentIdentifier[] round = new IComponentIdentifier[numberOfAgents];
+    		
+    		round =getAgentsByType(agentTypes.get(i), space);
+    		for(int j=0; j< round.length; j++)
+    		{
+    			
+    			tempList[typeifagentssize]= round[j];
+    			System.out.println("component identifier: " + tempList[typeifagentssize]);
+    			typeifagentssize++;
+    		}
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	for(int i=0; i<numberOfAgents; i++)
+    	{
+    	//System.out.println("meta "+ tempList.length);
+    	//System.out.println("meta "+ tempList[0]);
     	//IComponentDescription asd;
-    	System.out.println("componentes do space" + space.getAvatar(space.getComponents()[0]));
-    	System.out.println("cprovider "+ space.getExternalAccess().getServiceProvider().getType());
+    	System.out.println("componente description" + space.getAvatar(space.getComponents()[i]).getId());
+    	
+    	
+    	ISpaceObject cenas= (ISpaceObject) space.getAvatar(space.getComponents()[i]).getId();
+    	
+    	
+    	//System.out.println("componentes do space" + space.getAvatar(space.getComponents()[1]));
     	
     
     	
