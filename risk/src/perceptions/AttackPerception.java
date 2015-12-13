@@ -7,43 +7,42 @@ import java.util.Vector;
 public class AttackPerception extends Perception {
 
 	
-	private Territory territoryFrom; // attacker's territory (from where the attacker's army comes)
-	private Territory territoryTo; // defender's territory (to where the attacker's army goes)
-	private boolean territoryConquerd;
-
+	private String territoryFrom; // attacker's territory (from where the attacker's army comes)
+	private String territoryTo; // defender's territory (to where the attacker's army goes)
+	private int armySizeFrom;
+	private int armySizeTo;
 	//---------Constructor---------
-	public AttackPerception(Territory tFrom, Territory tTo, boolean tConquerd) {
+	public AttackPerception(String tFrom, String tTo, int armyFrom, int armyTo) {
 		this.territoryFrom=tFrom;
 		this.territoryTo=tTo;
-		this.territoryConquerd=tConquerd;
+		this.armySizeFrom=armyFrom;
+		this.armySizeTo=armyTo;
 	}
-
-
+	
 	//---------Getters and Setters---------
-	public Territory getTerritoryFrom() {
+	public String getTerritoryFrom() {
 		return territoryFrom;
 	}
-
-	public void setTerritoryFrom(Territory territoryFrom) {
+	public void setTerritoryFrom(String territoryFrom) {
 		this.territoryFrom = territoryFrom;
 	}
-
-	public Territory getTerritoryTo() {
+	public String getTerritoryTo() {
 		return territoryTo;
 	}
-
-	public void setTerritoryTo(Territory territoryTo) {
+	public void setTerritoryTo(String territoryTo) {
 		this.territoryTo = territoryTo;
 	}
-
-	public boolean isTerritoryConquerd() {
-		return territoryConquerd;
+	public int getArmySizeFrom() {
+		return armySizeFrom;
 	}
-
-	public void setTerritoryConquerd(boolean territoryConquerd) {
-		this.territoryConquerd = territoryConquerd;
+	public void setArmySizeFrom(int armySizeFrom) {
+		this.armySizeFrom = armySizeFrom;
 	}
-
-
-
+	public int getArmySizeTo() {
+		return armySizeTo;
+	}
+	public void setArmySizeTo(int armySizeTo) {
+		this.armySizeTo = armySizeTo;
+	}
+	
 }

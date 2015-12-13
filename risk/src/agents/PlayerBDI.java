@@ -147,8 +147,8 @@ public class PlayerBDI extends Player{
 				Vector<Territory> v = new Vector<Territory>();
 				v = t.getAdjacentTerr(); // vai buscar adjacents
 				for (int j = 0; j < v.size(); j++) {
-					AttackPerception a = new AttackPerception(t, v.get(j), false);
-					perceptions.add(a);
+					//AttackPerception a = new AttackPerception(t, v.get(j), false);
+					//perceptions.add(a);
 				}
 			}
 		}

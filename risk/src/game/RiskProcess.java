@@ -124,7 +124,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        
        countryAdjsTemp.add(new Adj(0, 1));
        countryAdjsTemp.add(new Adj(0, 5));
-       countryAdjsTemp.add(new Adj(4, 6));
+       countryAdjsTemp.add(new Adj(4, 5));
        NAAdjs.add(0, countryAdjsTemp);
        countryAdjsTemp = new Vector<Adj>();
       
@@ -967,7 +967,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	
     	System.out.println("adjacentes: " + dumb.get(0).getContinentName());*/
     	
-    	for (String agentype : agentTypes) {
+    	/*for (String agentype : agentTypes) {
     		
     		
     		numberOfAgents+= getAgentsByType(agentype, space).length;
@@ -995,11 +995,6 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     			typeifagentssize++;
     		}
     	}
-    	
-    	
-    	
-    	
-    	
     	
     	
     	for(int i=0; i<numberOfAgents; i++)
@@ -1034,7 +1029,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	//para testar os turnos a passar
     	//space.setProperty("playerturn", (int)space.getProperty("playerturn") +1);
 
-
+*/
     }
 
 

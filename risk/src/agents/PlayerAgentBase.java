@@ -1,18 +1,7 @@
 package agents;
 
-
-
-import game.Territory;
-import jadex.extension.envsupport.environment.ISpaceObject;
-import jadex.extension.envsupport.environment.space2d.Space2D;
-
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Vector;
-
+import actions.AttackAction;
 import perceptions.AttackPerception;
-import perceptions.Perception;
 import perceptions.ReinforceArmyPerception;
 import game.Player;
 
@@ -55,5 +44,8 @@ public abstract class  PlayerAgentBase extends Player {
 	//---------Agent Actions Methods---------
 	
 	public abstract void createPossibleReinforcements(ReinforceArmyPerception perception);
-
+	
+	public abstract void createAttackTerritory(AttackPerception perception);
+	
+	public abstract void perfomAttackTeritory();
 }
