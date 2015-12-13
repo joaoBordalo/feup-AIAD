@@ -2,13 +2,12 @@ package agents;
 
 
 
-import jadex.extension.envsupport.environment.IEnvironmentSpace;
 import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.space2d.Space2D;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 
 import perceptions.Perception;
 import perceptions.ReinforceArmyPerception;
@@ -22,9 +21,10 @@ import game.Player;
  */
 public abstract class  PlayerAgentBase extends Player {
 
-	protected int currentRound;
-	protected ArrayList<Perception> perceptions;
+	protected int currentRound=0;
+	protected ArrayList<Perception> perceptions= new ArrayList<Perception>();
 	private  Space2D myEnvironment;
+	protected Player player;
 	
 	
 	
@@ -37,7 +37,11 @@ public abstract class  PlayerAgentBase extends Player {
 	//---------Agent Perceptions Methods---------
 	public void initPerceptions(Space2D myEnvironment )
 	{
+		player=new Player();
+		player.setColor(Color.gray);
 		this.myEnvironment=myEnvironment;
+		//System.out.println("numero cenas: = "+this.myEnvironment.getSpaceObjectsByType("Territory").length);
+		System.out.println("color " +player.getColor());
 		initReinforceArmyPerceptions();
 		//initAttackPerceptions();
 		//initFortifyPerceptions();
@@ -50,29 +54,32 @@ public abstract class  PlayerAgentBase extends Player {
 	 */
 	public void initReinforceArmyPerceptions()
 	{
-		HashMap<Integer, Integer> myTerritories=new HashMap<Integer, Integer>();
-		ISpaceObject[]  allTerritories = myEnvironment.getSpaceObjectsByType("Teritory");
+		HashMap<String, Integer> myTerritories=new HashMap<String, Integer>();
+		ISpaceObject[]  allTerritories = myEnvironment.getSpaceObjectsByType("Territory");
 
 		int numberMyTerritories=0;
 		
 		//get the Agent's territory and army size by its color identifier
 		for(int i = 0; i < allTerritories.length;i++)
 		{
-			if(allTerritories[i].getProperty("color")==getColor())
+			if(allTerritories[i].getProperty("ownerColor")==player.getColor())
 			{
+				//System.out.println("conteudo map: " + (String)allTerritories[i].getProperty("territoryname") + " - " +(Integer)allTerritories[i].getProperty("armySize") );
+				myTerritories.put((String)allTerritories[i].getProperty("territoryname"), (Integer)allTerritories[i].getProperty("armySize"));
 				numberMyTerritories++;
-				myTerritories.put((Integer)allTerritories[i].getProperty("index"), (Integer)allTerritories[i].getProperty("armySize"));
 			}
 		}
-		
+		System.out.println("number cinzento territorios: " + numberMyTerritories);
 		//Check if Agent Controls continents for bonus reinforcements
 		
 		//calculate number possible of reinforcements
 		
 		int nReinforces= 3;//default number
 		ReinforceArmyPerception reinforcePerception= new ReinforceArmyPerception(myTerritories, nReinforces);
-		
+		//System.out.println(myTerritories.size());
 		perceptions.add(reinforcePerception);
+		
+		
 	}
 	
 	public void initAttackPerceptions()

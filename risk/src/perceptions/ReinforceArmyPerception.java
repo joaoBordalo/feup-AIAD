@@ -8,23 +8,23 @@ import java.util.Vector;
 public class ReinforceArmyPerception extends Perception {
 	
 	//<gameBoardIndex, ArmyNumber>
-	private HashMap<Integer,Integer> allocations;
+	private HashMap<String,Integer> allocations;
 	private int numberReinforcemnts;
 	
 	
 	//---------Constructor---------
-	public ReinforceArmyPerception(HashMap<Integer,Integer> allocs, int nReinforces) {
+	public ReinforceArmyPerception(HashMap<String,Integer> allocs, int nReinforces) {
 		this.allocations=allocs;
 		this.numberReinforcemnts=nReinforces;
 	}
 	
 
 	//---------Getters and Setters---------
-	public HashMap<Integer, Integer> getAllocations() {
+	public HashMap<String, Integer> getAllocations() {
 		return allocations;
 	}
 
-	public void setAllocations(HashMap<Integer, Integer> allocations) {
+	public void setAllocations(HashMap<String, Integer> allocations) {
 		this.allocations = allocations;
 	}
 

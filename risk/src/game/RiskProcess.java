@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
 
+import agents.PlayerAgentBase;
 import jadex.bridge.IComponentIdentifier;
 import jadex.bridge.service.types.clock.IClockService;
 import jadex.bridge.service.types.cms.IComponentDescription;
@@ -70,19 +71,20 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		public void setPlayers(Vector<Player> players) {
 			this.players = players;
 		}
-
+		private HashMap<Player,PlayerAgentBase> playerRefToAgent;
 	@Override
     public void start(IClockService arg0, IEnvironmentSpace arg1) {
 
         Space2D space = (Space2D)arg1;
         
         this.players= new Vector<Player>();
-        
+        this.playerRefToAgent = new HashMap<Player,PlayerAgentBase>();
         this.playersNumber = (int) space.getProperty("numberofplayers");
         		
         players.addElement(new Player(0, "zero", Color.cyan, playersNumber));
         players.addElement(new Player(1, "um", Color.gray, playersNumber));
         
+     
         
         int spaceHeight = space.getAreaSize().getXAsInteger();
         int spaceWidth = space.getAreaSize().getYAsInteger();
@@ -865,11 +867,11 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        Map player_M = new HashMap();
        player_M.put("name", players.get(i).getName());
        player_M.put("index", players.get(i).getIndex());
-       player_M.put("color", players.get(i).getColor().toString());
+       player_M.put("color", players.get(i).getColor());
        space.createSpaceObject("Player", player_M, null);
        
-       
        }
+       
        
        System.out.println("numero de objectos player:  " + space.getSpaceObjectsByType("Player").length);
        ISpaceObject[] z = space.getSpaceObjectsByType("Player");
@@ -878,11 +880,6 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        IComponentDescription[] w =space.getComponents();
 
        System.out.println("numero de componentwes    " + w.length );
-
-
-
-
-
        
     }
 
@@ -909,17 +906,6 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		       terrs[i].setProperty("textSize", updatedBoard.get(i).getTextSize());
 		       terrs[i].setProperty("ownerColor", updatedBoard.get(i).getOwnerColor());
 		}
-
-<<<<<<< HEAD
-      /* for (int i = 0; i < 4; i++) {
-=======
-       /*for (int i = 0; i < 4; i++) {
->>>>>>> origin/master
-          if(players.get(0).getAlive() == true)
-             players.get(0).setAlive(false);
-          else
-             players.get(0).setAlive(true);
-       }*/
     }
 
 

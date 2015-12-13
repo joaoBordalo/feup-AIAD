@@ -1,10 +1,10 @@
 package agents;
 
 
+import perceptions.ReinforceArmyPerception;
 import jadex.bridge.modelinfo.IExtensionInstance;
 import jadex.commons.future.DefaultResultListener;
 import jadex.commons.future.IFuture;
-import jadex.extension.envsupport.environment.IEnvironmentSpace;
 import jadex.extension.envsupport.environment.space2d.Space2D;
 import jadex.micro.MicroAgent;
 import jadex.micro.annotation.*;;
@@ -35,9 +35,14 @@ public void body()
 		
 		}
 	});
+	
 	initPerceptions(space);
 	System.out.println("João TESTE INIT!!!");
 	System.out.println("number Perceptions= "+ perceptions.size());
+	ReinforceArmyPerception re= (ReinforceArmyPerception) perceptions.get(0);
+	
+	System.out.println("number my territories= "+re.getAllocations().size());
+	
 }
 
 	

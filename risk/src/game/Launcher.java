@@ -41,9 +41,7 @@ public class Launcher {
 	    */
 	    IComponentManagementService cms = SServiceProvider.getService(pl.getServiceProvider(),
 	    IComponentManagementService.class, RequiredServiceInfo.SCOPE_PLATFORM).get(sus);
-	 
-
-
+	   
 
 
 	      /**
@@ -55,8 +53,6 @@ public class Launcher {
 	      gameArgs.put("numberofplayers", new Integer(2));
 	      CreationInfo infoArgs = new CreationInfo(gameArgs);
 	      IComponentIdentifier hw = cms.createComponent("riskgame", classPath, infoArgs).getFirstResult(sus);
-
-	      
 	    
 	  }
 
