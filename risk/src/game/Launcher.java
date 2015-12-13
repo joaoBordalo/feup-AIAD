@@ -23,7 +23,7 @@ public class Launcher {
 	    */
 		String[] defargs = new String[]
 				{
-				  "-gui", "false",
+				 // "-gui", "false",
 				  "-welcome", "false",
 				  "-cli", "false",
 				  "-printpass", "false"
@@ -53,6 +53,15 @@ public class Launcher {
 	      gameArgs.put("numberofplayers", new Integer(2));
 	      CreationInfo infoArgs = new CreationInfo(gameArgs);
 	      IComponentIdentifier hw = cms.createComponent("riskgame", classPath, infoArgs).getFirstResult(sus);
+<<<<<<< HEAD
+=======
+	      
+	      //cms.createComponent(null, "agents/DummyBDI.class", null).get(sus);
+	      
+	      
+	      	
+	      
+>>>>>>> origin/master
 	    
 	  }
 

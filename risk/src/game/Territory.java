@@ -73,6 +73,8 @@ public class Territory{
 		setContinentName(continentName);
 		setSize(size);
 		setBoardCoord(boardCoord);
+		
+		System.out.println("construtor terr " + this.getIndex());
 
 	}
 
