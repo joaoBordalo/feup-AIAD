@@ -1,15 +1,21 @@
 package game;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
 
 import agents.PlayerAgentBase;
+import jadex.bdi.testcases.misc.GetExternalAccessPlan;
 import jadex.bridge.IComponentIdentifier;
+import jadex.bridge.modelinfo.IExtensionInstance;
 import jadex.bridge.service.types.clock.IClockService;
 import jadex.bridge.service.types.cms.IComponentDescription;
 import jadex.commons.SimplePropertyObject;
+import jadex.commons.future.DefaultResultListener;
+import jadex.commons.future.IFuture;
 import jadex.extension.envsupport.environment.IEnvironmentSpace;
 import jadex.extension.envsupport.environment.ISpaceObject;
 import jadex.extension.envsupport.environment.ISpaceProcess;
@@ -72,6 +78,9 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 			this.players = players;
 		}
 		private HashMap<Player,PlayerAgentBase> playerRefToAgent;
+		
+		IComponentIdentifier[] listaret = new IComponentIdentifier[]{};
+		
 	@Override
     public void start(IClockService arg0, IEnvironmentSpace arg1) {
 
@@ -916,12 +925,52 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 
     }
 
+	
+	public IComponentIdentifier[] getAgentsByType(String type, Space2D spaceToSearch){
+		
+		//final IComponentIdentifier[] tempList= new IComponentIdentifier[]{};
+		
+		IFuture<IComponentIdentifier[]> fut = spaceToSearch.getExternalAccess().getChildren("Playerbdi");
+		fut.addResultListener(new DefaultResultListener<IComponentIdentifier[]>() {
+			public void resultAvailable(IComponentIdentifier[] cs) {
+				listaret = cs;
+				
+			}
+		});
+		
+		return listaret;
+	}
+	
+	
     @Override
     public void execute(IClockService iClockService, IEnvironmentSpace iEnvironmentSpace) {
 
     	Space2D space = (Space2D) iEnvironmentSpace;
     	
+    	IComponentIdentifier[] tempList= new IComponentIdentifier[]{};
     	
+    	tempList= getAgentsByType("Playerbdi", space);
+    	
+    	
+    	
+    	if(tempList.length>0)
+    	{
+    	System.out.println("meta "+ tempList.length);
+    	System.out.println("meta "+ tempList[0]);
+    	//IComponentDescription asd;
+    	System.out.println("componentes do space" + space.getAvatar(space.getComponents()[0]));
+    	System.out.println("cprovider "+ space.getExternalAccess().getServiceProvider().getType());
+    	
+    
+    	
+    	//ISpaceObject player = space.getSpaceObject(tempList[0]);
+    	
+    	//System.out.println("player ->  "+ player.getType());
+    	}
+    	
+    	//IComponentDescription[] lista= new IComponentDescription[]{};
+    	
+    	//lista = space.getComponents();
 
 
     }
