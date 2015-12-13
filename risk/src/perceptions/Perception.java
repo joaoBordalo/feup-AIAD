@@ -2,7 +2,7 @@ package perceptions;
 
 import java.util.Vector;
 
-public abstract class Perception {
+public class Perception {
 	
 	public Perception(){
 		

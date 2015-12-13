@@ -2,8 +2,7 @@ package perceptions;
 
 
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Vector;
+
 
 public class ReinforceArmyPerception extends Perception {
 	
@@ -14,6 +13,7 @@ public class ReinforceArmyPerception extends Perception {
 	
 	//---------Constructor---------
 	public ReinforceArmyPerception(HashMap<String,Integer> allocs, int nReinforces) {
+		super();
 		this.allocations=allocs;
 		this.numberReinforcemnts=nReinforces;
 	}

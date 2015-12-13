@@ -906,11 +906,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		       terrs[i].setProperty("textSize", updatedBoard.get(i).getTextSize());
 		       terrs[i].setProperty("ownerColor", updatedBoard.get(i).getOwnerColor());
 		}
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin/master
     }
 
 
