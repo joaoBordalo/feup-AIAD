@@ -58,6 +58,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 	};
 	
 	int playersNumber;
+	int turnNumber;
 	
 	Vector<Player> players;
 	Vector<Territory> gameBoard= new Vector<Territory>();
@@ -994,21 +995,29 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	System.out.println("componente description" + space.getAvatar(space.getComponents()[i]).getId());
     	
     	
-    	ISpaceObject cenas= (ISpaceObject) space.getAvatar(space.getComponents()[i]).getId();
+    	//ISpaceObject cenas= (ISpaceObject) space.getAvatar(space.getComponents()[i]).getId();
     	
     	
     	//System.out.println("componentes do space" + space.getAvatar(space.getComponents()[1]));
     	
-    
-    	
-    	//ISpaceObject player = space.getSpaceObject(tempList[0]);
-    	
-    	//System.out.println("player ->  "+ player.getType());
     	}
     	
+    	int actualturn= (int) space.getProperty("turnnumber");
+    	
+    	
+    	
+    	if((int) space.getProperty("playerturn")==playersNumber+1)
+    	{
+    	space.setProperty("turnnumber", actualturn+1);
+    	space.setProperty("playerturn", 0);
+    	}
     	//IComponentDescription[] lista= new IComponentDescription[]{};
     	
     	//lista = space.getComponents();
+    	
+    	System.out.println("turno " + space.getProperty("turnnumber"));
+    	//para testar os turnos a passar
+    	//space.setProperty("playerturn", (int)space.getProperty("playerturn") +1);
 
 
     }
