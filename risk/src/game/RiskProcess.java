@@ -798,6 +798,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
        properties.put("size", gameBoard.get(i).getSize());
        properties.put("army", gameBoard.get(i).getArmy());
        properties.put("armySize", gameBoard.get(i).getArmy().getArmySize());
+      properties.put("adjacentes", gameBoard.get(i).getAdjacentTerr());
        properties.put("index", gameBoard.get(i).getIndex());
        properties.put("territoryname", gameBoard.get(i).getTerritoryName());
        properties.put("continentname", gameBoard.get(i).getContinentName());
@@ -914,6 +915,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
 		       terrs[i].setProperty("index", updatedBoard.get(i).getIndex());
 		       terrs[i].setProperty("territoryname", updatedBoard.get(i).getTerritoryName());
 		       terrs[i].setProperty("continentname", updatedBoard.get(i).getContinentName());
+		       terrs[i].setProperty("adjacentes", updatedBoard.get(i).getAdjacentTerr());
 		       terrs[i].setProperty("textSize", updatedBoard.get(i).getTextSize());
 		       terrs[i].setProperty("ownerColor", updatedBoard.get(i).getOwnerColor());
 		}
@@ -956,6 +958,14 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	
     	int numberOfAgents =0;
     	
+    	//JA DA PARA IR BUSCAR CLASSES RANDOM. PETACULO
+    	/*ISpaceObject[] adjs = space.getSpaceObjectsByType("Territory");
+    	
+    	
+    	
+    	Vector<Territory> dumb = (Vector<Territory>)adjs[3].getProperty("adjacentes");
+    	
+    	System.out.println("adjacentes: " + dumb.get(0).getContinentName());*/
     	
     	for (String agentype : agentTypes) {
     		
