@@ -29,7 +29,7 @@
 ]]></p0:property>
 	</p0:properties>
 	<p0:properties __ID="14" type="Starter">
-		<p0:property __ID="15" type="leftsplit_location">0.6980392156862745</p0:property>
+		<p0:property __ID="15" type="leftsplit_location">0.6966731898238747</p0:property>
 		<p0:property __ID="16" type="mainsplit_location">0.45095693779904306</p0:property>
 	</p0:properties>
 	<p0:properties __ID="17" type="Chat">
@@ -41,8 +41,8 @@
 	<p0:properties __ID="21" type="window">
 		<p0:property __ID="22" type="width">864</p0:property>
 		<p0:property __ID="23" type="height">650</p0:property>
-		<p0:property __ID="24" type="x">219</p0:property>
-		<p0:property __ID="25" type="y">15</p0:property>
+		<p0:property __ID="24" type="x">74</p0:property>
+		<p0:property __ID="25" type="y">69</p0:property>
 		<p0:property __ID="26" type="extendedState">0</p0:property>
 		<p0:property __ID="27" type="jccexit">shutdown</p0:property>
 		<p0:property __ID="28" type="saveonexit">true</p0:property>
