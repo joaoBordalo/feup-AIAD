@@ -13,10 +13,6 @@ import game.Player;
  */
 public abstract class  PlayerAgentBase extends Player {
 
-	
-	
-	
-	
 	//---------Constructor---------
 	public PlayerAgentBase()
 	{

@@ -976,8 +976,8 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	
     	int typeifagentssize =0;
     	
-    	IComponentIdentifier[] tempList= new IComponentIdentifier[numberOfAgents];
-    	for(int i=0; i<numberOfAgents; i++)
+    	IComponentIdentifier[] tempList= new IComponentIdentifier[numberOfAgents];*/
+    	/*for(int i=0; i<numberOfAgents; i++)
     	{
 
     	System.out.println("meta "+ tempList.length);
@@ -994,10 +994,10 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     			System.out.println("component identifier: " + tempList[typeifagentssize]);
     			typeifagentssize++;
     		}
-    	}
+    	}*/
     	
     	
-    	for(int i=0; i<numberOfAgents; i++)
+    	/*for(int i=0; i<numberOfAgents; i++)
     	{
     	//System.out.println("meta "+ tempList.length);
     	//System.out.println("meta "+ tempList[0]);
@@ -1010,7 +1010,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	
     	//System.out.println("componentes do space" + space.getAvatar(space.getComponents()[1]));
     	
-    	}
+    	}*/
     	
     	int actualturn= (int) space.getProperty("turnnumber");
     	
@@ -1029,7 +1029,7 @@ public class RiskProcess extends SimplePropertyObject implements ISpaceProcess {
     	//para testar os turnos a passar
     	//space.setProperty("playerturn", (int)space.getProperty("playerturn") +1);
 
-*/
+
     }
 
 

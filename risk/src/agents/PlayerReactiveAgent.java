@@ -31,6 +31,9 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 	protected Space2D myEnvironment;
 	protected Player player;
 	private ArrayList<Action> actions= new ArrayList<Action>();
+	private int currentTurn = -1;
+	private static int numberAgents = -1;
+	private int agentNumberID;
 
 	@Agent
 	protected MicroAgent reactAgent;
@@ -45,6 +48,10 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 
 			}
 		});
+
+		numberAgents++;
+		agentNumberID=numberAgents;
+
 	}
 
 	/*
@@ -58,6 +65,7 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 	@AgentBody
 	public void body()
 	{
+		System.out.println("agente a jogar: " +agentNumberID);
 		IFuture<IExtensionInstance> fut = reactAgent.getParentAccess().getExtension("2dspace");
 		fut.addResultListener(new DefaultResultListener<IExtensionInstance>() {
 			public void resultAvailable(IExtensionInstance cs) {
@@ -65,37 +73,52 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 
 			}
 		});
-		//-Get info from environment and convert in Perceptions
-		initPerceptions();
+
+		if(
+				(int)myEnvironment.getProperty("playerturn")==agentNumberID)
+		{
+			currentTurn=(int)myEnvironment.getProperty("turnnumber");
+		ISpaceObject[] players=myEnvironment.getSpaceObjectsByType("Player");
+		player=new Player((int)players[agentNumberID].getProperty("index"),
+				(String)players[agentNumberID].getProperty("name"),
+				(Color)players[agentNumberID].getProperty("color"),
+				players.length);
+		//if(myEnvironment.getProperty(""))
+			//-Get info from environment and convert in Perceptions
+			initPerceptions();
 		//.Place Reinforcements
 		Perception perc=perceptions.get(0);
-			//Create possible actions to reinforce territories
-			createPossibleReinforcements((ReinforceArmyPerception) perc);
-			initAttackPerceptions();
-		
+		//Create possible actions to reinforce territories
+		createPossibleReinforcements((ReinforceArmyPerception) perc);
+		initAttackPerceptions();
+
 		int i;
 		for(i = 1; i < perceptions.size(); i++)
 		{
-			 perc=perceptions.get(i);
-			 System.out.println("entrei primeiro: "+ perc.getClass()+","+AttackPerception.class);
+			perc=perceptions.get(i);
+			//System.out.println("entrei primeiro: "+ perc.getClass()+","+AttackPerception.class);
 			//for Reinforce Amry Perception
-				if(perc.getClass().equals(AttackPerception.class))
-				{
-					//create possible attacks
-					createAttackTerritory((AttackPerception)perc);
-				}
+			if(perc.getClass().equals(AttackPerception.class))
+			{
+				//create possible attacks
+				createAttackTerritory((AttackPerception)perc);
+			}
 		}
 		perfomAttackTeritory();
+
+
+
+		cleanAllArrayLists();
 		
-		
+		myEnvironment.setProperty("playerturn", ((int)myEnvironment.getProperty("playerturn"))+1);
+		}
 	}
 
 
 	//---------Agent Perceptions Methods---------
 	@Override
 	public void initPerceptions() {
-		player=new Player();
-		player.setColor(Color.gray);
+		
 		System.out.println("o que guardo: " +this.myEnvironment);
 		//System.out.println("numero cenas: = "+this.myEnvironment.getSpaceObjectsByType("Territory").length);
 		System.out.println("color " +player.getColor());
@@ -135,47 +158,47 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 
 	@Override
 	public void initAttackPerceptions() {
-		
+
 		ISpaceObject[]  allTerritories = myEnvironment.getSpaceObjectsByType("Territory");
-		
+
 		for(int i = 0; i < allTerritories.length;i++)
 		{
 			if(allTerritories[i].getProperty("ownerColor")==player.getColor())
 			{
-				System.out.println("My terr = "+(String)allTerritories[i].getProperty("territoryname") );
+				//System.out.println("My terr = "+(String)allTerritories[i].getProperty("territoryname") );
 				Vector<Territory> adjs = (Vector<Territory>) allTerritories[i].getProperty("adjacentes");
 				for(int j = 0; j <adjs.size();j++)
 				{
-					
+
 					if(!adjs.get(j).getOwnerColor().equals(player.getColor()))
 					{
-						System.out.println("Territorio Inimigo!!");
-						System.out.println("(corAdj,corMinha)= ("+adjs.get(j).getOwnerColor() +"," + player.getColor()+")");
-						
+						//System.out.println("Territorio Inimigo!!");
+						//System.out.println("(corAdj,corMinha)= ("+adjs.get(j).getOwnerColor() +"," + player.getColor()+")");
+
 						Territory terrEnemyAdj=adjs.get(j);
-						
+
 						if((Integer)allTerritories[i].getProperty("armySize") +1 > terrEnemyAdj.getArmy().getArmySize()){
-							System.out.println("*****Tenho mais Army do que tu!!!*****");
+							//System.out.println("*****Tenho mais Army do que tu!!!*****");
 							AttackPerception attackPerception=new AttackPerception((String)allTerritories[i].getProperty("territoryname"), terrEnemyAdj.getTerritoryName(), (int)allTerritories[i].getProperty("armySize")-1, terrEnemyAdj.getArmy().getArmySize());
 							perceptions.add(attackPerception);
 						}
-						
+
 					}
 				}
-				
+
 			}
 		}
-		
+
 		System.out.println("number Perceptions!!!: " + perceptions.size());
-		
+
 		System.out.println("****imprimir perceptions de ataque****");
-		
+
 		for(int i = 1; i < perceptions.size();i++)
 		{
 			AttackPerception att=(AttackPerception)perceptions.get(i);
-			System.out.println("(terrFRom,terTo)= ("+att.getTerritoryFrom() +"," + att.getTerritoryTo()+")");
+			//System.out.println("(terrFRom,terTo)= ("+att.getTerritoryFrom() +"," + att.getTerritoryTo()+")");
 		}
-		
+
 	}
 
 
@@ -184,7 +207,7 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 	//---------Agent Actions Methods---------
 	@Override
 	public void createPossibleReinforcements(ReinforceArmyPerception perception) {
-		
+
 		//find weakest territory
 		String weakestTerritory="";
 		Integer lowestNumber=1000;
@@ -196,13 +219,13 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 			}	
 		}
 		System.out.println("weakest terriotry : ("+ weakestTerritory +","+lowestNumber+ ")");
-		
+
 		lowestNumber+=perception.getNumberReinforcemnts();
 		perception.getAllocations().put(weakestTerritory,lowestNumber);
-		
+
 		ReinforceArmyAction reinforceAction = new ReinforceArmyAction(weakestTerritory,lowestNumber);
 		actions.add(reinforceAction);
-		
+
 		ISpaceObject[] terrs= myEnvironment.getSpaceObjectsByType("Territory");
 		for(int i = 0; i < terrs.length;i++)
 		{
@@ -211,31 +234,31 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 				terrs[i].setProperty("armySize", lowestNumber);
 				break;
 			}
-					
+
 		}
-	
+
 	}
 
 	@Override
 	public void createAttackTerritory(AttackPerception perception) 
 	{
 		actions.add(new AttackAction(perception.getTerritoryFrom(), perception.getTerritoryTo(), perception.getArmySizeFrom(), perception.getArmySizeTo()));
-		
+
 	}
 
 	@Override
 	public void perfomAttackTeritory() {
-		
-		
+
+
 		String bestTerritoryToAttack="";
 		int remainingArmy=0;
 		String myTerritory="";
 		boolean goodAttack=false;
-	
+
 		for(int i = 1; i < actions.size();i++ )
 		{
 			AttackAction attack= (AttackAction)actions.get(i);
-			System.out.println("entrei");
+			//System.out.println("entrei");
 			if(attack.isConquered())
 			{
 				if(attack.getRemainingArmy()>remainingArmy)
@@ -245,11 +268,11 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 					myTerritory=attack.getTerritoryFrom();
 					goodAttack=true;
 				}
-				
+
 			}
-			
+
 		}
-		
+
 		if(goodAttack)
 		{
 			ISpaceObject[] terrs= myEnvironment.getSpaceObjectsByType("Territory");
@@ -257,26 +280,32 @@ public class PlayerReactiveAgent extends PlayerAgentBase {
 			{
 				if(terrs[i].getProperty("territoryname").equals(bestTerritoryToAttack))
 				{
-					System.out.println("antiga cor do territorio: "+terrs[i].getProperty("ownerColor"));
+					//System.out.println("antiga cor do territorio: "+terrs[i].getProperty("ownerColor"));
 					terrs[i].setProperty("armySize", remainingArmy);
 					terrs[i].setProperty("ownerColor",player.getColor());
-					System.out.println("NOVA cor do territorio: "+terrs[i].getProperty("ownerColor"));
+					//System.out.println("NOVA cor do territorio: "+terrs[i].getProperty("ownerColor"));
 				}
 				else
 					if(terrs[i].getProperty("territoryname").equals(myTerritory))
 					{
-						System.out.println("update:" +bestTerritoryToAttack);
+						//System.out.println("update:" +bestTerritoryToAttack);
 						terrs[i].setProperty("armySize", 1);
 					}
-						
+
 			}
 		}
-		
-		
-		
-		
+
+
+
+
 	}
 
-	
+	private void cleanAllArrayLists()
+	{
+		perceptions=new ArrayList<Perception>();
+		actions= new ArrayList<Action>();
+	}
+
+
 }
 
